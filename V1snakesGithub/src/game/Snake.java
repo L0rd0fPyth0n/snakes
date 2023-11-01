@@ -2,6 +2,7 @@ package game;
 
 import java.io.Serializable;
 import java.util.LinkedList;
+import java.util.Random;
 
 import environment.LocalBoard;
 import gui.SnakeGui;
@@ -20,7 +21,10 @@ public abstract class Snake extends Thread implements Serializable{
 	protected int size = 5;
 	private int id;
 	private Board board;
-	
+
+
+
+	private Random rand =  new Random();
 	public Snake(int id,Board board) {
 		this.id = id;
 		this.board=board;
@@ -43,8 +47,9 @@ public abstract class Snake extends Thread implements Serializable{
 	}
 
 	protected void move(Cell cell) throws InterruptedException {
-		// TODO
 		cell.request(this);
+
+
 	}
 	
 	public LinkedList<BoardPosition> getPath() {
@@ -60,11 +65,11 @@ public abstract class Snake extends Thread implements Serializable{
 		// At startup, snake occupies a single cell
 		int posX = 0;
 		while(true){
-			int posY = (int) (Math.random() * Board.NUM_ROWS);
+			int posY = rand.nextInt(Board.NUM_ROWS);
 			BoardPosition at = new BoardPosition(posX, posY);
 				if(!board.getCell(at).isOcupiedBySnake()) {
 					try {
-						board.getCell(at).request(this);
+						this.move(board.getCell(at));
 					} catch (InterruptedException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
