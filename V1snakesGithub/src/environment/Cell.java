@@ -81,7 +81,11 @@ public class Cell {
 	public boolean isOcupiedByGoal() {
 		return (gameElement!=null && gameElement instanceof Goal);
 	}
-	
+
+	@Override
+	public String toString(){
+		return "(" + position.x + "," + position.y + ")";
+	}
 	
 
 }

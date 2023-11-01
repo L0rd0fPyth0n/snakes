@@ -1,15 +1,14 @@
 package environment;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Observable;
+import java.util.*;
 
 import game.GameElement;
 import game.Goal;
 import game.Obstacle;
 import game.Snake;
+
+import java.util.Random;
 
 public abstract class Board extends Observable {
 	protected Cell[][] cells;
@@ -21,6 +20,10 @@ public abstract class Board extends Observable {
 	protected LinkedList<Snake> snakes = new LinkedList<Snake>();
 	private LinkedList<Obstacle> obstacles= new LinkedList<Obstacle>();
 	protected boolean isFinished;
+
+	//Direction
+	public static final long SEED = 1600000000;
+	public static Random r = new Random(SEED);
 
 	public Board() {
 		cells = new Cell[NUM_COLUMNS][NUM_ROWS];

@@ -19,14 +19,33 @@ public class AutomaticSnake extends Snake {
 	public void move(){
 		Direction dir = Direction.getRandomDirection();
 
-		this.getCells();
+
+		int newX = this.getCells().get(0).getPosition().x + dir.getX();
+		int newY = this.getCells().get(0).getPosition().y + dir.getY();
+
+		if(newX < 0 || newY <0 || newX >= Board.NUM_COLUMNS || newY >= Board.NUM_ROWS){
+			//TODO
+
+		}
+
+		Cell newCell = getBoard().getCell(new BoardPosition(newX,newY));
+
+		try {
+			newCell.request(this);
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
+		}
+
 	}
 
+	private int generateX(){
+		return this.getCells().get(0).getPosition()
+	}
 
 	@Override
 	public void run() {
 		doInitialPositioning();
-		System.err.println(this.getCells());
+		System.err.println(this.getCells().get(0).toString());
 		System.err.println("initial size:"+cells.size());
 
 
@@ -38,6 +57,7 @@ public class AutomaticSnake extends Snake {
 			e.printStackTrace();
 		}
 		//TODO: automatic movement
+		this.move();
 	}
 	
 
