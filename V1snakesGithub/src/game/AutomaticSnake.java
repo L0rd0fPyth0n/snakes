@@ -19,12 +19,14 @@ public class AutomaticSnake extends Snake {
 	public void move(){
 		Direction dir = Direction.getRandomDirection();
 
+		this.getCells();
 	}
 
 
 	@Override
 	public void run() {
 		doInitialPositioning();
+		System.err.println(this.getCells());
 		System.err.println("initial size:"+cells.size());
 
 
