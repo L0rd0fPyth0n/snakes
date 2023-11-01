@@ -57,17 +57,21 @@ public abstract class Snake extends Thread implements Serializable{
 		// Random position on the first column. 
 		// At startup, snake occupies a single cell
 		int posX = 0;
-		int posY = (int) (Math.random() * Board.NUM_ROWS);
-		BoardPosition at = new BoardPosition(posX, posY);
-		
-		try {
-			board.getCell(at).request(this);
-		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+		while(true){
+			int posY = (int) (Math.random() * Board.NUM_ROWS);
+			BoardPosition at = new BoardPosition(posX, posY);
+				if(!board.getCell(at).isOcupiedBySnake()) {
+					try {
+						board.getCell(at).request(this);
+					} catch (InterruptedException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					cells.add(board.getCell(at));
+					break;
+				}
 		}
-		cells.add(board.getCell(at));
-		System.err.println("Snake "+getIdentification()+" starting at:"+getCells().getLast());		
+		System.err.println("Snake "+getIdentification()+" starting at:"+getCells().getLast());
 	}
 	
 	public Board getBoard() {

@@ -16,11 +16,19 @@ public class AutomaticSnake extends Snake {
 		super(id,board);
 
 	}
+	public void move(){
+		Direction dir = Direction.getRandomDirection();
+
+	}
+
 
 	@Override
 	public void run() {
 		doInitialPositioning();
 		System.err.println("initial size:"+cells.size());
+
+
+
 		try {
 			cells.getLast().request(this);
 		} catch (InterruptedException e) {
