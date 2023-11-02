@@ -16,31 +16,32 @@ public class AutomaticSnake extends Snake {
 		super(id,board);
 
 	}
+
 	public void move(){
-		Direction dir = Direction.getRandomDirection();
+
+		while(true) {
+			Direction dir = Direction.getRandomDirection();
 
 
-		int newX = this.getCells().get(0).getPosition().x + dir.getX();
-		int newY = this.getCells().get(0).getPosition().y + dir.getY();
+			int newX = this.getCells().get(0).getPosition().x + dir.getX();
+			int newY = this.getCells().get(0).getPosition().y + dir.getY();
 
-		if(newX < 0 || newY <0 || newX >= Board.NUM_COLUMNS || newY >= Board.NUM_ROWS){
-			//TODO
+			if (!(newX < 0 || newY < 0 || newX >= Board.NUM_COLUMNS || newY >= Board.NUM_ROWS)) {
+				//TODO
+				Cell newCell = getBoard().getCell(new BoardPosition(newX, newY));
 
-		}
-
-		Cell newCell = getBoard().getCell(new BoardPosition(newX,newY));
-
-		try {
-			newCell.request(this);
-		} catch (InterruptedException e) {
-			throw new RuntimeException(e);
+				try {
+					newCell.request(this);
+					getBoard().setChanged();
+				} catch (InterruptedException e) {
+					throw new RuntimeException(e);
+				}
+			}
+			break;
 		}
 
 	}
 
-	private int generateX(){
-		return this.getCells().get(0).getPosition()
-	}
 
 	@Override
 	public void run() {
@@ -48,18 +49,14 @@ public class AutomaticSnake extends Snake {
 		System.err.println(this.getCells().get(0).toString());
 		System.err.println("initial size:"+cells.size());
 
+		while(true) {
+			//cells.getLast().request(this);
+			this.move();
+			cells.getLast().release();
+			//TODO: automatic movement
 
-
-		try {
-			cells.getLast().request(this);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
-		//TODO: automatic movement
-		this.move();
 	}
-	
 
-	
+
 }

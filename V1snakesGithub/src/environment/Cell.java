@@ -35,12 +35,12 @@ public class Cell {
 
 	public void request(Snake snake) throws InterruptedException {
 		//TODO coordination and mutual exclusion
-
 		ocuppyingSnake=snake;
 	}
 
 	public void release() {
 		//TODO
+		ocuppyingSnake=null;
 	}
 
 	public boolean isOcupiedBySnake() {
