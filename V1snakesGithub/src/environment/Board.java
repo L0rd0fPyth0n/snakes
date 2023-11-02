@@ -21,10 +21,6 @@ public abstract class Board extends Observable {
 	private LinkedList<Obstacle> obstacles= new LinkedList<Obstacle>();
 	protected boolean isFinished;
 
-	//Direction
-	public static final long SEED = 1600000000;
-	public static Random r = new Random(SEED);
-
 	public Board() {
 		cells = new Cell[NUM_COLUMNS][NUM_ROWS];
 		for (int x = 0; x < NUM_COLUMNS; x++) {
@@ -34,8 +30,15 @@ public abstract class Board extends Observable {
 		}
 
 	}
-
-	public Cell getCell(BoardPosition cellCoord) {
+	public boolean isOutOfBound(BoardPosition cell){
+		return cell.x < 0 ||
+				cell.x>=Board.NUM_COLUMNS ||
+				cell.y <0 ||
+				cell.y >= Board.NUM_ROWS;
+	}
+	public Cell getCell(BoardPosition cellCoord)   {
+//		if(isOutOfBound(cellCoord))
+//			throws ;
 		return cells[cellCoord.x][cellCoord.y];
 	}
 
