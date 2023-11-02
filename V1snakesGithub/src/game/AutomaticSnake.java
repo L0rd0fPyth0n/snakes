@@ -1,8 +1,8 @@
 package game;
 
+import java.awt.*;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
 
 import javax.swing.text.Position;
 
@@ -13,43 +13,47 @@ import environment.Board;
 import environment.BoardPosition;
 
 public class AutomaticSnake extends Snake {
-
-
-
-
-
 	public AutomaticSnake(int id, LocalBoard board) {
 		super(id,board);
 
 	}
-	public void move(){
-		while(true){
+
+	public Cell generatePosition(){
+		Cell aux = this.getCells().getFirst();
+
+		BoardPosition bp = null;
+		while(true) {
 			Direction dir = Direction.getRandomDirection();
 
-			int newX = this.getCells().get(0).getPosition().x + dir.getX();
-			int newY = this.getCells().get(0).getPosition().y + dir.getY();
+			int newX = aux.getPosition().x + dir.getX();
+			int newY = aux.getPosition().y + dir.getY();
 
-			if (!(newX < 0 || newY < 0 || newX >= Board.NUM_COLUMNS || newY >= Board.NUM_ROWS)) {
-				Cell newCell = getBoard().getCell(new BoardPosition(newX, newY));
+			 bp = new BoardPosition(newX, newY);
 
-				try {
-					this.move(newCell);
-
-
-				} catch (InterruptedException e) {
-				}
-				getBoard().setChanged();
+			if (!getBoard().isOutOfBound(bp)) {
 				break;
 			}
-
-			try {
-				this.sleep(50);
-			} catch (InterruptedException e) {
-				throw new RuntimeException(e);
-			}
 		}
+		Cell aux2 = getBoard().getCell(bp);
+
+
+		aux.release();
+
+		//this.getCells().remove(aux);
+		this.getCells().remove(getCells().getLast());
+		this.getCells().add(aux2);
+		return aux2;
 	}
 
+	public  void move(Cell bp) {
+		System.out.print(Thread.currentThread().getName() + " " + bp.toString());
+		try {
+			bp.request(this);
+			getBoard().setChanged();
+		} catch (InterruptedException e) {
+			System.out.println("erro");
+		}
+	}
 
 
 	@Override
@@ -57,19 +61,17 @@ public class AutomaticSnake extends Snake {
 		doInitialPositioning();
 		System.err.println("initial size:"+cells.size());
 
-		//TODO: automatic movement
-
-		while(true){
-			//TODO remover while true
+		while(true) {
 			try {
-				this.sleep(Board.PLAYER_PLAY_INTERVAL);
+				Cell toMove = generatePosition();
+				this.move(toMove);
+				Thread.sleep(Board.PLAYER_PLAY_INTERVAL);
 			} catch (InterruptedException e) {
+				System.out.println("sai do move automatic");
 			}
-			this.move();
 		}
-
 	}
-	
 
-	
+
+
 }

@@ -48,8 +48,6 @@ public abstract class Snake extends Thread implements Serializable{
 
 	protected void move(Cell cell) throws InterruptedException {
 		cell.request(this);
-
-
 	}
 	
 	public LinkedList<BoardPosition> getPath() {

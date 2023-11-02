@@ -9,8 +9,8 @@ import game.Goal;
 import game.Obstacle;
 import game.Snake;
 import game.AutomaticSnake;
-/** Main class for game representation. 
- * 
+/** Main class for game representation.
+ *
  * @author luismota
  *
  */
@@ -18,7 +18,7 @@ public class Cell {
 	private BoardPosition position;
 	private Snake ocuppyingSnake = null;
 	private GameElement gameElement=null;
-	
+
 	public GameElement getGameElement() {
 		return gameElement;
 	}
@@ -40,7 +40,7 @@ public class Cell {
 	}
 
 	public void release() {
-		//TODO
+		this.ocuppyingSnake = null;
 	}
 
 	public boolean isOcupiedBySnake() {
@@ -86,6 +86,6 @@ public class Cell {
 	public String toString(){
 		return "(" + position.x + "," + position.y + ")";
 	}
-	
+
 
 }

@@ -30,8 +30,15 @@ public abstract class Board extends Observable {
 		}
 
 	}
-
-	public Cell getCell(BoardPosition cellCoord) {
+	public boolean isOutOfBound(BoardPosition cell){
+		return cell.x < 0 ||
+				cell.x>=Board.NUM_COLUMNS ||
+				cell.y <0 ||
+				cell.y >= Board.NUM_ROWS;
+	}
+	public Cell getCell(BoardPosition cellCoord)   {
+//		if(isOutOfBound(cellCoord))
+//			throws ;
 		return cells[cellCoord.x][cellCoord.y];
 	}
 
