@@ -28,13 +28,15 @@ public class AutomaticSnake extends Snake {
 			int newX = aux.getPosition().x + dir.getX();
 			int newY = aux.getPosition().y + dir.getY();
 
-			 bp = new BoardPosition(newX, newY);
+			bp = new BoardPosition(newX, newY);
 
 			if (!getBoard().isOutOfBound(bp)) {
 				break;
 			}
 		}
 		Cell aux2 = getBoard().getCell(bp);
+
+		//if(comer maca)
 
 
 		aux.release();
@@ -45,11 +47,15 @@ public class AutomaticSnake extends Snake {
 		return aux2;
 	}
 
-	public  void move(Cell bp) {
-		System.out.print(Thread.currentThread().getName() + " " + bp.toString());
+	public void move(Cell bp) {
+		//System.out.print(Thread.currentThread().getName() + " " + bp.toString());
 		try {
 			bp.request(this);
 			getBoard().setChanged();
+			if(bp.isOcupiedByGoal()){
+				Goal remove = bp.removeGoal();
+				remove.captureGoal();
+			}
 		} catch (InterruptedException e) {
 			System.out.println("erro");
 		}
@@ -65,9 +71,15 @@ public class AutomaticSnake extends Snake {
 			try {
 				Cell toMove = generatePosition();
 				this.move(toMove);
+				if(this.getBoard().getCell(this.getBoard().getGoalPosition()).
+						getGoal().getValue() ==10 ){
+					this.interrupt();
+					this.join();
+				}
 				Thread.sleep(Board.PLAYER_PLAY_INTERVAL);
 			} catch (InterruptedException e) {
 				System.out.println("sai do move automatic");
+				return;
 			}
 		}
 	}

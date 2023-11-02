@@ -1,6 +1,6 @@
 
 @
 java:S2119"Save and re-use this "Random".(ÉåñÚúÿÿÿÿ8û ðç¸1
-Z	java:S106!"9Replace this use of System.out or System.err by a logger.(÷Ðô‚þÿÿÿÿ8ü ðç¸1
-Z	java:S106""9Replace this use of System.out or System.err by a logger.(÷Ðô‚þÿÿÿÿ8ü ðç¸1
-Z	java:S106#"9Replace this use of System.out or System.err by a logger.(÷Ðô‚þÿÿÿÿ8ü ðç¸1
+L	java:S106!"+Replace this use of System.out by a logger.(÷Ðô‚þÿÿÿÿ8ü ðç¸1
+L	java:S106""+Replace this use of System.out by a logger.(÷Ðô‚þÿÿÿÿ8ü ðç¸1
+L	java:S106#"+Replace this use of System.out by a logger.(÷Ðô‚þÿÿÿÿ8ü ðç¸1

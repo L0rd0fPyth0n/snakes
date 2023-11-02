@@ -65,9 +65,11 @@ public class Cell {
 
 
 	public  Goal removeGoal() {
-		// TODO
-		return null;
+		Goal g = getGoal();
+		//gameElement = null
+		return g;
 	}
+
 	public void removeObstacle() {
 	//TODO
 	}
