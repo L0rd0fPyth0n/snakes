@@ -1,13 +1,6 @@
 package game;
 
-import java.awt.*;
-import java.util.LinkedList;
-import java.util.List;
-
-import javax.swing.text.Position;
-
 import environment.LocalBoard;
-import gui.SnakeGui;
 import environment.Cell;
 import environment.Board;
 import environment.BoardPosition;
@@ -18,7 +11,7 @@ public class AutomaticSnake extends Snake {
 
 	}
 
-	public Cell generatePosition(){
+	public Cell generateNextPosition(){
 		Cell aux = this.getCells().getFirst();
 
 		BoardPosition bp = null;
@@ -47,18 +40,19 @@ public class AutomaticSnake extends Snake {
 		return aux2;
 	}
 
-	public void move(Cell bp) {
-		//System.out.print(Thread.currentThread().getName() + " " + bp.toString());
-		try {
-			bp.request(this);
-			getBoard().setChanged();
-			if(bp.isOcupiedByGoal()){
-				Goal remove = bp.removeGoal();
-				remove.captureGoal();
-			}
-		} catch (InterruptedException e) {
-			System.out.println("erro");
+	public void move(Cell bp) throws InterruptedException {
+		bp.request(this);
+		cells.add(0,bp);
+		if(!hasToGrow())
+			cells.removeLast();
+		if(bp.isOcupiedByGoal()) {
+			Goal remove = bp.removeGoal();
+
+			int amuontToGrow = remove.captureGoal();
+			super.startGrowing(amuontToGrow);
 		}
+
+		getBoard().setChanged();
 	}
 
 
@@ -66,10 +60,9 @@ public class AutomaticSnake extends Snake {
 	public void run() {
 		doInitialPositioning();
 		System.err.println("initial size:"+cells.size());
-
 		while(true) {
 			try {
-				Cell toMove = generatePosition();
+				Cell toMove = generateNextPosition();
 				this.move(toMove);
 				if(this.getBoard().getCell(this.getBoard().getGoalPosition()).
 						getGoal().getValue() ==10 ){

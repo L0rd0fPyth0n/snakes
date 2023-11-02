@@ -1,12 +1,8 @@
 
 X
 (V1snakesGithub/src/game/GameElement.java,5\8\58c7079484a5d15a5d8c3d689d988f009317087c
-9
-	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 P
  V1snakesGithub/src/gui/Main.java,f\c\fcffaaaa1b00e87b236963568059b82cf1d085df
-T
-$V1snakesGithub/src/gui/SnakeGui.java,4\b\4bf2822fc5aec8ca5dd5dc7340ff4c2c4a3fdbab
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
@@ -38,10 +34,6 @@ T
 $.idea/codeStyles/codeStyleConfig.xml,d\d\dd7b3350c29c49497756c7f32c69a3bed18b1cba
 Q
 !V1snakesGithub/src/game/Goal.java,c\b\cb3a560d704c09f393b7f5f4e871e306188e5706
-R
-"V1snakesGithub/src/game/Snake.java,1\b\1b0c94c15ad97fe866af8c0461c723536e541a33
-[
-+V1snakesGithub/src/game/AutomaticSnake.java,b\d\bd439d10e2ea653974161d989b6f580a552071f8
 U
 %V1snakesGithub/src/game/Obstacle.java,d\c\dc2ad96f55440e86925ef02b558b038f26df244e
 S
@@ -54,7 +46,3 @@ X
 .V1snakesGithub/src/environment/LocalBoard.java,1\3\1320748d076c45ef81961676e68e2674a1c00a90
 Y
 )V1snakesGithub/src/environment/Board.java,3\7\37d4c2484d391bc46e37cad8e0ca62730c25bd5f
-S
-#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
-]
--.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
