@@ -19,7 +19,9 @@ public class Goal extends GameElement  {
 	}
 
 	public int captureGoal() {
-//		TODO
+		value++;
+
+		board.getRandomPosition();
 		return -1;
 	}
 }
