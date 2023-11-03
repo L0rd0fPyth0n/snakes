@@ -10,14 +10,8 @@ V
 &V1snakesGithub/src/game/Direction.java,8\4\8494889051638d0bc4da1ed30291dc05442fab45
 a
 1V1snakesGithub/src/environment/BoardPosition.java,f\e\fed350d741d576222b595c711bc8f3a1fd32a112
-w
-G.idea/sonarlint/issuestore/8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d,b\4\b4a0b63ce8560bbc5de0f9995c20cc861dc2adb3
 Å
 Q.idea/sonarlint/securityhotspotstore/5/8/58c7079484a5d15a5d8c3d689d988f009317087c,a\4\a4de96e4f6baeb231c25bc1797f5f01aeb4ff713
-Å
-Q.idea/sonarlint/securityhotspotstore/4/b/4bf2822fc5aec8ca5dd5dc7340ff4c2c4a3fdbab,b\c\bc0a1ddddb23002dd050f6623b44f37987e59787
-Å
-Q.idea/sonarlint/securityhotspotstore/8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d,1\0\10a03f31c4dce92cb371e761ce9429428bb6c176
 Å
 Q.idea/sonarlint/securityhotspotstore/8/4/8494889051638d0bc4da1ed30291dc05442fab45,1\8\18dcad6a79b9bce99607fa1f341753c4a08f874c
 w
@@ -46,3 +40,15 @@ X
 .V1snakesGithub/src/environment/LocalBoard.java,1\3\1320748d076c45ef81961676e68e2674a1c00a90
 Y
 )V1snakesGithub/src/environment/Board.java,3\7\37d4c2484d391bc46e37cad8e0ca62730c25bd5f
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+T
+$V1snakesGithub/src/gui/SnakeGui.java,4\b\4bf2822fc5aec8ca5dd5dc7340ff4c2c4a3fdbab
+]
+-.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
+R
+"V1snakesGithub/src/game/Snake.java,1\b\1b0c94c15ad97fe866af8c0461c723536e541a33
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+[
++V1snakesGithub/src/game/AutomaticSnake.java,b\d\bd439d10e2ea653974161d989b6f580a552071f8

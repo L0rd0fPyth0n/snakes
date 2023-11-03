@@ -13,7 +13,7 @@ import java.util.Random;
 public abstract class Board extends Observable {
 	protected Cell[][] cells;
 	private BoardPosition goalPosition;
-	public static final long PLAYER_PLAY_INTERVAL = 100;
+	public static final long PLAYER_PLAY_INTERVAL = 50;
 	public static final long REMOTE_REFRESH_INTERVAL = 200;
 	public static final int NUM_COLUMNS = 30;
 	public static final int NUM_ROWS = 30;
@@ -87,6 +87,7 @@ public abstract class Board extends Observable {
 
 	protected Goal addGoal() {
 		Goal goal=new Goal(this);
+		new Thread(goal).start();
 		addGameElement( goal);
 		//setGoalPosition(new BoardPosition(4,4));
 		return goal;
