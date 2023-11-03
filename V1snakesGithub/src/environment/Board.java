@@ -87,7 +87,7 @@ public abstract class Board extends Observable {
 
 	protected Goal addGoal() {
 		Goal goal=new Goal(this);
-		new Thread(goal).start();
+		//new Thread(goal).start();
 		addGameElement( goal);
 		//setGoalPosition(new BoardPosition(4,4));
 		return goal;
