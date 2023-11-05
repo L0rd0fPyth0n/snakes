@@ -52,3 +52,5 @@ S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
 [
 +V1snakesGithub/src/game/AutomaticSnake.java,b\d\bd439d10e2ea653974161d989b6f580a552071f8
+Z
+*V1snakesGithub/src/game/ObstacleMover.java,3\6\369c964a86ba664f5ab4e4f97a58370cd3db9d03

@@ -52,3 +52,5 @@ R
 "V1snakesGithub/src/game/Snake.java,1\b\1b0c94c15ad97fe866af8c0461c723536e541a33
 [
 +V1snakesGithub/src/game/AutomaticSnake.java,b\d\bd439d10e2ea653974161d989b6f580a552071f8
+Z
+*V1snakesGithub/src/game/ObstacleMover.java,3\6\369c964a86ba664f5ab4e4f97a58370cd3db9d03

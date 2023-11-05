@@ -3,12 +3,11 @@ package environment;
 import java.io.Serializable;
 import java.util.*;
 
-import game.GameElement;
-import game.Goal;
-import game.Obstacle;
-import game.Snake;
+import game.*;
 
 import java.util.Random;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 
 public abstract class Board extends Observable {
 	protected Cell[][] cells;
@@ -21,6 +20,8 @@ public abstract class Board extends Observable {
 	private LinkedList<Obstacle> obstacles= new LinkedList<Obstacle>();
 	protected boolean isFinished;
 
+	private ThreadPoolExecutor executor =
+			(ThreadPoolExecutor) Executors.newFixedThreadPool(2);
 	public Board() {
 		cells = new Cell[NUM_COLUMNS][NUM_ROWS];
 		for (int x = 0; x < NUM_COLUMNS; x++) {
@@ -42,7 +43,7 @@ public abstract class Board extends Observable {
 		return cells[cellCoord.x][cellCoord.y];
 	}
 
-	protected BoardPosition getRandomPosition() {
+	public BoardPosition getRandomPosition() {
 		return new BoardPosition((int) (Math.random() *NUM_ROWS),(int) (Math.random() * NUM_ROWS));
 	}
 
@@ -62,6 +63,10 @@ public abstract class Board extends Observable {
 				getCell(pos).setGameElement(gameElement);
 				if(gameElement instanceof Goal) {
 					setGoalPosition(pos);
+//					System.out.println("Goal placed at:"+pos);
+				}
+				if(gameElement instanceof Obstacle) {
+					((Obstacle) gameElement).setPos(pos);
 //					System.out.println("Goal placed at:"+pos);
 				}
 				placed=true;
@@ -98,17 +103,16 @@ public abstract class Board extends Observable {
 		getObstacles().clear();
 		while(numberObstacles>0) {
 			Obstacle obs=new Obstacle(this);
+			ObstacleMover lb = new ObstacleMover(obs,this);
+			lb.start();
 			addGameElement( obs);
 			getObstacles().add(obs);
 			numberObstacles--;
 		}
 	}
-	
 	public LinkedList<Snake> getSnakes() {
 		return snakes;
 	}
-
-
 	@Override
 	public void setChanged() {
 		super.setChanged();
@@ -132,6 +136,4 @@ public abstract class Board extends Observable {
 	public void addSnake(Snake snake) {
 		snakes.add(snake);
 	}
-
-
 }

@@ -35,7 +35,6 @@ public class Cell {
 
 	public void request(Snake snake) throws InterruptedException {
 		//TODO coordination and mutual exclusion
-
 		ocuppyingSnake=snake;
 	}
 
@@ -71,7 +70,7 @@ public class Cell {
 	}
 
 	public void removeObstacle() {
-	//TODO
+		gameElement = null;
 	}
 
 
@@ -88,6 +87,4 @@ public class Cell {
 	public String toString(){
 		return "(" + position.x + "," + position.y + ")";
 	}
-
-
 }

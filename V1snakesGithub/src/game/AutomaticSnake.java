@@ -8,7 +8,6 @@ import environment.BoardPosition;
 public class AutomaticSnake extends Snake {
 	public AutomaticSnake(int id, LocalBoard board) {
 		super(id,board);
-
 	}
 
 	public Cell generateNextPosition(){
@@ -56,13 +55,8 @@ public class AutomaticSnake extends Snake {
 
 	@Override
 	public void run() {
-		try {
-			sleep(1000);
-		} catch (InterruptedException e) {
-			throw new RuntimeException(e);
-		}
 		doInitialPositioning();
-		System.err.println("initial size:"+cells.size());
+		System.out.println("initial size: "+cells.size());
 		while(this.getBoard().getCell(this.getBoard().getGoalPosition()).
 				getGoal().getValue() <10) {
 			try {
@@ -80,7 +74,4 @@ public class AutomaticSnake extends Snake {
 			}
 		}
 	}
-
-
-
 }

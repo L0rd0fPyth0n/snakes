@@ -89,7 +89,6 @@ protected abstract void move(Cell cell) throws InterruptedException;
 		}
 		System.err.println("Snake "+getIdentification()+" starting at:"+getCells().getLast());
 	}
-	
 	public Board getBoard() {
 		return board;
 	}
