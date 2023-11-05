@@ -6,8 +6,6 @@ P
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
-V
-&V1snakesGithub/src/game/Direction.java,8\4\8494889051638d0bc4da1ed30291dc05442fab45
 a
 1V1snakesGithub/src/environment/BoardPosition.java,f\e\fed350d741d576222b595c711bc8f3a1fd32a112
 Å
@@ -54,3 +52,5 @@ R
 +V1snakesGithub/src/game/AutomaticSnake.java,b\d\bd439d10e2ea653974161d989b6f580a552071f8
 Z
 *V1snakesGithub/src/game/ObstacleMover.java,3\6\369c964a86ba664f5ab4e4f97a58370cd3db9d03
+Z
+*V1snakesGithub/src/gui/BoardComponent.java,2\e\2ee3fc34a2f9008f3801a29baf9c382634714f05

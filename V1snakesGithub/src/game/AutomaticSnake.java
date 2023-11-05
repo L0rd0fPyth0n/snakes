@@ -44,8 +44,8 @@ public class AutomaticSnake extends Snake {
 		currCell.release();
 
 		//this.getCells().remove(aux);
-		this.getCells().remove(getCells().getLast());
-		this.getCells().add(newPos);
+//		this.getCells().remove(getCells().getLast());
+//		this.getCells().add(0,newPos);
 		return newPos;
 	}
 

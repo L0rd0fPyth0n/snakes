@@ -21,17 +21,14 @@ public class ObstacleMover extends Thread {
 
 	@Override
 	public void run() {
-
-		while(true){
-			try {
-				sleep(Obstacle.OBSTACLE_MOVE_INTERVAL);
-			} catch (InterruptedException e) {
-			}
-
-			Cell cellOndeEsta =	board.getCell(obstacle.getPos());
-			cellOndeEsta.removeObstacle();
-			board.setChanged();
 			while(obstacle.getRemainingMoves() > 0) {
+				try {
+					sleep(Obstacle.OBSTACLE_MOVE_INTERVAL);
+				} catch (InterruptedException e) {}
+				Cell cellOndeEsta =	board.getCell(obstacle.getPos());
+				cellOndeEsta.removeObstacle();
+				board.setChanged();
+				while(true){
 				BoardPosition nextPos = board.getRandomPosition();
 				Cell nextCell = board.getCell(nextPos);
 				if (!(nextCell.isOcupied() || nextCell.isOcupiedByGoal())){

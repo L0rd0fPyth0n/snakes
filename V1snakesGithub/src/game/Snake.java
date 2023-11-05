@@ -28,7 +28,7 @@ public abstract class Snake extends Thread implements Serializable{
 
 	}
 	protected boolean hasToGrow(){
-		return amountToGrow-- > 0;
+		return --amountToGrow > 0;
 	}
 	protected void startGrowing(int amountToGrow){
 		this.amountToGrow = amountToGrow;
