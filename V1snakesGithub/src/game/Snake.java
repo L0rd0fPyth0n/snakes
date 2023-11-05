@@ -3,6 +3,8 @@ package game;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.Random;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 import environment.LocalBoard;
 import gui.SnakeGui;
@@ -24,13 +26,17 @@ public abstract class Snake extends Thread implements Serializable{
 
 	private int amountToGrow;
 
+	//TODO
+	private Lock lockSnake = new ReentrantLock();
+	////
+
 	protected void grow(Cell c){
 
 	}
 	protected boolean hasToGrow(){
 		return --amountToGrow > 0;
 	}
-	protected void startGrowing(int amountToGrow){
+	public void startGrowing(int amountToGrow){
 		this.amountToGrow = amountToGrow;
 	}
 	private Random rand =  new Random();
@@ -66,9 +72,9 @@ protected abstract void move(Cell cell) throws InterruptedException;
 		for (Cell cell : cells) {
 			coordinates.add(cell.getPosition());
 		}
-
 		return coordinates;
-	}	
+	}
+
 	protected void doInitialPositioning() {
 		// Random position on the first column. 
 		// At startup, snake occupies a single cell

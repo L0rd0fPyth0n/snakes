@@ -10,8 +10,6 @@ a
 1V1snakesGithub/src/environment/BoardPosition.java,f\e\fed350d741d576222b595c711bc8f3a1fd32a112
 Å
 Q.idea/sonarlint/securityhotspotstore/5/8/58c7079484a5d15a5d8c3d689d988f009317087c,a\4\a4de96e4f6baeb231c25bc1797f5f01aeb4ff713
-Å
-Q.idea/sonarlint/securityhotspotstore/8/4/8494889051638d0bc4da1ed30291dc05442fab45,1\8\18dcad6a79b9bce99607fa1f341753c4a08f874c
 w
 G.idea/sonarlint/issuestore/a/5/a5cc2925ca8258af241be7e5b0381edf30266302,e\d\ed67eb178d523a4b3f117dcbe0eda5196367ceec
 ;
