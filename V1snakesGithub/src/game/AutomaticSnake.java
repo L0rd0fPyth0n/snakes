@@ -9,32 +9,46 @@ public class AutomaticSnake extends Snake {
 	public AutomaticSnake(int id, LocalBoard board) {
 		super(id,board);
 	}
+	public BoardPosition movementVector(Cell from, Cell to) {
+		BoardPosition d = new BoardPosition(to.getPosition().x - from.getPosition().x,
+				to.getPosition().y - from.getPosition().y);
+		if (Math.abs(d.x) > Math.abs(d.y)) {
+			d = new BoardPosition((int) Math.signum(d.x), 0);
+		} else if (Math.abs(d.x) <= Math.abs(d.y)) {
+			d = new BoardPosition(0, (int) Math.signum(d.y));
+		}
+		return d;
+	}
 
-	public Cell generateNextPosition(){
-		Cell aux = this.getCells().getFirst();
 
-		BoardPosition bp = null;
+	//NewPosition = currentPosition + VectorToTheGoal
+	public Cell generatePosToGoal(){
+		BoardPosition currPos = getCells().getFirst().getPosition();
+		Cell currCell = getBoard().getCell(currPos);
+
+		BoardPosition goalBp = getBoard().getGoalPosition();
+		Cell goalCell = getBoard().getCell( goalBp);
+
+		BoardPosition newBP = null;
 		while(true) {
-			Direction dir = Direction.getRandomDirection();
 
-			int newX = aux.getPosition().x + dir.getX();
-			int newY = aux.getPosition().y + dir.getY();
+			BoardPosition vector = movementVector(currCell, goalCell);
+			newBP = new BoardPosition(currPos.x + vector.x, currPos.y + vector.y);
 
-			bp = new BoardPosition(newX, newY);
-
-			if (!getBoard().isOutOfBound(bp)) {
+			if (!getBoard().isOutOfBound(newBP)) {
 				break;
 			}
 		}
-		Cell aux2 = getBoard().getCell(bp);
+		Cell newPos = getBoard().getCell(newBP);
 
-		//if(comer maca)
-		aux.release();
+		currCell.release();
+
 		//this.getCells().remove(aux);
 		this.getCells().remove(getCells().getLast());
-		this.getCells().add(aux2);
-		return aux2;
+		this.getCells().add(newPos);
+		return newPos;
 	}
+
 
 	public void move(Cell bp) throws InterruptedException {
 		bp.request(this);
@@ -48,7 +62,6 @@ public class AutomaticSnake extends Snake {
 			int amuontToGrow = remove.captureGoal();
 			super.startGrowing(amuontToGrow);
 		}
-
 		getBoard().setChanged();
 	}
 
@@ -60,7 +73,8 @@ public class AutomaticSnake extends Snake {
 		while(this.getBoard().getCell(this.getBoard().getGoalPosition()).
 				getGoal().getValue() <10) {
 			try {
-				Cell toMove = generateNextPosition();
+				Cell toMove = generatePosToGoal();
+
 				this.move(toMove);
 				if(this.getBoard().getCell(this.getBoard().getGoalPosition()).
 						getGoal().getValue() ==10 ){

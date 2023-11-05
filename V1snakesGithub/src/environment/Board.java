@@ -12,7 +12,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 public abstract class Board extends Observable {
 	protected Cell[][] cells;
 	private BoardPosition goalPosition;
-	public static final long PLAYER_PLAY_INTERVAL = 50;
+	public static final long PLAYER_PLAY_INTERVAL = 100;
 	public static final long REMOTE_REFRESH_INTERVAL = 200;
 	public static final int NUM_COLUMNS = 30;
 	public static final int NUM_ROWS = 30;
@@ -29,7 +29,6 @@ public abstract class Board extends Observable {
 				cells[x][y] = new Cell(new BoardPosition(x, y));
 			}
 		}
-
 	}
 	public boolean isOutOfBound(BoardPosition cell){
 		return cell.x < 0 ||
@@ -105,7 +104,9 @@ public abstract class Board extends Observable {
 			Obstacle obs=new Obstacle(this);
 			ObstacleMover lb = new ObstacleMover(obs,this);
 			lb.start();
-			addGameElement( obs);
+			//TODO adicionar a thread pool
+
+			addGameElement(obs);
 			getObstacles().add(obs);
 			numberObstacles--;
 		}

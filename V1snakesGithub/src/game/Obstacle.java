@@ -6,11 +6,10 @@ import environment.LocalBoard;
 
 public class Obstacle extends GameElement {
 	
-	
 	private static final int NUM_MOVES=3;
-	public static final int OBSTACLE_MOVE_INTERVAL = 400;
+	public static final int OBSTACLE_MOVE_INTERVAL = 1000;
 	private int remainingMoves=NUM_MOVES;
-	private Board board;
+	private final Board board;
 
 	private BoardPosition pos;
 
@@ -29,6 +28,7 @@ public class Obstacle extends GameElement {
 	public int getRemainingMoves() {
 		return remainingMoves;
 	}
-
-
+	public void decrementRemainingMoves(){
+		remainingMoves--;
+	}
 }
