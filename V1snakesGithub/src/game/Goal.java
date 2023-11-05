@@ -6,6 +6,9 @@ import environment.Cell;
 import environment.LocalBoard;
 
 import java.util.Random;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 import static gui.SnakeGui.NUM_ROWS;
 
@@ -13,6 +16,8 @@ public class Goal extends GameElement  {
 	private int value=1;
 	private Board board;
 	public static final int MAX_VALUE=10;
+	private Lock lockGoal = new ReentrantLock();
+
 
 
 	public Goal( Board board2) {
@@ -32,7 +37,6 @@ public class Goal extends GameElement  {
 		}
 	}
 
-	//TODO fazer com que o 10 nao apareça? Talvez its ok pq o prof tmb tinha assim
 	public int captureGoal() throws InterruptedException {
 		incrementValue();
 
