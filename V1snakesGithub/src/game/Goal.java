@@ -61,7 +61,6 @@ public class Goal extends GameElement  {
 		//cellACTUAL.removeGoal();
 		board.setChanged();
 		lockGoal.unlock();
-
 		return value;
 	}
 

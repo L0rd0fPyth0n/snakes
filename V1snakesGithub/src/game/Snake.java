@@ -15,7 +15,6 @@ import environment.Cell;
  * Will be extended by HumanSnake and AutomaticSnake.
  * Common methods will be defined here.
  * @author luismota
- *
  */
 public abstract class Snake extends Thread implements Serializable{
 	private static final int DELTA_SIZE = 10;
@@ -23,14 +22,19 @@ public abstract class Snake extends Thread implements Serializable{
 	protected int size = 5;
 	private int id;
 	private Board board;
-	private int amountToGrow;
+	private int amountToGrow = 0;
 
 	protected boolean hasToGrow(){
 		//TODO bad
 		return --amountToGrow > 0;
 	}
+
+	/*	protected void decreaseHasToGrow(){
+		hasToGrow--;
+	}*/
 	public void startGrowing(int amountToGrow){
-		this.amountToGrow += amountToGrow;
+		//TODO isto devia ser += mas só com = é q funciona
+		this.amountToGrow = amountToGrow;
 	}
 	private Random rand =  new Random();
 	public Snake(int id,Board board) {
@@ -57,7 +61,25 @@ public abstract class Snake extends Thread implements Serializable{
 //	protected void move(Cell cell) throws InterruptedException {
 //		cell.request(this);
 //	}
-	protected abstract void move(Cell cell) throws InterruptedException;
+	protected void move(Cell bp)  {
+		BoardPosition currPos = getCells().getFirst().getPosition();
+
+		Cell currCell = getBoard().getCell(currPos);
+
+		currCell.release();
+
+		bp.request(this);
+		cells.add(0,bp);
+
+		if(!hasToGrow()) {
+			cells.removeLast();
+		}
+
+		getBoard().setChanged();
+	}
+
+	protected abstract Cell getNextCell();
+
 	public LinkedList<BoardPosition> getPath() {
 		LinkedList<BoardPosition> coordinates = new LinkedList<>();
 		for (Cell cell : cells) {
@@ -76,13 +98,8 @@ public abstract class Snake extends Thread implements Serializable{
 			int posY = rand.nextInt(Board.NUM_ROWS);
 			BoardPosition at = new BoardPosition(posX, posY);
 				if(!board.getCell(at).isOcupiedBySnake()) {
-					try {
-						this.move(board.getCell(at));
-					} catch (InterruptedException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
 					cells.add(board.getCell(at));
+					board.getCell(at).request(this);
 					break;
 				}
 		}

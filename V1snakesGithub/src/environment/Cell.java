@@ -56,11 +56,11 @@ public class Cell {
 
 				int amuontToGrow = 0;
 				try {
-					amuontToGrow = remove.captureGoal();
+					snake.startGrowing(remove.captureGoal());
 				} catch (InterruptedException e) {
 					throw new RuntimeException(e);
 				}
-				snake.startGrowing(amuontToGrow);
+
 			}
 			hasSnake.signalAll();
 		} catch (InterruptedException e) {

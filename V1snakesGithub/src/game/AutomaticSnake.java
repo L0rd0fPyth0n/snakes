@@ -9,7 +9,7 @@ public class AutomaticSnake extends Snake {
 	public AutomaticSnake(int id, LocalBoard board) {
 		super(id,board);
 	}
-	public BoardPosition movementVector(Cell from, Cell to) {
+	private BoardPosition movementVector(Cell from, Cell to) {
 		BoardPosition d = new BoardPosition(to.getPosition().x - from.getPosition().x,
 				to.getPosition().y - from.getPosition().y);
 		if (Math.abs(d.x) > Math.abs(d.y)) {
@@ -19,10 +19,8 @@ public class AutomaticSnake extends Snake {
 		}
 		return d;
 	}
-
-
 	//NewPosition = currentPosition + VectorToTheGoal
-	public Cell generatePosToGoal(){
+	protected Cell getNextCell(){
 		BoardPosition currPos = getCells().getFirst().getPosition();
 		Cell currCell = getBoard().getCell(currPos);
 
@@ -34,50 +32,25 @@ public class AutomaticSnake extends Snake {
 
 			BoardPosition vector = movementVector(currCell, goalCell);
 			newBP = new BoardPosition(currPos.x + vector.x, currPos.y + vector.y);
-
 			if (!getBoard().isOutOfBound(newBP)) {
 				break;
 			}
 		}
 		Cell newPos = getBoard().getCell(newBP);
-
-		currCell.release();
-
-		//this.getCells().remove(aux);
-//		this.getCells().remove(getCells().getLast());
-//		this.getCells().add(0,newPos);
 		return newPos;
 	}
-
-
-	public void move(Cell bp)  {
-		bp.request(this);
-		cells.add(0,bp);
-
-		if(!hasToGrow()) {
-			cells.removeLast();
-		}
-
-		getBoard().setChanged();
-	}
-
-
 	@Override
 	public void run() {
 		doInitialPositioning();
-		System.out.println("initial size: "+cells.size());
-		while(true) {
-			try {
-				Cell toMove = generatePosToGoal();
-
-				this.move(toMove);
-
+		System.out.println("initial size: "+ cells.size());
+		try {
+			while(true){
 				Thread.sleep(Board.PLAYER_PLAY_INTERVAL);
-			} catch (InterruptedException e) {
-				System.out.println("sai do move automatic");
-				break;
-				//return;
+				Cell toMove = getNextCell();
+				this.move(toMove);
 			}
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
 		}
 	}
 }
