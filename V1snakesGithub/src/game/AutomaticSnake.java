@@ -66,21 +66,16 @@ public class AutomaticSnake extends Snake {
 	public void run() {
 		doInitialPositioning();
 		System.out.println("initial size: "+cells.size());
-		while(this.getBoard().getCell(this.getBoard().getGoalPosition()).
-				getGoal().getValue() <10) {
+		while(true) {
 			try {
 				Cell toMove = generatePosToGoal();
 
 				this.move(toMove);
-				if(this.getBoard().getCell(this.getBoard().getGoalPosition()).
-						getGoal().getValue() ==10 ){
-					//TODO
-					this.interrupt();
-					this.join();
-				}
+
 				Thread.sleep(Board.PLAYER_PLAY_INTERVAL);
 			} catch (InterruptedException e) {
 				System.out.println("sai do move automatic");
+				break;
 				//return;
 			}
 		}

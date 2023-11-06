@@ -23,21 +23,14 @@ public abstract class Snake extends Thread implements Serializable{
 	protected int size = 5;
 	private int id;
 	private Board board;
-
 	private int amountToGrow;
 
-	//TODO
-	private Lock lockSnake = new ReentrantLock();
-	////
-
-	protected void grow(Cell c){
-
-	}
 	protected boolean hasToGrow(){
+		//TODO bad
 		return --amountToGrow > 0;
 	}
 	public void startGrowing(int amountToGrow){
-		this.amountToGrow = amountToGrow;
+		this.amountToGrow += amountToGrow;
 	}
 	private Random rand =  new Random();
 	public Snake(int id,Board board) {
@@ -64,16 +57,16 @@ public abstract class Snake extends Thread implements Serializable{
 //	protected void move(Cell cell) throws InterruptedException {
 //		cell.request(this);
 //	}
-protected abstract void move(Cell cell) throws InterruptedException;
-
-
+	protected abstract void move(Cell cell) throws InterruptedException;
 	public LinkedList<BoardPosition> getPath() {
-		LinkedList<BoardPosition> coordinates = new LinkedList<BoardPosition>();
+		LinkedList<BoardPosition> coordinates = new LinkedList<>();
 		for (Cell cell : cells) {
 			coordinates.add(cell.getPosition());
 		}
 		return coordinates;
 	}
+
+
 
 	protected void doInitialPositioning() {
 		// Random position on the first column. 

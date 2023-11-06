@@ -28,13 +28,12 @@ public class Goal extends GameElement  {
 		return value;
 	}
 
-	public void incrementValue() throws InterruptedException {
+	private void incrementValue() throws InterruptedException {
 
-		if(value < MAX_VALUE ) {
-			value++;
-		} else {
-			//isFinished = true na automatic snake ??
-		}
+		if(++value >= MAX_VALUE )
+			for(Snake s : board.getSnakes()){
+				s.interrupt();
+			}
 	}
 
 	public  int captureGoal() throws InterruptedException {
