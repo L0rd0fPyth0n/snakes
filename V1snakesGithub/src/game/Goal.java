@@ -37,7 +37,8 @@ public class Goal extends GameElement  {
 		}
 	}
 
-	public int captureGoal() throws InterruptedException {
+	public  int captureGoal() throws InterruptedException {
+		lockGoal.lock();
 		incrementValue();
 
 		//posiçao atual do GOAL antes de comer
@@ -51,7 +52,7 @@ public class Goal extends GameElement  {
 		//GameElement do Golo que esta representado no GUI
 		GameElement ge = cellACTUAL.getGameElement();
 
-		BoardPosition newGoalPos = getRandomPosition();
+		BoardPosition newGoalPos = board.getRandomPosition();
 		Cell nova = board.getCell(newGoalPos);
 		board.setGoalPosition(newGoalPos);
 		nova.setGameElement(ge);
@@ -60,14 +61,10 @@ public class Goal extends GameElement  {
 		cellACTUAL.setGameElement(null);
 		//cellACTUAL.removeGoal();
 		board.setChanged();
+		lockGoal.unlock();
 
 		return value;
 	}
 
-	public BoardPosition getRandomPosition() {
-		Random r = new Random();
-		return new BoardPosition((int) (r.nextInt(NUM_ROWS)),
-				(int) (r.nextInt(NUM_ROWS)));
-	}
 
 }

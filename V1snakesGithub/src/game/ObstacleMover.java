@@ -24,20 +24,16 @@ public class ObstacleMover extends Thread {
 			while(obstacle.getRemainingMoves() > 0) {
 				try {
 					sleep(Obstacle.OBSTACLE_MOVE_INTERVAL);
-				} catch (InterruptedException e) {}
-				Cell cellOndeEsta =	board.getCell(obstacle.getPos());
-				cellOndeEsta.removeObstacle();
-				board.setChanged();
-				while(true){
-				BoardPosition nextPos = board.getRandomPosition();
-				Cell nextCell = board.getCell(nextPos);
-				if (!(nextCell.isOcupied() || nextCell.isOcupiedByGoal())){
-					nextCell.setGameElement(obstacle);
-					obstacle.setPos(nextPos);
-					board.setChanged();
-					obstacle.decrementRemainingMoves();
-					break;
+				} catch (InterruptedException e) {
 				}
+
+				while(true){
+					BoardPosition nextPos = board.getRandomPosition();
+					Cell nextCell = board.getCell(nextPos);
+					if (nextCell.isCompletelyUnoccupied()){
+						obstacle.move(nextCell);
+						break;
+					}
 			}
 		}
 	}

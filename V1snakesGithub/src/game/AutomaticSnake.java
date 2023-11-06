@@ -50,7 +50,6 @@ public class AutomaticSnake extends Snake {
 	}
 
 
-	//TODO re-implement
 	public void move(Cell bp)  {
 		bp.request(this);
 		cells.add(0,bp);

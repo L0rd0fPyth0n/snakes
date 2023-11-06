@@ -85,10 +85,13 @@ public class Cell {
 			lock.unlock();
 		}
 	}
+	public boolean isCompletelyUnoccupied(){
+		return ocuppyingSnake == null && gameElement == null;
+	}
 
 	public boolean isOcupiedBySnake() {
 			return ocuppyingSnake!=null;
-		}
+	}
 
 
 		public  void setGameElement(GameElement element) {

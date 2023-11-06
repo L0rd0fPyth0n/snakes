@@ -2,6 +2,7 @@ package game;
 
 import environment.Board;
 import environment.BoardPosition;
+import environment.Cell;
 import environment.LocalBoard;
 
 public class Obstacle extends GameElement {
@@ -25,10 +26,18 @@ public class Obstacle extends GameElement {
 	public void setPos(BoardPosition pos) {
 		this.pos = pos;
 	}
+
+	public void move(Cell nextCell){
+		board.getCell(this.getPos()).removeObstacle();
+
+		nextCell.setGameElement(this);
+
+		this.setPos(nextCell.getPosition());
+		board.setChanged();
+		remainingMoves--;
+	}
 	public int getRemainingMoves() {
 		return remainingMoves;
 	}
-	public void decrementRemainingMoves(){
-		remainingMoves--;
-	}
+
 }
