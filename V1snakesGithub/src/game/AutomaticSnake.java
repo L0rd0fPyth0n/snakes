@@ -29,7 +29,6 @@ public class AutomaticSnake extends Snake {
 
 		BoardPosition newBP = null;
 		while(true) {
-
 			BoardPosition vector = movementVector(currCell, goalCell);
 			newBP = new BoardPosition(currPos.x + vector.x, currPos.y + vector.y);
 			if (!getBoard().isOutOfBound(newBP)) {
@@ -50,7 +49,7 @@ public class AutomaticSnake extends Snake {
 				this.move(toMove);
 			}
 		} catch (InterruptedException e) {
-			throw new RuntimeException(e);
+			System.out.println("GAME OVER!!!");
 		}
 	}
 }
