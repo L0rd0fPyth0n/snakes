@@ -23,6 +23,12 @@ public abstract class Snake extends Thread implements Serializable{
 	private int id;
 	private Board board;
 	private int amountToGrow = 0;
+	protected static Random rand =  new Random(1030234356);
+
+	public Snake(int id,Board board) {
+		this.id = id;
+		this.board=board;
+	}
 
 	protected boolean hasToGrow(){
 		//TODO bad
@@ -36,24 +42,19 @@ public abstract class Snake extends Thread implements Serializable{
 		//TODO isto devia ser += mas só com = é q funciona
 		this.amountToGrow = amountToGrow;
 	}
-	private Random rand =  new Random();
-	public Snake(int id,Board board) {
-		this.id = id;
-		this.board=board;
-	}
+
 
 	public int getSize() {
 		return size;
 	}
-
+	//TODO diferença entre o de cima e o de baixo
+	public int getLength() {
+		return cells.size();
+	}
 	public int getIdentification() {
 		return id;
 	}
 
-	public int getLength() {
-		return cells.size();
-	}
-	
 	public LinkedList<Cell> getCells() {
 		return cells;
 	}
@@ -62,17 +63,12 @@ public abstract class Snake extends Thread implements Serializable{
 //		cell.request(this);
 //	}
 	protected void move(Cell bp)  {
-		BoardPosition currPos = getCells().getFirst().getPosition();
-
-		Cell currCell = getBoard().getCell(currPos);
-
-		currCell.release();
-
 		bp.request(this);
-		cells.add(0,bp);
+		cells.add(0,bp);//TODO passar para class Cell
 
 		if(!hasToGrow()) {
-			cells.removeLast();
+			Cell temp = cells.removeLast(); //TODO passar para class Cell
+			temp.release();
 		}
 
 		getBoard().setChanged();
@@ -96,12 +92,12 @@ public abstract class Snake extends Thread implements Serializable{
 		int posX = 0;
 		while(true){
 			int posY = rand.nextInt(Board.NUM_ROWS);
-			BoardPosition at = new BoardPosition(posX, posY);
-				if(!board.getCell(at).isOcupiedBySnake()) {
-					cells.add(board.getCell(at));
-					board.getCell(at).request(this);
-					break;
-				}
+			Cell firstPos = board.getCell(new BoardPosition(posX, posY));
+			if(!firstPos.isOcupiedBySnake()) {
+				cells.add(firstPos);
+				firstPos.request(this);
+				break;
+			}
 		}
 		System.err.println("Snake "+getIdentification()+" starting at:"+getCells().getLast());
 	}

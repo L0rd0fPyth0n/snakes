@@ -15,7 +15,7 @@ import static gui.SnakeGui.NUM_ROWS;
 public class Goal extends GameElement  {
 	private int value=1;
 	private Board board;
-	public static final int MAX_VALUE=10;
+	public static final int MAX_VALUE=20;
 	private Lock lockGoal = new ReentrantLock();
 
 
