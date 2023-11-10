@@ -8,7 +8,6 @@ import gui.SnakeGui;
 
 import java.util.*;
 import java.util.stream.Collectors;
-
 public class AutomaticSnake extends Snake {
 	public AutomaticSnake(int id, LocalBoard board) {
 		super(id,board);

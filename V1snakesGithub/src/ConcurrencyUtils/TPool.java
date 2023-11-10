@@ -9,7 +9,7 @@ public class FixedTPool {
     private final int NWorker;//TODO maior q zero
 
     private BQueue tasks;
-
+    private boolean running = true;
     private PoolWorker[] pool;
     public FixedTPool(int NWorker) throws IllegalArgumentException {
         if(NWorker <=0) {
@@ -25,6 +25,9 @@ public class FixedTPool {
             this.pool[i].start();
         }
     }
+    public void stop(){
+        this.running = false;
+    }
 
     public void submitTask(Runnable task) {
         tasks.put(task);
@@ -34,7 +37,22 @@ public class FixedTPool {
     }
 
     private  class PoolWorker extends Thread{
+        @Override
+        public void run() {
+            while(running){
+                Runnable task = getTask();
+
+                if(task.getState()){//sees if thread isn't in sleep
+                    //if it sleeps
+                    tasks.submitTask(task);
+                }else{
+
+                    task.run();
+                    //When thread is put to sleep,
+                    tasks.submitTask(task);
+                }
+
+            }
+        }
     }
-
-
 }

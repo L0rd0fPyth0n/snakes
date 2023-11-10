@@ -18,7 +18,7 @@ public   class BQueue<T> {
     public synchronized void put(T element) throws InterruptedException {
         list.add( element);
     }
-
+    //TODO converter para locks explicitos
     public synchronized T take() throws InterruptedException {
         while (list.isEmpty()) {
             this.wait();
@@ -32,6 +32,9 @@ public   class BQueue<T> {
         list.size();
     }
 
+    public boolean isEmpty(){
+        return list.isEmpty();
+    }
     public void clear(){
         list.clear();
     }

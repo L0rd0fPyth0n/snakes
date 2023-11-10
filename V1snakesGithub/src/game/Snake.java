@@ -23,7 +23,7 @@ public abstract class Snake extends Thread implements Serializable{
 	private int id;
 	private Board board;
 	private int amountToGrow = 0;
-	protected static Random rand =  new Random(1030234356);
+	protected static Random rand =  new Random(1030234356);//TODO remove seed
 
 	public Snake(int id,Board board) {
 		this.id = id;
