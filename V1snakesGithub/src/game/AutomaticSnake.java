@@ -4,6 +4,7 @@ import environment.LocalBoard;
 import environment.Cell;
 import environment.Board;
 import environment.BoardPosition;
+import gui.SnakeGui;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -47,31 +48,41 @@ public class AutomaticSnake extends Snake {
 
 		List<BoardPosition> neighbourPos = getBoard().getNeighboringPositions(head);
 
+
+		BoardPosition goalPos = getBoard().getGoalPosition();
 		List<Cell> freePositions = neighbourPos.stream()
 				.map((bp) -> getBoard().getCell(bp))
 				.filter((c) -> !getCells().contains(c))
+				.sorted((c1,c2)->  c1.getPosition().distanceTo(goalPos)  - c2.getPosition().distanceTo(goalPos) )
 				.toList();
-		Map<Double,Cell> m = new HashMap<>();
-		BoardPosition goalPos = getBoard().getGoalPosition();
-		for(Cell c : freePositions) {
-			Double distToGoal = c.getPosition().distanceTo(goalPos);
-			m.put(distToGoal,c);
-		}
-		double min= Collections.min(m.keySet());
-		return m.get(min);
+		//		Map<Double,Cell> m = new HashMap<>();
+		//		BoardPosition goalPos = getBoard().getGoalPosition();
+		//		for(Cell c : freePositions) {
+		//			Double distToGoal = c.getPosition().distanceTo(goalPos);
+		//			m.put(distToGoal,c);
+		//		}
+		//		double min= Collections.min(m.keySet());
+		//		return m.get(min);
+		return freePositions.get(0);
+
 	}
 	@Override
 	public void run() {
 		doInitialPositioning();
 		System.out.println("initial size: "+ cells.size());
-		try {
-			while(true){
+		while(true) {
+			try {
 				Thread.sleep(Board.PLAYER_PLAY_INTERVAL);
 				Cell toMove = getNextCell();
 				this.move(toMove);
+			} catch (InterruptedException e) {
+				if(getBoard().getCell(getBoard().getGoalPosition()).getGoal().isGameOver() ){
+					break;
+				} else {
+					//TODO Go to another direction
+				}
 			}
-		} catch (InterruptedException e) {
-			System.out.println("GAME OVER!!!");
 		}
+
 	}
 }

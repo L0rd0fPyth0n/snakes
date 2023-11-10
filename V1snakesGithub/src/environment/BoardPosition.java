@@ -27,10 +27,15 @@ public class BoardPosition {
 		return other.x==x && other.y == y;
 	}
 	
-	public double distanceTo(BoardPosition other) {
-		double delta_x = y - other.y;
-		double delta_y = x - other.x;
-		return Math.sqrt(delta_x * delta_x + delta_y * delta_y);
+//	public double distanceTo(BoardPosition other) {
+//		double delta_x = y - other.y;
+//		double delta_y = x - other.x;
+//		return Math.sqrt(delta_x * delta_x + delta_y * delta_y);
+//	}
+
+	public int distanceTo(BoardPosition other) {
+		//Manhattan distance
+		return Math.abs( y - other.y) + Math.abs(x - other.x)  ;
 	}
 
 	public BoardPosition getCellAbove() {

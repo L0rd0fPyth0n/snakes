@@ -113,7 +113,7 @@ public class Cell {
 		// TODO coordination ?
 		public  Goal removeGoal() {
 			Goal g = getGoal();
-			//gameElement = null
+			gameElement = null;
 			return g;
 		}
 

@@ -15,11 +15,13 @@ import static gui.SnakeGui.NUM_ROWS;
 public class Goal extends GameElement  {
 	private int value=1;
 	private Board board;
-	public static final int MAX_VALUE=20;
+	public static final int MAX_VALUE=10;
 	private Lock lockGoal = new ReentrantLock();
 
 
-
+	public boolean isGameOver(){
+		return value >= MAX_VALUE;
+	}
 	public Goal( Board board2) {
 		this.board = board2;
 	}
@@ -29,36 +31,31 @@ public class Goal extends GameElement  {
 	}
 
 	private void incrementValue() throws InterruptedException {
-
 		if(++value >= MAX_VALUE )
-			for(Snake s : board.getSnakes()){
-				s.interrupt();
-			}
+			board.interruptAllSnakes();
 	}
-
 	public  int captureGoal() throws InterruptedException {
 		lockGoal.lock();
 		incrementValue();
 
 		//posiçao atual do GOAL antes de comer
-		BoardPosition c = board.getGoalPosition();
+		BoardPosition goalPosition = board.getGoalPosition();
 		//CELULA ATUAL DO GOAL
-		Cell cellACTUAL = board.getCell(c);
-		//GOLO
-		Goal g = cellACTUAL.getGoal();
-
+		Cell GoalCell = board.getCell(goalPosition);
+		GoalCell.removeGoal();
 
 		//GameElement do Golo que esta representado no GUI
-		GameElement ge = cellACTUAL.getGameElement();
+		GameElement ge = GoalCell.getGameElement();
 
 		BoardPosition newGoalPos = board.getRandomPosition();
 		Cell nova = board.getCell(newGoalPos);
+		//TODO is nova occupied?
 		board.setGoalPosition(newGoalPos);
 		nova.setGameElement(ge);
 
 		//remover a anterior
-		cellACTUAL.setGameElement(null);
-		//cellACTUAL.removeGoal();
+		//cellACTUAL.setGameElement(null);
+
 		board.setChanged();
 		lockGoal.unlock();
 		return value;

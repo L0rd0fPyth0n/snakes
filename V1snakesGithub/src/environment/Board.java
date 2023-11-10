@@ -8,7 +8,6 @@ import game.*;
 import java.util.Random;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
-
 public abstract class Board extends Observable {
 	protected Cell[][] cells;
 	private BoardPosition goalPosition;
@@ -19,15 +18,20 @@ public abstract class Board extends Observable {
 	protected LinkedList<Snake> snakes = new LinkedList<Snake>();
 	private LinkedList<Obstacle> obstacles= new LinkedList<Obstacle>();
 	protected boolean isFinished;
-
-	private ThreadPoolExecutor executor =
-			(ThreadPoolExecutor) Executors.newFixedThreadPool(2);
+	public static final String endGame = "FinishGame";
+	public static final String reset = "resetDirections";
 	public Board() {
 		cells = new Cell[NUM_COLUMNS][NUM_ROWS];
 		for (int x = 0; x < NUM_COLUMNS; x++) {
 			for (int y = 0; y < NUM_ROWS; y++) {
 				cells[x][y] = new Cell(new BoardPosition(x, y));
 			}
+		}
+	}
+
+	public void interruptAllSnakes() {
+		for(Snake s : this.getSnakes()){
+			s.interrupt();
 		}
 	}
 	public boolean isOutOfBound(BoardPosition cell){
