@@ -3,6 +3,7 @@ package environment;
 import java.io.Serializable;
 import java.util.*;
 
+import ConcurrencyUtils.FixedTPool;
 import game.*;
 
 import java.util.Random;
@@ -18,8 +19,9 @@ public abstract class Board extends Observable {
 	protected LinkedList<Snake> snakes = new LinkedList<Snake>();
 	private LinkedList<Obstacle> obstacles= new LinkedList<Obstacle>();
 	protected boolean isFinished;
-	public static final String endGame = "FinishGame";
-	public static final String reset = "resetDirections";
+
+
+	public FixedTPool fixedTPool = new FixedTPool(1);
 	public Board() {
 		cells = new Cell[NUM_COLUMNS][NUM_ROWS];
 		for (int x = 0; x < NUM_COLUMNS; x++) {
@@ -41,8 +43,9 @@ public abstract class Board extends Observable {
 				cell.y >= Board.NUM_ROWS;
 	}
 	public Cell getCell(BoardPosition cellCoord)   {
-//		if(isOutOfBound(cellCoord))
-//			throws ;
+		if(isOutOfBound(cellCoord)) {
+			throw  new IllegalArgumentException();
+		}
 		return cells[cellCoord.x][cellCoord.y];
 	}
 
@@ -55,6 +58,9 @@ public abstract class Board extends Observable {
 	}
 
 	public void setGoalPosition(BoardPosition goalPosition) {
+		if(isOutOfBound(goalPosition)) {
+			throw  new IllegalArgumentException();
+		}
 		this.goalPosition = goalPosition;
 	}
 	
@@ -94,7 +100,6 @@ public abstract class Board extends Observable {
 
 	protected Goal addGoal() {
 		Goal goal=new Goal(this);
-		//new Thread(goal).start();
 		addGameElement( goal);
 		//setGoalPosition(new BoardPosition(4,4));
 		return goal;
@@ -103,15 +108,17 @@ public abstract class Board extends Observable {
 	protected void addObstacles(int numberObstacles) {
 		// clear obstacle list , necessary when resetting obstacles.
 		getObstacles().clear();
-		while(numberObstacles>0) {
+		for (int i = 0; i < numberObstacles; i++) {
 			Obstacle obs=new Obstacle(this);
 			ObstacleMover lb = new ObstacleMover(obs,this);
-			lb.start();
+			//lb.start();
+
+			fixedTPool.submitTask(lb);
+
 			//TODO adicionar a thread pool
 
 			addGameElement(obs);
 			getObstacles().add(obs);
-			numberObstacles--;
 		}
 	}
 	public LinkedList<Snake> getSnakes() {
@@ -133,9 +140,6 @@ public abstract class Board extends Observable {
 	public abstract void handleKeyPress(int keyCode);
 
 	public abstract void handleKeyRelease();
-	
-	
-	
 
 	public void addSnake(Snake snake) {
 		snakes.add(snake);

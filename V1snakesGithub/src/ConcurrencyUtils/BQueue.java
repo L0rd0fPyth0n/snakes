@@ -17,6 +17,7 @@ public   class BQueue<T> {
     //exceções de interrupção de thread (InterruptedException) para os clientes.
     public synchronized void put(T element) throws InterruptedException {
         list.add( element);
+        this.notifyAll();
     }
     //TODO converter para locks explicitos
     public synchronized T take() throws InterruptedException {

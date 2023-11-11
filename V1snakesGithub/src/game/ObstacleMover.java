@@ -6,6 +6,8 @@ import environment.Cell;
 import environment.LocalBoard;
 import game.Obstacle;
 
+import java.util.concurrent.ThreadPoolExecutor;
+
 public class ObstacleMover extends Thread {
 	private Obstacle obstacle;
 	private Board board;
@@ -13,7 +15,6 @@ public class ObstacleMover extends Thread {
 		super();
 		this.obstacle = obstacle;
 		this.board = board;
-
 	}
 
 	@Override

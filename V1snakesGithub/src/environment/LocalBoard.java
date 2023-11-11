@@ -39,6 +39,7 @@ public class LocalBoard extends Board{
 //		System.err.println("All elements placed");
 	}
 
+
 	public void init() {
 		for(Snake s:snakes)
 			s.start();
