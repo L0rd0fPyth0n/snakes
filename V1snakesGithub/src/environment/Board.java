@@ -113,7 +113,11 @@ public abstract class Board extends Observable {
 			ObstacleMover lb = new ObstacleMover(obs,this);
 			//lb.start();
 
-			fixedTPool.submitTask(lb);
+			try {
+				fixedTPool.submitTask(lb);
+			} catch (InterruptedException e) {
+				throw new RuntimeException(e);
+			}
 
 			//TODO adicionar a thread pool
 

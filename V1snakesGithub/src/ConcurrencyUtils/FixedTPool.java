@@ -12,7 +12,7 @@ public class FixedTPool {
     final int NWorker;//TODO maior q zero
 
     private BQueue<Runnable> tasks;
-    boolean running = true;
+    private boolean running = true;
     PoolWorker[] pool;
 
     //FixedTPoolManager manager;
@@ -32,6 +32,8 @@ public class FixedTPool {
         //this.manager = new FixedTPoolManager(this);
         //this.manager.start();
     }
+
+
     public void stop(){
         this.running = false;
     }
@@ -50,6 +52,7 @@ public class FixedTPool {
         public void setTask(Runnable t){
             this.task = t;
         }
+
         @Override
         public void run() {
             while(running){
@@ -62,10 +65,10 @@ public class FixedTPool {
                 } catch (InterruptedException e) {
                     continue;
                 }
-                }
+            }
 
-/*
 
+            /*
                 if(task.getState().equals(TIMED_WAITING)){//sees if thread isn't in sleep
                     //if it sleeps
                     tasks.submitTask(task);
@@ -75,12 +78,15 @@ public class FixedTPool {
                     //When thread is put to sleep,
                     tasks.submitTask(task);
                 }
-*/
+            */
 
-            }
         }
     }
+}
 
+
+
+/*
      class FixedTPoolManager extends Thread{
 
         private FixedTPool pool;
@@ -158,4 +164,7 @@ public class FixedTPool {
             } );
 
     }
+
 }
+ */
+
