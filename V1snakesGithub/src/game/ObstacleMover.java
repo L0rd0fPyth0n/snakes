@@ -34,7 +34,6 @@ public class ObstacleMover extends Thread {
 			} catch (InterruptedException e) {
 				break;
 			}
-
 		}
 	}
 }

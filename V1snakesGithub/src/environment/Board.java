@@ -9,6 +9,9 @@ import game.*;
 import java.util.Random;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
+
+import static environment.LocalBoard.NUM_SIMULTANEOUS_MOVING_OBSTACLES;
+
 public abstract class Board extends Observable {
 	protected Cell[][] cells;
 	private BoardPosition goalPosition;
@@ -18,10 +21,10 @@ public abstract class Board extends Observable {
 	public static final int NUM_ROWS = 30;
 	protected LinkedList<Snake> snakes = new LinkedList<Snake>();
 	private LinkedList<Obstacle> obstacles= new LinkedList<Obstacle>();
+
+	private LinkedList<ObstacleMover> obstacleMovers = new LinkedList<>();
 	protected boolean isFinished;
-
-
-	public FixedTPool fixedTPool = new FixedTPool(1);
+	public FixedTPool fixedTPool = new FixedTPool(LocalBoard.NUM_SIMULTANEOUS_MOVING_OBSTACLES);
 	public Board() {
 		cells = new Cell[NUM_COLUMNS][NUM_ROWS];
 		for (int x = 0; x < NUM_COLUMNS; x++) {
@@ -29,6 +32,22 @@ public abstract class Board extends Observable {
 				cells[x][y] = new Cell(new BoardPosition(x, y));
 			}
 		}
+	}
+
+	public FixedTPool getFixedTPool() {
+		return fixedTPool;
+	}
+
+	public void setFixedTPool(FixedTPool fixedTPool) {
+		this.fixedTPool = fixedTPool;
+	}
+
+	public LinkedList<ObstacleMover> getObstacleMovers() {
+		return obstacleMovers;
+	}
+
+	public void setObstacleMovers(LinkedList<ObstacleMover> obstacleMovers) {
+		this.obstacleMovers = obstacleMovers;
 	}
 
 	public void interruptAllSnakes() {
@@ -94,7 +113,6 @@ public abstract class Board extends Observable {
 		if(pos.y<NUM_ROWS-1)
 			possibleCells.add(pos.getCellBelow());
 		return possibleCells;
-
 	}
 
 
@@ -111,12 +129,12 @@ public abstract class Board extends Observable {
 		for (int i = 0; i < numberObstacles; i++) {
 			Obstacle obs=new Obstacle(this);
 			ObstacleMover lb = new ObstacleMover(obs,this);
-			//lb.start();
-
-			fixedTPool.submitTask(lb);
-
-			//TODO adicionar a thread pool
-
+			obstacleMovers.add(lb);
+			try {
+				fixedTPool.submitTask(lb);
+			} catch (InterruptedException e) {
+				throw new RuntimeException(e);
+			}
 			addGameElement(obs);
 			getObstacles().add(obs);
 		}
