@@ -24,6 +24,7 @@ public class Cell {
 	private Lock lock = new ReentrantLock();
 	private Condition isEmpty = lock.newCondition();
 	private Condition hasSnake = lock.newCondition();
+	private Condition sGe = lock.newCondition();
 
 	//Conditional Variables
 
@@ -42,8 +43,6 @@ public class Cell {
 		return position;
 	}
 
-	//TODO aqui ver se duas snakes nao comem o mesmo goal e problema de snake nao bloquear
-	//TODO contra outra snake
 	public void request(Snake snake)  {
 		lock.lock();
 		try {
@@ -52,19 +51,15 @@ public class Cell {
 			}
 			ocuppyingSnake=snake;
 			if(this.isOcupiedByGoal()) {
-				Goal remove = this.removeGoal();
-
-				int amuontToGrow = 0;
 				try {
-					snake.startGrowing(remove.captureGoal());
+					snake.startGrowing(getGoal().captureGoal());
 				} catch (InterruptedException e) {
-					throw new RuntimeException(e);
+					//throw new RuntimeException(e);
 				}
-
 			}
 			hasSnake.signalAll();
 		} catch (InterruptedException e) {
-			throw new RuntimeException(e);
+			//throw new RuntimeException(e);
 		} finally {
 			lock.unlock();
 		}
@@ -85,11 +80,11 @@ public class Cell {
 			lock.unlock();
 		}
 	}
-	public boolean isCompletelyUnoccupied(){
+		public boolean isCompletelyUnoccupied(){
 		return ocuppyingSnake == null && gameElement == null;
 	}
 
-	public boolean isOcupiedBySnake() {
+		public boolean isOcupiedBySnake() {
 			return ocuppyingSnake!=null;
 	}
 
@@ -97,7 +92,6 @@ public class Cell {
 		public  void setGameElement(GameElement element) {
 			// TODO coordination and mutual exclusion
 			gameElement=element;
-
 		}
 
 		public boolean isOcupied() {
@@ -110,7 +104,7 @@ public class Cell {
 		}
 
 
-		// TODO coordination ?
+
 		public  Goal removeGoal() {
 			Goal g = getGoal();
 			gameElement = null;

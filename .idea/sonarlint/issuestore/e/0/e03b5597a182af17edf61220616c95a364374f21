@@ -1,10 +1,10 @@
 
 {
-java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ŞÖ‹Ñùÿÿÿÿ8Öóò…¼1
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ŞÖ‹Ñùÿÿÿÿ8×Ñ¯‡¼1
 v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(åùÚĞ8Øóò…¼1
 ”
-java:S1130"wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(¶¾¡8èóò…¼1
+java:S1130"wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(¶¾¡8ßÑ¯‡¼1
 O
-java:S1135"2Complete the task associated to this TODO comment.(ñ§Âö8íóò…¼1
+java:S1135"2Complete the task associated to this TODO comment.(ñ§Âö8àÑ¯‡¼1
 J
-java:S2201!"(The return value of "size" must be used.(ø¶ê§ÿÿÿÿÿ8ğóò…¼1
+java:S2201""(The return value of "size" must be used.(ø¶ê§ÿÿÿÿÿ8ğóò…¼1

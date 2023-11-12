@@ -1,6 +1,16 @@
 
-r	java:S1171"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰—õ¥úÿÿÿÿ8¦í†¼1
-X	java:S125%"<This block of commented-out lines of code should be removed.(Í„Í·8‰¦í†¼1
+r	java:S1175"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰—õ¥úÿÿÿÿ8ö•’ˆ¼1
+™
+java:S1130""wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(‰²ƒëúÿÿÿÿ8ÿ•’ˆ¼1
+X	java:S125&"<This block of commented-out lines of code should be removed.(Í„Í·8ÿ•’ˆ¼1
 O
-java:S11359"2Complete the task associated to this TODO comment.(ß€¤8‹¦í†¼1
-]	java:S125>"<This block of commented-out lines of code should be removed.(ãËÑúıÿÿÿÿ8‹¦í†¼1
+java:S1135B"2Complete the task associated to this TODO comment.(ß€¤8–’ˆ¼1
+]	java:S125K"<This block of commented-out lines of code should be removed.(ãËÑúıÿÿÿÿ8–’ˆ¼1
+U
+java:S1128"3Remove this unused import 'environment.LocalBoard'.(ïÂ”©ùÿÿÿÿ8³¿¸ˆ¼1
+O
+java:S1128"-Remove this unused import 'java.util.Random'.(èøÉ›ùÿÿÿÿ8³¿¸ˆ¼1
+c
+java:S1128	"ARemove this unused import 'java.util.concurrent.locks.Condition'.(ğÍÄ°øÿÿÿÿ8³¿¸ˆ¼1
+T
+java:S1128"2Remove this unused import 'gui.SnakeGui.NUM_ROWS'.(½æ³Õşÿÿÿÿ8³¿¸ˆ¼1

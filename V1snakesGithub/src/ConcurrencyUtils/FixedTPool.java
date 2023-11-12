@@ -43,7 +43,7 @@ public class FixedTPool {
         return tasks.take();
     }
 
-    class PoolWorker extends Thread{
+    private class PoolWorker extends Thread{
         public Runnable task = null;
 
         public void setTask(Runnable t){
@@ -62,7 +62,7 @@ public class FixedTPool {
 
                 }
                 }
-
+        }
 /*
 
                 if(task.getState().equals(TIMED_WAITING)){//sees if thread isn't in sleep
@@ -80,7 +80,7 @@ public class FixedTPool {
         }
 
 
-
+/*
     public static void main(String[] args) {
             //FixedTPool pool = new FixedTPool(2);
             ExecutorService pool = Executors.newFixedThreadPool(1);
@@ -127,5 +127,7 @@ public class FixedTPool {
             } );
 
     }
-}
 
+
+
+ */

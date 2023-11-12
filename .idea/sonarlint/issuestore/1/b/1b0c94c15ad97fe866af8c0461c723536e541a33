@@ -1,2 +1,41 @@
 
+{
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(¯¢ïªýÿÿÿÿ8±²œˆ¼1
+“
+java:S1319:"qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".(…»È‹ûÿÿÿÿ8²²œˆ¼1
+“
+java:S1319O"qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".(†œÍÔûÿÿÿÿ8²²œˆ¼1
+[
+java:S5993"9Change the visibility of this constructor to "protected".(¿Ý¤Éÿÿÿÿÿ8¾²œˆ¼1
+I
+java:S1948"'Make "cells" transient or serializable.(¯¢ïªýÿÿÿÿ8¾²œˆ¼1
+I
+java:S1948"'Make "board" transient or serializable.(åÌ–®þÿÿÿÿ8¾²œˆ¼1
+]
+java:S2134"@Don't extend "Thread", since the "run" method is not overridden.(‡þ¬Ž8¿²œˆ¼1
+O
+java:S1135"2Complete the task associated to this TODO comment.(ÌŸœÐ8Â²œˆ¼1
+T
+java:S1135""2Complete the task associated to this TODO comment.(½±¨èýÿÿÿÿ8Â²œˆ¼1
+X	java:S125&"<This block of commented-out lines of code should be removed.(šæœ8É²œˆ¼1
+T
+java:S1135*"2Complete the task associated to this TODO comment.(‘ƒå‚ùÿÿÿÿ8É²œˆ¼1
+O
+java:S11352"2Complete the task associated to this TODO comment.(º«ãÑ8Ê²œˆ¼1
+X	java:S125>"<This block of commented-out lines of code should be removed.(éì ¥8Ê²œˆ¼1
+T
+java:S1135C"2Complete the task associated to this TODO comment.(ü­Éåøÿÿÿÿ8Ë²œˆ¼1
+T
+java:S1135F"2Complete the task associated to this TODO comment.(ûäôªúÿÿÿÿ8Ë²œˆ¼1
 @	java:S106f"+Replace this use of System.err by a logger.(™öõð
+Y
+java:S1128"<Remove this unused import 'java.util.concurrent.locks.Lock'.(µÒÌÿ8Ú²œˆ¼1
+b
+java:S1128"ERemove this unused import 'java.util.concurrent.locks.ReentrantLock'.(òªø8Ú²œˆ¼1
+U
+java:S1128	"3Remove this unused import 'environment.LocalBoard'.(ïÂ”©ùÿÿÿÿ8Ú²œˆ¼1
+K
+java:S1128
+")Remove this unused import 'gui.SnakeGui'.(Ûÿ¾’þÿÿÿÿ8Ú²œˆ¼1
+P
+java:S1068".Remove this unused "DELTA_SIZE" private field.(©Ö±Ôÿÿÿÿÿ8Ú²œˆ¼1

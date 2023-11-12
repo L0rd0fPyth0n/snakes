@@ -78,7 +78,22 @@ public class AutomaticSnake extends Snake {
 				if(getBoard().getCell(getBoard().getGoalPosition()).getGoal().isGameOver() ){
 					break;
 				} else {
+					//System.out.println(getName());
 					//TODO Go to another direction
+					Cell head = getCells().getFirst();
+
+					List<BoardPosition> neighbourPos = getBoard().getNeighboringPositions(head);
+
+
+					BoardPosition goalPos = getBoard().getGoalPosition();
+					List<Cell> freePositions = neighbourPos.stream()
+							.map((bp) -> getBoard().getCell(bp))
+							.filter((c) -> !getCells().contains(c) && (c.isCompletelyUnoccupied()))
+							.sorted((c1,c2)->  c1.getPosition().distanceTo(goalPos)  - c2.getPosition().distanceTo(goalPos) )
+							.toList();
+
+					this.move(freePositions.get(0));
+
 				}
 			}
 		}

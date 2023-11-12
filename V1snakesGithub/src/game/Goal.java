@@ -15,13 +15,14 @@ import static gui.SnakeGui.NUM_ROWS;
 public class Goal extends GameElement  {
 	private int value=1;
 	private Board board;
-	public static final int MAX_VALUE=1;
+	public static final int MAX_VALUE=10;
 	private Lock lockGoal = new ReentrantLock();
 
 
 	public boolean isGameOver(){
 		return value >= MAX_VALUE;
 	}
+
 	public Goal( Board board2) {
 		this.board = board2;
 	}
@@ -39,24 +40,36 @@ public class Goal extends GameElement  {
 //			}
 		}
 	}
+
+
 	public  int captureGoal() throws InterruptedException {
 		lockGoal.lock();
 		incrementValue();
+
 
 		//posiçao atual do GOAL antes de comer
 		BoardPosition goalPosition = board.getGoalPosition();
 		//CELULA ATUAL DO GOAL
 		Cell GoalCell = board.getCell(goalPosition);
+		GameElement ge = GoalCell.getGameElement();
+
 		GoalCell.removeGoal();
 
 		//GameElement do Golo que esta representado no GUI
-		GameElement ge = GoalCell.getGameElement();
+
+
 
 		BoardPosition newGoalPos = board.getRandomPosition();
+
 		Cell nova = board.getCell(newGoalPos);
+
 		//TODO is nova occupied?
+
 		board.setGoalPosition(newGoalPos);
+
 		nova.setGameElement(ge);
+
+
 
 		//remover a anterior
 		//cellACTUAL.setGameElement(null);

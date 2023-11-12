@@ -5,3 +5,4 @@ f
 java:S1206"PThis class overrides "equals()" and should therefore also override "hashCode()".(ç‹—„
 5
 java:S2097"Add a type test to this method.(ç‹—„
+]	java:S125"<This block of commented-out lines of code should be removed.(–àÆÓ¯ˇˇˇˇ8í…îàº1

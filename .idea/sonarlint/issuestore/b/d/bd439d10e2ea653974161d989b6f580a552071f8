@@ -1,17 +1,22 @@
 
-]	java:S125"<This block of commented-out lines of code should be removed.(šüİ‰ùÿÿÿÿ8œÄ¬†¼1
+]	java:S125"<This block of commented-out lines of code should be removed.(šüİ‰ùÿÿÿÿ8¼ªïˆ¼1
 R
-java:S16115"0Remove the parentheses around the "bp" parameter(¦õ‚šıÿÿÿÿ8¥Ä¬†¼1
+java:S16115"0Remove the parentheses around the "bp" parameter(¦õ‚šıÿÿÿÿ8¾ªïˆ¼1
 L
-java:S16116"/Remove the parentheses around the "c" parameter(Ó¬ÉÖ8«Ä¬†¼1
-W	java:S1259"<This block of commented-out lines of code should be removed.(†±Î<8¯Ä¬†¼1
-L	java:S106G"+Replace this use of System.out by a logger.(öÔ©’şÿÿÿÿ8µÄ¬†¼1
+java:S16116"/Remove the parentheses around the "c" parameter(Ó¬ÉÖ8¾ªïˆ¼1
+W	java:S1259"<This block of commented-out lines of code should be removed.(†±Î<8¿ªïˆ¼1
+L	java:S106G"+Replace this use of System.out by a logger.(öÔ©’şÿÿÿÿ8Àªïˆ¼1
 {
-java:S2142M"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8¶Ä¬†¼1
+java:S2142M"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8Àªïˆ¼1
+X	java:S125Q"<This block of commented-out lines of code should be removed.(ÜµÓ™8ÄÓ¨‰¼1
 T
-java:S1135Q"2Complete the task associated to this TODO comment.(Î‰šùÿÿÿÿ8ºÄ¬†¼1
+java:S1135R"2Complete the task associated to this TODO comment.(Î‰šùÿÿÿÿ8Áªïˆ¼1
+R
+java:S1611Z"0Remove the parentheses around the "bp" parameter(¦õ‚šıÿÿÿÿ8Âªïˆ¼1
+Q
+java:S1611["/Remove the parentheses around the "c" parameter(‡ÃÚÿÿÿÿÿ8Ãªïˆ¼1
 K
-java:S1128")Remove this unused import 'gui.SnakeGui'.(Ûÿ¾’şÿÿÿÿ8ºÄ¬†¼1
+java:S1128")Remove this unused import 'gui.SnakeGui'.(Ûÿ¾’şÿÿÿÿ8Äªïˆ¼1
 Z
 java:S1128
-"8Remove this unused import 'java.util.stream.Collectors'.(Óóº´úÿÿÿÿ8»Ä¬†¼1
+"8Remove this unused import 'java.util.stream.Collectors'.(Óóº´úÿÿÿÿ8Äªïˆ¼1

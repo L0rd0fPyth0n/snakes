@@ -25,6 +25,8 @@ public abstract class Board extends Observable {
 	private LinkedList<ObstacleMover> obstacleMovers = new LinkedList<>();
 	protected boolean isFinished;
 	public FixedTPool fixedTPool = new FixedTPool(LocalBoard.NUM_SIMULTANEOUS_MOVING_OBSTACLES);
+	private Goal goal;
+
 	public Board() {
 		cells = new Cell[NUM_COLUMNS][NUM_ROWS];
 		for (int x = 0; x < NUM_COLUMNS; x++) {
@@ -116,12 +118,15 @@ public abstract class Board extends Observable {
 	}
 
 
+	//TODO
 	protected Goal addGoal() {
-		Goal goal=new Goal(this);
-		addGameElement( goal);
+		Goal goal2 = new Goal(this);
+		addGameElement( goal2);
 		//setGoalPosition(new BoardPosition(4,4));
-		return goal;
+		return goal2;
 	}
+
+
 
 	protected void addObstacles(int numberObstacles) {
 		// clear obstacle list , necessary when resetting obstacles.
@@ -152,6 +157,9 @@ public abstract class Board extends Observable {
 		return obstacles;
 	}
 
+	public Goal getGoal(){
+		return this.goal;
+	}
 	
 	public abstract void init(); 
 	
