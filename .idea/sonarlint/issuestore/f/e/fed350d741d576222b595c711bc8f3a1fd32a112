@@ -1,0 +1,7 @@
+
+^
+java:S2259"CA "NullPointerException" could be thrown; "other" is nullable here.(Џє°Ўяяяяя
+f
+java:S1206"PThis class overrides "equals()" and should therefore also override "hashCode()".(ЌЬСг
+5
+java:S2097"Add a type test to this method.(ЌЬСг
