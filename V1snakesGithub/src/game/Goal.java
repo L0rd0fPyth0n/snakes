@@ -15,7 +15,7 @@ import static gui.SnakeGui.NUM_ROWS;
 public class Goal extends GameElement  {
 	private int value=1;
 	private Board board;
-	public static final int MAX_VALUE=10;
+	public static final int MAX_VALUE=1;
 	private Lock lockGoal = new ReentrantLock();
 
 
@@ -31,8 +31,13 @@ public class Goal extends GameElement  {
 	}
 
 	private void incrementValue() throws InterruptedException {
-		if(++value >= MAX_VALUE )
+		if(++value >= MAX_VALUE ) {
 			board.interruptAllSnakes();
+			board.getFixedTPool().stop();
+//			for(ObstacleMover ob: board.getObstacleMovers()){
+//				ob.interrupt();
+//			}
+		}
 	}
 	public  int captureGoal() throws InterruptedException {
 		lockGoal.lock();

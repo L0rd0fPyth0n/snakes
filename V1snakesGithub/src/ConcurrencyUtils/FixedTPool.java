@@ -32,15 +32,12 @@ public class FixedTPool {
         //this.manager = new FixedTPoolManager(this);
         //this.manager.start();
     }
-
-
     public void stop(){
         this.running = false;
     }
 
     public void submitTask(Runnable task) throws InterruptedException {
         tasks.put(task);
-
     }
     public Runnable getTask() throws InterruptedException {
         return tasks.take();
@@ -52,7 +49,6 @@ public class FixedTPool {
         public void setTask(Runnable t){
             this.task = t;
         }
-
         @Override
         public void run() {
             while(running){
@@ -61,14 +57,14 @@ public class FixedTPool {
                     task = getTask();
                     task.run();
                     //Task completed
-                    continue;
+
                 } catch (InterruptedException e) {
-                    continue;
+
                 }
-            }
+                }
 
+/*
 
-            /*
                 if(task.getState().equals(TIMED_WAITING)){//sees if thread isn't in sleep
                     //if it sleeps
                     tasks.submitTask(task);
@@ -78,45 +74,12 @@ public class FixedTPool {
                     //When thread is put to sleep,
                     tasks.submitTask(task);
                 }
-            */
+*/
 
-        }
-    }
-}
-
-
-
-/*
-     class FixedTPoolManager extends Thread{
-
-        private FixedTPool pool;
-
-         public FixedTPoolManager(FixedTPool pool) {
-             this.pool = pool;
-         }
-
-         @Override
-        public void run() {
-            while (pool.running){
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                for (int i = 0; i < pool.NWorker;i++){
-                    FixedTPool.PoolWorker poolWorker = pool.pool[i];
-                    if(poolWorker.getState().equals(TIMED_WAITING)){
-                        poolWorker.stop();
-                        poolWorker.setTask(null);
-                        poolWorker.interrupt();
-                      //  poolWorker.resume();
-                    }
-                }
-//                for(Runnable t :pool.tasks){
-//
-//                }
             }
         }
+
+
 
     public static void main(String[] args) {
             //FixedTPool pool = new FixedTPool(2);
@@ -164,7 +127,5 @@ public class FixedTPool {
             } );
 
     }
-
 }
- */
 

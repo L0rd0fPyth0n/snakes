@@ -6,11 +6,13 @@ import java.util.Queue;
 public   class BQueue<T> {
     //BlockingQueue
 
-    //recurso partilhado <T> é o tipo de elementos na fila !
+    //Ter a certeza que é FIFO
+
+
     private Queue<T> list; //add mete no fim da fila!
 
     public BQueue(){
-        this.list = new LinkedList< T >();
+        this.list = new LinkedList<T>();
     }
 
     //As operações bloqueantes devem propagar as
@@ -28,7 +30,6 @@ public   class BQueue<T> {
         this.notifyAll();
         return aux;
     }
-
     public void size(){
         list.size();
     }
