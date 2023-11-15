@@ -14,6 +14,8 @@ import javax.swing.JFrame;
 
 import environment.Board;
 import environment.LocalBoard;
+import game.Snake;
+
 /**
  *  Class to create and configure GUI.
  *  Only the listener to the button should be edited, see TODO below.
@@ -49,7 +51,13 @@ public class SnakeGui implements Observer {
 		resetObstaclesButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				board.interruptAllSnakes();
+				for(Snake s : board.getSnakes()){
+					if(s.getState() == Thread.State.WAITING)
+						//System.out.println(s.getIdentification()+"eu tou waiting");
+						s.flag=true;
+						s.interrupt();
+
+				}
 			}
 
 		});

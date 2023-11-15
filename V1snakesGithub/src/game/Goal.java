@@ -32,20 +32,18 @@ public class Goal extends GameElement  {
 	}
 
 	private void incrementValue() throws InterruptedException {
-		if(++value >= MAX_VALUE ) {
-			board.interruptAllSnakes();
-			board.getFixedTPool().stop();
-//			for(ObstacleMover ob: board.getObstacleMovers()){
-//				ob.interrupt();
-//			}
+		value++;
+		if(value >= MAX_VALUE){
+			board.setGameOver();
+			//board.interruptAllSnakes();
 		}
+
 	}
 
 
 	public  int captureGoal() throws InterruptedException {
 		lockGoal.lock();
 		incrementValue();
-
 
 		//posiçao atual do GOAL antes de comer
 		BoardPosition goalPosition = board.getGoalPosition();
@@ -55,24 +53,12 @@ public class Goal extends GameElement  {
 
 		GoalCell.removeGoal();
 
-		//GameElement do Golo que esta representado no GUI
-
-
 
 		BoardPosition newGoalPos = board.getRandomPosition();
-
 		Cell nova = board.getCell(newGoalPos);
 
-		//TODO is nova occupied?
-
 		board.setGoalPosition(newGoalPos);
-
 		nova.setGameElement(ge);
-
-
-
-		//remover a anterior
-		//cellACTUAL.setGameElement(null);
 
 		board.setChanged();
 		lockGoal.unlock();

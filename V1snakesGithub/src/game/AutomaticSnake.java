@@ -23,7 +23,7 @@ public class AutomaticSnake extends Snake {
 //		return d;
 //	}
 //	//NewPosition = currentPosition + VectorToTheGoal
-//	protected Cell getNextCell(){
+//	protected Cell getNextCellv2(){
 //		Cell currCell = getCells().getFirst();
 //
 //		BoardPosition goalBp = getBoard().getGoalPosition();
@@ -42,6 +42,7 @@ public class AutomaticSnake extends Snake {
 //	}
 
 
+	//TODO FAZER NO FILTRO PARA NAO ANDAR NA DIAGONAL Q É ISSO Q ACONTECE DPS DO RESET
 	protected Cell getNextCell(){
 		Cell head = getCells().getFirst();
 
@@ -52,7 +53,7 @@ public class AutomaticSnake extends Snake {
 		List<Cell> freePositions = neighbourPos.stream()
 				.map((bp) -> getBoard().getCell(bp))
 				.filter((c) -> !getCells().contains(c))
-				.sorted((c1,c2)->  c1.getPosition().distanceTo(goalPos)  - c2.getPosition().distanceTo(goalPos) )
+				.sorted((c1,c2)-> (int) Math.signum(c1.getPosition().distanceTo(goalPos)  - c2.getPosition().distanceTo(goalPos)))
 				.toList();
 		//		Map<Double,Cell> m = new HashMap<>();
 		//		BoardPosition goalPos = getBoard().getGoalPosition();
@@ -62,41 +63,64 @@ public class AutomaticSnake extends Snake {
 		//		}
 		//		double min= Collections.min(m.keySet());
 		//		return m.get(min);
+		if(this.flag==true){
+			//System.out.println("Dps do reset new POs 2"+ freePositions.get(0));
+			//System.out.println(freePositions.get(0).isOcupied());
+			this.flag=false;
+		}
+		//ISTO PQ MM ASSIM SE A SNAKE FICAR SEM SITIO PRA IR TAVA A DAR INDEX OUT OF BOUNDS
+		if(freePositions.isEmpty()){
+			return null;
+		}
+
 		return freePositions.get(0);
 
 	}
+
 	@Override
 	public void run() {
 		doInitialPositioning();
-		System.out.println("initial size: "+ cells.size());
-		while(true) {
+		//System.out.println("initial size: "+ cells.size());
+		while(!getBoard().isGameOverV2()) {
 			try {
 				Thread.sleep(Board.PLAYER_PLAY_INTERVAL);
 				Cell toMove = getNextCell();
-				this.move(toMove);
+				if(toMove == null){
+					break;
+				}else {
+					this.move(toMove);
+				}
 			} catch (InterruptedException e) {
-				if(getBoard().getCell(getBoard().getGoalPosition()).getGoal().isGameOver() ){
+				if(getBoard().isGameOverV2() ){
+					System.out.println(getName() + " eu entrei aqui");
 					break;
 				} else {
-					//System.out.println(getName());
-					//TODO Go to another direction
-					Cell head = getCells().getFirst();
-
-					List<BoardPosition> neighbourPos = getBoard().getNeighboringPositions(head);
+				//Go another direction
+				Cell head = this.getCells().getFirst();
 
 
-					BoardPosition goalPos = getBoard().getGoalPosition();
-					List<Cell> freePositions = neighbourPos.stream()
-							.map((bp) -> getBoard().getCell(bp))
-							.filter((c) -> !getCells().contains(c) && (c.isCompletelyUnoccupied()))
-							.sorted((c1,c2)->  c1.getPosition().distanceTo(goalPos)  - c2.getPosition().distanceTo(goalPos) )
-							.toList();
+				List<BoardPosition> neighbourPos = this.getBoard().getNeighboringPositions(head);
 
-					this.move(freePositions.get(0));
 
+				BoardPosition goalPos = this.getBoard().getGoalPosition();
+				List<Cell> freePositions = neighbourPos.stream()
+						.map((bp) -> this.getBoard().getCell(bp))
+						.filter((c) -> !this.getCells().contains(c) && (!c.isOcupied()) )
+						.sorted((c1,c2)-> (int) Math.signum(c1.getPosition().distanceTo(goalPos)  - c2.getPosition().distanceTo(goalPos) ))
+						.toList();
+
+				try {
+					if(freePositions.isEmpty()){
+						break;
+					} else {
+						this.move(freePositions.get(0));
+					}
+				} catch (InterruptedException ex) {
+					System.out.println("erro 1ª reposiçao");
 				}
 			}
 		}
-
 	}
+
+}
 }

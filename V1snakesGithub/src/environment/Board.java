@@ -1,21 +1,18 @@
 package environment;
 
-import java.io.Serializable;
 import java.util.*;
 
-import ConcurrencyUtils.FixedTPool;
 import game.*;
 
-import java.util.Random;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadPoolExecutor;
 
 import static environment.LocalBoard.NUM_SIMULTANEOUS_MOVING_OBSTACLES;
 
 public abstract class Board extends Observable {
 	protected Cell[][] cells;
 	private BoardPosition goalPosition;
-	public static final long PLAYER_PLAY_INTERVAL = 200;
+	public static final long PLAYER_PLAY_INTERVAL = 100;
 	public static final long REMOTE_REFRESH_INTERVAL = 200;
 	public static final int NUM_COLUMNS = 30;
 	public static final int NUM_ROWS = 30;
@@ -23,8 +20,9 @@ public abstract class Board extends Observable {
 	private LinkedList<Obstacle> obstacles= new LinkedList<Obstacle>();
 
 	private LinkedList<ObstacleMover> obstacleMovers = new LinkedList<>();
-	protected boolean isFinished;
-	public FixedTPool fixedTPool = new FixedTPool(LocalBoard.NUM_SIMULTANEOUS_MOVING_OBSTACLES);
+	protected boolean isFinished=false;
+
+	public ExecutorService pool = Executors.newFixedThreadPool(NUM_SIMULTANEOUS_MOVING_OBSTACLES);
 	private Goal goal;
 
 	public Board() {
@@ -36,13 +34,6 @@ public abstract class Board extends Observable {
 		}
 	}
 
-	public FixedTPool getFixedTPool() {
-		return fixedTPool;
-	}
-
-	public void setFixedTPool(FixedTPool fixedTPool) {
-		this.fixedTPool = fixedTPool;
-	}
 
 	public LinkedList<ObstacleMover> getObstacleMovers() {
 		return obstacleMovers;
@@ -57,6 +48,12 @@ public abstract class Board extends Observable {
 			s.interrupt();
 		}
 	}
+
+	public void interruptAllObs(){
+		for(ObstacleMover obs: this.getObstacleMovers())
+			obs.interrupt();
+	}
+
 	public boolean isOutOfBound(BoardPosition cell){
 		return cell.x < 0 ||
 				cell.x>=Board.NUM_COLUMNS ||
@@ -135,11 +132,9 @@ public abstract class Board extends Observable {
 			Obstacle obs=new Obstacle(this);
 			ObstacleMover lb = new ObstacleMover(obs,this);
 			obstacleMovers.add(lb);
-			try {
-				fixedTPool.submitTask(lb);
-			} catch (InterruptedException e) {
-				throw new RuntimeException(e);
-			}
+
+			pool.submit(lb);
+
 			addGameElement(obs);
 			getObstacles().add(obs);
 		}
@@ -147,6 +142,7 @@ public abstract class Board extends Observable {
 	public LinkedList<Snake> getSnakes() {
 		return snakes;
 	}
+
 	@Override
 	public void setChanged() {
 		super.setChanged();
@@ -159,6 +155,18 @@ public abstract class Board extends Observable {
 
 	public Goal getGoal(){
 		return this.goal;
+	}
+
+	public boolean isGameOverV2(){
+		return isFinished;
+	}
+
+	public void setGameOver(){
+		isFinished = true;
+	}
+
+	public boolean getGameOver(){
+		return isFinished;
 	}
 	
 	public abstract void init(); 

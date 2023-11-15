@@ -90,3 +90,11 @@ Q.idea/sonarlint/securityhotspotstore/c/b/cb3a560d704c09f393b7f5f4e871e306188e57
 Q.idea/sonarlint/securityhotspotstore/1/3/1320748d076c45ef81961676e68e2674a1c00a90,b\f\bf981d2652b85ebb1efba8b19e19e82c798a1cc4
 Å
 Q.idea/sonarlint/securityhotspotstore/4/6/461977bfc69ab719e8de54bd6239dbf573a62304,1\e\1e3a76f4a17bcad7b799ddf698394fbf5e36cdd0
+a
+1V1snakesGithub/src/remote/ConnectionsHandler.java,a\2\a2d905ebeac59b1ff153609fda090890754d112f
+U
+%V1snakesGithub/src/remote/Client.java,0\9\0967abbe2089b6c60c447ee53abd49089e89a1a6
+X
+(V1snakesGithub/src/remote/Direction.java,d\a\da8c53b6e454e132d856071fc944dad80cfb5813
+Z
+*V1snakesGithub/src/remote/RemoteBoard.java,d\7\d7fdfa7e0c14658558037c1991f6d7e45841c658

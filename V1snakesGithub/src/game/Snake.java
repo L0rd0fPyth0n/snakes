@@ -23,21 +23,23 @@ public abstract class Snake extends Thread implements Serializable{
 	private int id;
 	private Board board;
 	private int amountToGrow = 0;
-	protected static Random rand =  new Random(1030234356);//TODO remove seed
+	protected static Random rand =  new Random();
+	public boolean flag = false;
+	private Lock lock = new ReentrantLock();
 
 	public Snake(int id,Board board) {
 		this.id = id;
 		this.board=board;
 	}
 
-	protected boolean hasToGrow(){
+	public boolean hasToGrow(){
 		//TODO bad
 		return --amountToGrow > 0;
 	}
 
 	/*	protected void decreaseHasToGrow(){
-		hasToGrow--;
-	}*/
+        hasToGrow--;
+    }*/
 	public void startGrowing(int amountToGrow){
 		//TODO isto devia ser += mas só com = é q funciona
 		this.amountToGrow = amountToGrow;
@@ -47,10 +49,12 @@ public abstract class Snake extends Thread implements Serializable{
 	public int getSize() {
 		return size;
 	}
+
 	//TODO diferença entre o de cima e o de baixo
 	public int getLength() {
 		return cells.size();
 	}
+
 	public int getIdentification() {
 		return id;
 	}
@@ -62,48 +66,72 @@ public abstract class Snake extends Thread implements Serializable{
 //	protected void move(Cell cell) throws InterruptedException {
 //		cell.request(this);
 //	}
-	protected void move(Cell bp)  {
-		bp.request(this);
-		cells.add(0,bp);//TODO passar para class Cell
 
-		if(!hasToGrow()) {
-			Cell temp = cells.removeLast(); //TODO passar para class Cell
+	//TODO PASSAR O MOVING PARA AQUI
+    /*
+	public void moving(Cell cell) {
+		this.getCells().add(0,cell);
+		if(!this.hasToGrow()) {
+			Cell temp = this.getCells().removeLast();
 			temp.release();
 		}
-
-		getBoard().setChanged();
 	}
+	 */
 
-	protected abstract Cell getNextCell();
+	public void move(Cell bp) throws InterruptedException  {
+			bp.request(this);
 
-	public LinkedList<BoardPosition> getPath() {
-		LinkedList<BoardPosition> coordinates = new LinkedList<>();
-		for (Cell cell : cells) {
-			coordinates.add(cell.getPosition());
-		}
-		return coordinates;
-	}
+			//TODO otimizar isto
+			if(this.isInterrupted() && !getBoard().isGameOverV2() ){
+				return;
+			} else if(getBoard().isGameOverV2()) {
+				return;
+			}
+			else {
+				cells.add(0, bp);//TODO passar para class Cell
 
+				if (!hasToGrow()) {
+					Cell temp = cells.removeLast(); //TODO passar para class Cell
+					temp.release();
+				}
 
-
-	protected void doInitialPositioning() {
-		// Random position on the first column. 
-		// At startup, snake occupies a single cell
-		int posX = 0;
-		while(true){
-			int posY = rand.nextInt(Board.NUM_ROWS);
-			Cell firstPos = board.getCell(new BoardPosition(posX, posY));
-			if(!firstPos.isOcupiedBySnake()) {
-				cells.add(firstPos);
-				firstPos.request(this);
-				break;
+				getBoard().setChanged();
 			}
 		}
-		System.err.println("Snake "+getIdentification()+" starting at:"+getCells().getLast());
+
+		protected abstract Cell getNextCell();
+
+		public LinkedList<BoardPosition> getPath() {
+			LinkedList<BoardPosition> coordinates = new LinkedList<>();
+			for (Cell cell : cells) {
+				coordinates.add(cell.getPosition());
+			}
+			return coordinates;
+		}
+
+
+		protected void doInitialPositioning() {
+			// Random position on the first column.
+			// At startup, snake occupies a single cell
+			int posX = 0;
+			while(true){
+				int posY = rand.nextInt(Board.NUM_ROWS);
+				Cell firstPos = board.getCell(new BoardPosition(posX, posY));
+				if(!firstPos.isOcupiedBySnake()) {
+					cells.add(firstPos);
+					try {
+						firstPos.request(this);
+					} catch (InterruptedException e) {
+						throw new RuntimeException(e);
+					}
+					break;
+				}
+			}
+			System.err.println("Snake "+getIdentification()+" starting at:"+getCells().getLast());
+		}
+		public Board getBoard() {
+			return board;
+		}
+
+
 	}
-	public Board getBoard() {
-		return board;
-	}
-	
-	
-}
