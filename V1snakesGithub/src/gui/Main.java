@@ -14,6 +14,6 @@ public class Main {
 		SnakeGui game = new SnakeGui(board,600,0);
 		game.init();
 		// Launch server
-		// TODO
+		new Server(board).start();
 	}
 }

@@ -16,17 +16,20 @@ import environment.Cell;
  * Common methods will be defined here.
  * @author luismota
  */
-public abstract class Snake extends Thread implements Serializable{
+public abstract class  Snake extends Thread implements Serializable{
 	private static final int DELTA_SIZE = 10;
 	protected LinkedList<Cell> cells = new LinkedList<Cell>();
 	protected int size = 5;
 	private int id;
-	private Board board;
+	private transient Board board;
 	private int amountToGrow = 0;
-	protected static Random rand =  new Random();
-	public boolean flag = false;
+	protected transient static Random rand =  new Random();
+	protected transient boolean flag = false;
 	private Lock lock = new ReentrantLock();
 
+	public void setFlagTrue(){
+		this.flag = true;
+	}
 	public Snake(int id,Board board) {
 		this.id = id;
 		this.board=board;
@@ -80,23 +83,15 @@ public abstract class Snake extends Thread implements Serializable{
 
 	public void move(Cell bp) throws InterruptedException  {
 			bp.request(this);
-
 			//TODO otimizar isto
-			if(this.isInterrupted() && !getBoard().isGameOverV2() ){
+			if((this.isInterrupted() && !getBoard().isGameOverV2()) || getBoard().isGameOverV2() )
 				return;
-			} else if(getBoard().isGameOverV2()) {
-				return;
+			cells.add(0, bp);//TODO passar para class Cell
+			if (!hasToGrow()) {
+				Cell temp = cells.removeLast(); //TODO passar para class Cell
+				temp.release();
 			}
-			else {
-				cells.add(0, bp);//TODO passar para class Cell
-
-				if (!hasToGrow()) {
-					Cell temp = cells.removeLast(); //TODO passar para class Cell
-					temp.release();
-				}
-
-				getBoard().setChanged();
-			}
+			getBoard().setChanged();
 		}
 
 		protected abstract Cell getNextCell();
@@ -108,7 +103,6 @@ public abstract class Snake extends Thread implements Serializable{
 			}
 			return coordinates;
 		}
-
 
 		protected void doInitialPositioning() {
 			// Random position on the first column.
@@ -122,7 +116,7 @@ public abstract class Snake extends Thread implements Serializable{
 					try {
 						firstPos.request(this);
 					} catch (InterruptedException e) {
-						throw new RuntimeException(e);
+						e.printStackTrace();
 					}
 					break;
 				}
@@ -132,6 +126,4 @@ public abstract class Snake extends Thread implements Serializable{
 		public Board getBoard() {
 			return board;
 		}
-
-
 	}

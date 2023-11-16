@@ -1,9 +1,19 @@
 package remote;
 
 
+import environment.Cell;
+import game.GameState;
+import game.Snake;
 import gui.SnakeGui;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.InetAddress;
+import java.net.Socket;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 /** Remore client, only for part II
@@ -14,9 +24,43 @@ import java.util.Map;
 
 public class Client {
 	public static void main(String[] args) {
-		RemoteBoard rb = new RemoteBoard();
-		SnakeGui game = new SnakeGui(rb,600,0);
-		game.init();
+		Socket s = null;
+		try {
+			s = new Socket(InetAddress.getLocalHost(),8888);
+			ObjectOutputStream oos = new ObjectOutputStream(s.getOutputStream());
+
+			RemoteBoard rb = new RemoteBoard(oos);
+			SnakeGui game = new SnakeGui(rb,600,0);
+			game.init();
+
+
+			ObjectInputStream ois = new ObjectInputStream(s.getInputStream());
+
+			while(true){
+				try {
+					GameState gameState = (GameState) ois.readObject();
+					System.out.println("Lido");
+
+					List<Snake> sankeList = gameState.snakeList();
+					System.out.println(sankeList);
+
+					for(Snake snake : sankeList){
+						System.out.println(snake.getCells());
+
+						for(Cell c :snake.getCells()){
+							c.request(snake);
+
+						}
+						rb.setChanged();
+					}
+				}catch (ClassNotFoundException | InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 }

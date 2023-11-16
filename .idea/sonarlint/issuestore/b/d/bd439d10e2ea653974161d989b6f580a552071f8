@@ -1,31 +1,21 @@
 
-u	java:S135T"YReduce the total number of break and continue statements in this loop to use at most one.(½îµœ8§îÜ£½1
-]	java:S125"<This block of commented-out lines of code should be removed.(šüÝ‰ùÿÿÿÿ8²îÜ£½1
+]	java:S125"<This block of commented-out lines of code should be removed.(šüÝ‰ùÿÿÿÿ8¤»›Å½1
 O
-java:S1135-"2Complete the task associated to this TODO comment.(Êîó¬8²îÜ£½1
+java:S1135-"2Complete the task associated to this TODO comment.(Êîó¬8¤»›Å½1
 R
-java:S16116"0Remove the parentheses around the "bp" parameter(¦õ‚šýÿÿÿÿ8µîÜ£½1
+java:S16115"0Remove the parentheses around the "bp" parameter(±ý¾ƒþÿÿÿÿ8¦»›Å½1
 L
-java:S16117"/Remove the parentheses around the "c" parameter(Ó¬ÉÖ8µîÜ£½1
-W	java:S125:"<This block of commented-out lines of code should be removed.(†±Î<8·îÜ£½1
-I
-java:S1125B"'Remove the unnecessary boolean literal.(ë½¢³úÿÿÿÿ8·îÜ£½1
-]	java:S125C"<This block of commented-out lines of code should be removed.(êöìëÿÿÿÿÿ8¸îÜ£½1
-o
-java:S3776Q"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(“–ýþ8¹îÜ£½1
-X	java:S125S"<This block of commented-out lines of code should be removed.(†¡Óß8»îÜ£½1
+java:S16116"/Remove the parentheses around the "c" parameter(õ ë‰8§»›Å½1
+R
+java:S1611;"0Remove the parentheses around the "bp" parameter(¦õ‚šýÿÿÿÿ8§»›Å½1
+L
+java:S1611<"/Remove the parentheses around the "c" parameter(Ó¬ÉÖ8¨»›Å½1
 {
-java:S2142]"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8½îÜ£½1
-G	java:S106_"+Replace this use of System.out by a logger.(ßçÜÖ8ÀîÜ£½1
-R
-java:S1611k"0Remove the parentheses around the "bp" parameter(±ý¾ƒþÿÿÿÿ8ÂîÜ£½1
-L
-java:S1611l"/Remove the parentheses around the "c" parameter(¦°êÈ8ÂîÜ£½1
-€
-java:S2142v"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(è®ã¶øÿÿÿÿ8ÃîÜ£½1
-G	java:S106w"+Replace this use of System.out by a logger.(û¤ÔÉ8ÄîÜ£½1
+java:S2142R"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8©»›Å½1
+]	java:S125S"<This block of commented-out lines of code should be removed.(îì‹‡þÿÿÿÿ8ª»›Å½1
+G	java:S106j"+Replace this use of System.out by a logger.(À øÁ8ª»›Å½1
 K
-java:S1128")Remove this unused import 'gui.SnakeGui'.(Ûÿ¾’þÿÿÿÿ8ö€Þ£½1
+java:S1128")Remove this unused import 'gui.SnakeGui'.(Ûÿ¾’þÿÿÿÿ8¬»›Å½1
 Z
 java:S1128
-"8Remove this unused import 'java.util.stream.Collectors'.(Óóº´úÿÿÿÿ8ö€Þ£½1
+"8Remove this unused import 'java.util.stream.Collectors'.(Óóº´úÿÿÿÿ8¬»›Å½1

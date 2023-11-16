@@ -53,17 +53,14 @@ public class SnakeGui implements Observer {
 			public void actionPerformed(ActionEvent e) {
 				for(Snake s : board.getSnakes()){
 					if(s.getState() == Thread.State.WAITING)
-						//System.out.println(s.getIdentification()+"eu tou waiting");
-						s.flag=true;
-						s.interrupt();
-
+						s.setFlagTrue();
+					s.interrupt();
 				}
 			}
 
 		});
 		frame.add(resetObstaclesButton,BorderLayout.SOUTH);
-		
-		
+
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
