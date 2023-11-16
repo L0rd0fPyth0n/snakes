@@ -18,13 +18,13 @@ import game.AutomaticSnake;
  * @author luismota
  *
  */
-public class Cell {
+public class Cell implements Serializable{
 	private BoardPosition position;
 	private Snake ocuppyingSnake = null;
-	private GameElement gameElement=null;
-	private Lock lock = new ReentrantLock();
-	public Condition isEmpty = lock.newCondition();
-	public Condition hasStuff = lock.newCondition();
+	private transient GameElement gameElement=null;
+	private transient Lock lock = new ReentrantLock();
+	public transient Condition isEmpty = lock.newCondition();
+	public transient Condition hasStuff = lock.newCondition();
 
 	public GameElement getGameElement() {
 		return gameElement;
@@ -53,13 +53,13 @@ public class Cell {
 			}
 			ocuppyingSnake=snake;
 
-			if(snake.getBoard().isGameOverV2()){
+			/*if(snake.getBoard().isGameOverV2()){
 				snake.getBoard().interruptAllSnakes();
 				snake.getCells().addFirst(this);
 				snake.getBoard().pool.close();
 				//TODO ver se pool.close() Interrompe os Obstacle Movers:
 				snake.getBoard().interruptAllObs();
-			}
+			}*/
 
 
 		} catch (InterruptedException e) {

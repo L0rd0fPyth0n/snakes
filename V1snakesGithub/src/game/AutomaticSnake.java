@@ -47,40 +47,29 @@ public class AutomaticSnake extends Snake {
 		Cell head = getCells().getFirst();
 
 		List<BoardPosition> neighbourPos = getBoard().getNeighboringPositions(head);
-
-
-		BoardPosition goalPos = getBoard().getGoalPosition();
-		List<Cell> freePositions = neighbourPos.stream()
-				.map((bp) -> getBoard().getCell(bp))
-				.filter((c) -> !getCells().contains(c))
-				.sorted((c1,c2)-> (int) Math.signum(c1.getPosition().distanceTo(goalPos)  - c2.getPosition().distanceTo(goalPos)))
-				.toList();
-		//		Map<Double,Cell> m = new HashMap<>();
-		//		BoardPosition goalPos = getBoard().getGoalPosition();
-		//		for(Cell c : freePositions) {
-		//			Double distToGoal = c.getPosition().distanceTo(goalPos);
-		//			m.put(distToGoal,c);
-		//		}
-		//		double min= Collections.min(m.keySet());
-		//		return m.get(min);
-		if(this.flag==true){
-			//System.out.println("Dps do reset new POs 2"+ freePositions.get(0));
-			//System.out.println(freePositions.get(0).isOcupied());
-			this.flag=false;
+		List<Cell> freePositions = null;
+		if(this.flag){
+			 freePositions = neighbourPos.stream()
+							.map((bp) -> this.getBoard().getCell(bp))
+							.filter((c) -> (!this.getCells().contains(c)) && (!c.isOcupied()) )
+							.sorted(this::compare)
+							.toList();
+		}else {
+			freePositions = neighbourPos.stream()
+					.map((bp) -> getBoard().getCell(bp))
+					.filter((c) -> !getCells().contains(c))
+					.sorted(this::compare)
+					.toList();
 		}
+		this.flag=false;
+
 		//ISTO PQ MM ASSIM SE A SNAKE FICAR SEM SITIO PRA IR TAVA A DAR INDEX OUT OF BOUNDS
-		if(freePositions.isEmpty()){
-			return null;
-		}
-
-		return freePositions.get(0);
-
+		return freePositions.isEmpty() ? null : freePositions.get(0);
 	}
 
 	@Override
 	public void run() {
 		doInitialPositioning();
-		//System.out.println("initial size: "+ cells.size());
 		while(!getBoard().isGameOverV2()) {
 			try {
 				Thread.sleep(Board.PLAYER_PLAY_INTERVAL);
@@ -91,36 +80,33 @@ public class AutomaticSnake extends Snake {
 					this.move(toMove);
 				}
 			} catch (InterruptedException e) {
-				if(getBoard().isGameOverV2() ){
-					System.out.println(getName() + " eu entrei aqui");
-					break;
-				} else {
-				//Go another direction
-				Cell head = this.getCells().getFirst();
-
-
-				List<BoardPosition> neighbourPos = this.getBoard().getNeighboringPositions(head);
-
-
-				BoardPosition goalPos = this.getBoard().getGoalPosition();
-				List<Cell> freePositions = neighbourPos.stream()
-						.map((bp) -> this.getBoard().getCell(bp))
-						.filter((c) -> !this.getCells().contains(c) && (!c.isOcupied()) )
-						.sorted((c1,c2)-> (int) Math.signum(c1.getPosition().distanceTo(goalPos)  - c2.getPosition().distanceTo(goalPos) ))
-						.toList();
-
-				try {
-					if(freePositions.isEmpty()){
-						break;
-					} else {
-						this.move(freePositions.get(0));
-					}
-				} catch (InterruptedException ex) {
-					System.out.println("erro 1ª reposiçao");
-				}
-			}
+//				if(!getBoard().isGameOverV2()){
+//					Cell head = this.getCells().getFirst();
+//					List<BoardPosition> neighbourPos = this.getBoard().getNeighboringPositions(head);
+//					List<Cell> freePositions = neighbourPos.stream()
+//							.map((bp) -> this.getBoard().getCell(bp))
+//							.filter((c) -> (!this.getCells().contains(c)) && (!c.isOcupied()) )
+//							.sorted(this::compare)
+//							.toList();
+//					if(freePositions.isEmpty()){
+//						break;
+//					} else {
+//						try {
+//							this.move(freePositions.get(0));
+//						} catch (InterruptedException ex) {
+//							ex.printStackTrace();
+//						}
+//					}
+//
+//				} else {
+//					break;
+//			}
 		}
 	}
-
+		System.out.println(Thread.currentThread() + " Class: AitoSnake ended");
 }
+	public int compare(Cell c1, Cell c2){
+		BoardPosition goalPos = this.getBoard().getGoalPosition();
+		return  (int) Math.signum(c1.getPosition().distanceTo(goalPos)  - c2.getPosition().distanceTo(goalPos));
+	}
 }

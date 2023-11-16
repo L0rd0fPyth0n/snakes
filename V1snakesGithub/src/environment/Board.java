@@ -1,5 +1,6 @@
 package environment;
 
+import java.io.IOException;
 import java.util.*;
 
 import game.*;
@@ -34,6 +35,9 @@ public abstract class Board extends Observable {
 		}
 	}
 
+	public Cell[][] getCells() {
+		return cells;
+	}
 
 	public LinkedList<ObstacleMover> getObstacleMovers() {
 		return obstacleMovers;

@@ -2,6 +2,7 @@ package remote;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -27,6 +28,11 @@ import static java.awt.event.KeyEvent.*;
 
 
 public class RemoteBoard extends Board{
+	public RemoteBoard(ObjectOutputStream oos) {
+		this.oos = oos;
+	}
+
+	private ObjectOutputStream oos;
 	public static final Map<Integer,Direction> keyToDirection = new HashMap<>();
 
 	static {
@@ -37,7 +43,11 @@ public class RemoteBoard extends Board{
 	}
 	@Override
 	public void handleKeyPress(int keyCode) {
-		//TODO handle if key doesn't exist
+		try {
+			oos.writeObject(keyToDirection.get(keyCode));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -50,7 +60,13 @@ public class RemoteBoard extends Board{
 
 	}
 
-
+	public void clearAllCells(){
+		for (int x = 0; x < NUM_COLUMNS; x++) {
+			for (int y = 0; y < NUM_ROWS; y++) {
+				cells[x][y].release();
+			}
+		}
+	}
 	
 
 }

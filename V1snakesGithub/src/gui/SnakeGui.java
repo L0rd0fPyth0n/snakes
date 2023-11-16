@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 
 import environment.Board;
 import environment.LocalBoard;
+import game.AutomaticSnake;
 import game.Snake;
 
 /**
@@ -51,19 +52,16 @@ public class SnakeGui implements Observer {
 		resetObstaclesButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				for(Snake s : board.getSnakes()){
+				for(Snake s : board.getSnakes().stream().filter((x)-> x instanceof AutomaticSnake).toList()){
 					if(s.getState() == Thread.State.WAITING)
-						//System.out.println(s.getIdentification()+"eu tou waiting");
-						s.flag=true;
-						s.interrupt();
-
+						s.setFlagTrue();
+					s.interrupt();
 				}
 			}
 
 		});
 		frame.add(resetObstaclesButton,BorderLayout.SOUTH);
-		
-		
+
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}

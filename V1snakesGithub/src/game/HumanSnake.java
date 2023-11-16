@@ -14,7 +14,7 @@ import java.net.Socket;
  @author luismota
  **/
 public  class HumanSnake extends Snake {
-	protected final ObjectInputStream inputStream;
+	protected transient final ObjectInputStream inputStream;
 
 	public HumanSnake(int id, Board board, ObjectInputStream inputStream) {
 		super(id,board);
@@ -23,20 +23,30 @@ public  class HumanSnake extends Snake {
 
 
 	@Override
-	protected Cell getNextCell() {
+	protected Cell getNextCell(){
 		try {
 			Direction newDir =(Direction) this.inputStream.readObject();
 
-			Cell head = cells.getFirst();
-			BoardPosition headPos =head.getPosition();
+			BoardPosition headPos =cells.getFirst().getPosition();
 
 			BoardPosition newPos = new BoardPosition(headPos.x + newDir.getX(), headPos.y + newDir.getY());
 
 			return getBoard().getCell(newPos);
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		} catch (ClassNotFoundException e) {
-			throw new RuntimeException(e);
+		} catch (IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	@Override
+	public void run(){
+		doInitialPositioning();
+		while (!getBoard().isGameOverV2()){
+				try {
+					Cell toMove = getNextCell();
+					if (toMove == null)
+						break;
+					this.move(toMove);
+				} catch (InterruptedException ignored) {}
 		}
 	}
 }
