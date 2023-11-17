@@ -39,7 +39,6 @@ public class Server extends Thread{
             }
         }
         private static class stateSender extends Thread{
-
             private  ObjectOutputStream oos;
 
             private final LocalBoard board;
@@ -56,7 +55,6 @@ public class Server extends Thread{
 
             @Override
             public void run() {
-
                 while (true){
                     try {
                         oos.writeObject(new GameState(board.getSnakes()));

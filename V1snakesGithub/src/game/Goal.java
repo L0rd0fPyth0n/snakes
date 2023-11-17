@@ -18,7 +18,6 @@ public class Goal extends GameElement  {
 	public static final int MAX_VALUE=10;
 	private Lock lockGoal = new ReentrantLock();
 
-
 	public boolean isGameOver(){
 		return value >= MAX_VALUE;
 	}
@@ -31,20 +30,18 @@ public class Goal extends GameElement  {
 		return value;
 	}
 
-	private void incrementValue() throws InterruptedException {
+	private void incrementValue(){
 		value++;
-		if(value >= MAX_VALUE){
-			board.setGameOver();
-			//board.interruptAllSnakes();
-		}
-
 	}
 
 
 	public  int captureGoal() throws InterruptedException {
 		lockGoal.lock();
 		incrementValue();
-
+		if(value >= MAX_VALUE){
+			board.setGameOver();
+			//TODO board.interruptAllSnakes();
+		}
 		//posiçao atual do GOAL antes de comer
 		BoardPosition goalPosition = board.getGoalPosition();
 		//CELULA ATUAL DO GOAL
@@ -64,6 +61,4 @@ public class Goal extends GameElement  {
 		lockGoal.unlock();
 		return value;
 	}
-
-
 }

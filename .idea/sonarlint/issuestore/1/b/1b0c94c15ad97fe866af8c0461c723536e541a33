@@ -1,44 +1,44 @@
 
 {
-java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(¯¢ïªıÿÿÿÿ8áÇ¢Å½1
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(¯¢ïªıÿÿÿÿ8ÕÕù½1
 “
-java:S1319A"qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".(…»È‹ûÿÿÿÿ8âÇ¢Å½1
+java:S1319A"qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".(…»È‹ûÿÿÿÿ8ÕÕù½1
 “
-java:S1319c"qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".(†œÍÔûÿÿÿÿ8ãÇ¢Å½1
+java:S1319c"qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".(†œÍÔûÿÿÿÿ8ÕÕù½1
 [
-java:S5993!"9Change the visibility of this constructor to "protected".(¿İ¤Éÿÿÿÿÿ8òÇ¢Å½1
+java:S5993!"9Change the visibility of this constructor to "protected".(¿İ¤Éÿÿÿÿÿ8§ÕÕù½1
 C
-java:S1948"&Make "lock" transient or serializable.(‰ »¯8óÇ¢Å½1
+java:S1948"&Make "lock" transient or serializable.(‰ »¯8§ÕÕù½1
 ]
-java:S2134"@Don't extend "Thread", since the "run" method is not overridden.(‡ş¬8ôÇ¢Å½1
+java:S2134"@Don't extend "Thread", since the "run" method is not overridden.(‡ş¬8©ÕÕù½1
 b
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(òäì 8ôÔµÇ½1
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(òäì 8®ÕÕù½1
 T
-java:S1135'"2Complete the task associated to this TODO comment.(½±¨èıÿÿÿÿ8øÇ¢Å½1
-X	java:S125+"<This block of commented-out lines of code should be removed.(šæœ8øÇ¢Å½1
+java:S1135'"2Complete the task associated to this TODO comment.(½±¨èıÿÿÿÿ8²ÕÕù½1
+X	java:S125+"<This block of commented-out lines of code should be removed.(šæœ8³ÕÕù½1
 T
-java:S1135/"2Complete the task associated to this TODO comment.(‘ƒå‚ùÿÿÿÿ8ùÇ¢Å½1
+java:S1135/"2Complete the task associated to this TODO comment.(‘ƒå‚ùÿÿÿÿ8´ÕÕù½1
 O
-java:S11358"2Complete the task associated to this TODO comment.(º«ãÑ8ùÇ¢Å½1
-X	java:S125E"<This block of commented-out lines of code should be removed.(éì ¥8ûÇ¢Å½1
-]	java:S125K"<This block of commented-out lines of code should be removed.(çäãîıÿÿÿÿ8ûÇ¢Å½1
+java:S11358"2Complete the task associated to this TODO comment.(º«ãÑ8µÕÕù½1
+X	java:S125E"<This block of commented-out lines of code should be removed.(éì ¥8¸ÕÕù½1
+]	java:S125K"<This block of commented-out lines of code should be removed.(çäãîıÿÿÿÿ8¸ÕÕù½1
 O
-java:S1135I"2Complete the task associated to this TODO comment.(«‚âæ8ûÇ¢Å½1
+java:S1135I"2Complete the task associated to this TODO comment.(«‚âæ8¸ÕÕù½1
 T
-java:S1135V"2Complete the task associated to this TODO comment.(ıª“Òüÿÿÿÿ8ûÇ¢Å½1
+java:S1135V"2Complete the task associated to this TODO comment.(ıª“Òüÿÿÿÿ8¹ÕÕù½1
 T
-java:S1135Y"2Complete the task associated to this TODO comment.(ü­Éåøÿÿÿÿ8üÇ¢Å½1
+java:S1135Y"2Complete the task associated to this TODO comment.(ü­Éåøÿÿÿÿ8ºÕÕù½1
 T
-java:S1135["2Complete the task associated to this TODO comment.(ûäôªúÿÿÿÿ8üÇ¢Å½1
+java:S1135["2Complete the task associated to this TODO comment.(ûäôªúÿÿÿÿ8»ÕÕù½1
 {
-java:S2142v"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8ÿÇ¢Å½1
-G	java:S106|"+Replace this use of System.err by a logger.(™öõğ8€È¢Å½1
+java:S2142v"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8ÁÕÕù½1
+X	java:S125|"<This block of commented-out lines of code should be removed.(§´ã¸8ì…ú½1
 U
-java:S1128	"3Remove this unused import 'environment.LocalBoard'.(ïÂ”©ùÿÿÿÿ8€È¢Å½1
+java:S1128	"3Remove this unused import 'environment.LocalBoard'.(ïÂ”©ùÿÿÿÿ8ÄÕÕù½1
 K
 java:S1128
-")Remove this unused import 'gui.SnakeGui'.(Ûÿ¾’şÿÿÿÿ8È¢Å½1
+")Remove this unused import 'gui.SnakeGui'.(Ûÿ¾’şÿÿÿÿ8ÄÕÕù½1
 P
-java:S1068".Remove this unused "DELTA_SIZE" private field.(©Ö±Ôÿÿÿÿÿ8È¢Å½1
+java:S1068".Remove this unused "DELTA_SIZE" private field.(©Ö±Ôÿÿÿÿÿ8ÅÕÕù½1
 E
-java:S1068"(Remove this unused "lock" private field.(‰ »¯8È¢Å½1
+java:S1068"(Remove this unused "lock" private field.(‰ »¯8ÅÕÕù½1

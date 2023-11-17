@@ -92,12 +92,10 @@ public abstract class Board extends Observable {
 			BoardPosition pos=getRandomPosition();
 			if(!getCell(pos).isOcupied() && !getCell(pos).isOcupiedByGoal()) {
 				getCell(pos).setGameElement(gameElement);
-				if(gameElement instanceof Goal) {
-					setGoalPosition(pos);
-//					System.out.println("Goal placed at:"+pos);
-				}
-				if(gameElement instanceof Obstacle obs) {
-					obs.setPos(pos);
+				switch (gameElement) {
+					case Goal g -> setGoalPosition(pos);
+					case Obstacle obs -> obs.setPos(pos);
+					default -> {}
 				}
 				placed=true;
 			}

@@ -44,14 +44,11 @@ public class Cell implements Serializable{
 	public void request(Snake snake) throws InterruptedException {
 		lock.lock();
 		try {
-			while (this.isOcupied()) {
+			while (this.isOcupied())
 				isEmpty.await();
-			}
-
-			if(this.isOcupiedByGoal() ) {
-				snake.startGrowing(getGoal().captureGoal());
-			}
 			ocuppyingSnake=snake;
+			if(this.isOcupiedByGoal() )
+				snake.capture(getGoal());
 
 			/*if(snake.getBoard().isGameOverV2()){
 				snake.getBoard().interruptAllSnakes();
@@ -60,8 +57,6 @@ public class Cell implements Serializable{
 				//TODO ver se pool.close() Interrompe os Obstacle Movers:
 				snake.getBoard().interruptAllObs();
 			}*/
-
-
 		} catch (InterruptedException e) {
 			System.out.println(snake.getName()+ " entrei no 1º interrupt!");
 			snake.interrupt();

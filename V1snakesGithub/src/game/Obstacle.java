@@ -29,15 +29,15 @@ public class Obstacle extends GameElement {
 
 	public void move(Cell nextCell){
 		board.getCell(this.getPos()).removeObstacle();
-
 		nextCell.setGameElement(this);
-
 		this.setPos(nextCell.getPosition());
 		board.setChanged();
-		remainingMoves--;
+
 	}
 	public int getRemainingMoves() {
 		return remainingMoves;
 	}
-
+	public void decrementRemainingMoves(){
+		 remainingMoves--;
+	}
 }

@@ -12,11 +12,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
 
+import java.util.List;
 /** Remore client, only for part II
  * 
  * @author luismota
@@ -61,7 +58,5 @@ public class Client {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
-
 }

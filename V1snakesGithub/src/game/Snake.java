@@ -43,9 +43,9 @@ public abstract class  Snake extends Thread implements Serializable{
 	/*	protected void decreaseHasToGrow(){
         hasToGrow--;
     }*/
-	public void startGrowing(int amountToGrow){
+	public void capture(Goal goal) throws InterruptedException {
 		//TODO isto devia ser += mas só com = é q funciona
-		this.amountToGrow = amountToGrow;
+		this.amountToGrow = goal.captureGoal();
 	}
 
 
@@ -121,7 +121,7 @@ public abstract class  Snake extends Thread implements Serializable{
 					break;
 				}
 			}
-			System.err.println("Snake "+getIdentification()+" starting at:"+getCells().getLast());
+			//System.err.println("Snake "+getIdentification()+" starting at:"+getCells().getLast());
 		}
 		public Board getBoard() {
 			return board;

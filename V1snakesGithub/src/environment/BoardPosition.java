@@ -7,7 +7,6 @@ import java.io.Serializable;
  * @author luismota
  *
  */
-
 public class BoardPosition implements Serializable {
 	public final int x;
 	public final int y;
@@ -17,7 +16,6 @@ public class BoardPosition implements Serializable {
 		this.x = x;
 		this.y = y;
 	}
-
 	@Override
 	public String toString() {
 		return "(" + x + ", " + y + ")";
@@ -35,12 +33,10 @@ public class BoardPosition implements Serializable {
 		double delta_y = x - other.x;
 		return Math.sqrt(delta_x * delta_x + delta_y * delta_y);
 	}
-/*
-	public int distanceTo(BoardPosition other) {
+	public int distanceToManhattan(BoardPosition other) {
 		//Manhattan distance
 		return Math.abs( y - other.y) + Math.abs(x - other.x)  ;
 	}
- */
 
 	public BoardPosition getCellAbove() {
 		return new BoardPosition(x, y-1);
