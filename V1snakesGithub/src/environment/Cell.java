@@ -1,6 +1,7 @@
 package environment;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -17,16 +18,13 @@ import game.AutomaticSnake;
  * @author luismota
  *
  */
-public class Cell {
+public class Cell implements Serializable{
 	private BoardPosition position;
 	private Snake ocuppyingSnake = null;
-	private GameElement gameElement=null;
-	private Lock lock = new ReentrantLock();
-	private Condition isEmpty = lock.newCondition();
-	private Condition hasSnake = lock.newCondition();
-
-	//Conditional Variables
-
+	private transient GameElement gameElement=null;
+	private transient Lock lock = new ReentrantLock();
+	public transient Condition isEmpty = lock.newCondition();
+	public transient Condition hasStuff = lock.newCondition();
 
 	public GameElement getGameElement() {
 		return gameElement;
@@ -42,109 +40,89 @@ public class Cell {
 		return position;
 	}
 
-	//TODO aqui ver se duas snakes nao comem o mesmo goal e problema de snake nao bloquear
-	//TODO contra outra snake
-	public void request(Snake snake)  {
+
+	public void request(Snake snake) throws InterruptedException {
 		lock.lock();
 		try {
-			while (this.isOcupied()) {
+			while (this.isOcupied())
 				isEmpty.await();
-			}
 			ocuppyingSnake=snake;
-			if(this.isOcupiedByGoal()) {
-				Goal remove = this.removeGoal();
+			if(this.isOcupiedByGoal() )
+				snake.capture(getGoal());
 
-				int amuontToGrow = 0;
-				try {
-					amuontToGrow = remove.captureGoal();
-				} catch (InterruptedException e) {
-					throw new RuntimeException(e);
-				}
-				snake.startGrowing(amuontToGrow);
-			}
-			hasSnake.signalAll();
+			/*if(snake.getBoard().isGameOverV2()){
+				snake.getBoard().interruptAllSnakes();
+				snake.getCells().addFirst(this);
+				snake.getBoard().pool.close();
+				//TODO ver se pool.close() Interrompe os Obstacle Movers:
+				snake.getBoard().interruptAllObs();
+			}*/
 		} catch (InterruptedException e) {
-			throw new RuntimeException(e);
+			System.out.println(snake.getName()+ " entrei no 1º interrupt!");
+			snake.interrupt();
+			snake.getBoard().interruptAllObs();
+
 		} finally {
 			lock.unlock();
 		}
 	}
 
-	//TODO EXLCUSION
 	public void release() {
 		lock.lock();
-		try {
-			while(!this.isOcupied()){
-				hasSnake.await();
-			}
-			this.ocuppyingSnake = null;
-			isEmpty.signalAll();
-		} catch (InterruptedException e) {
-			System.out.println("catched release() exclusion");
-		} finally {
-			lock.unlock();
-		}
+		this.ocuppyingSnake = null;
+		isEmpty.signalAll();
+		lock.unlock();
 	}
+
 	public boolean isCompletelyUnoccupied(){
 		return ocuppyingSnake == null && gameElement == null;
 	}
 
 	public boolean isOcupiedBySnake() {
-			return ocuppyingSnake!=null;
+		return ocuppyingSnake!=null;
 	}
 
 
-		public  void setGameElement(GameElement element) {
-			// TODO coordination and mutual exclusion
-			gameElement=element;
+	public  void setGameElement(GameElement element)  {
+		lock.lock();
+		gameElement = element;
+		lock.unlock();
+	}
 
-		}
+	public void removeObstacle() {
+		lock.lock();
+		gameElement = null;
+		isEmpty.signalAll();
+		lock.unlock();
+	}
 
-		public boolean isOcupied() {
-			return isOcupiedBySnake() || (gameElement!=null && gameElement instanceof Obstacle);
-		}
-
-
-		public Snake getOcuppyingSnake() {
-			return ocuppyingSnake;
-		}
-
-
-		// TODO coordination ?
-		public  Goal removeGoal() {
-			Goal g = getGoal();
-			//gameElement = null
-			return g;
-		}
-
-		public void removeObstacle() {
-			lock.lock();
-			try {
-				while(!this.isOcupied()){
-					hasSnake.await();
-				}
-				gameElement = null;
-				isEmpty.signalAll();
-			} catch (InterruptedException e) {
-				System.out.println("catched release() exclusion");
-			} finally {
-				lock.unlock();
-			}
-
-		}
+	public  Goal removeGoal() {
+		Goal g = getGoal();
+		gameElement = null;
+		return g;
+	}
 
 
-		public Goal getGoal() {
-			return (Goal)gameElement;
-		}
+	public Goal getGoal() {
+		return (Goal)gameElement;
+	}
+
+	public boolean isOcupied() {
+		return isOcupiedBySnake() ||
+				(gameElement!=null && gameElement instanceof Obstacle);
+	}
 
 
-		public boolean isOcupiedByGoal() {
-			return (gameElement!=null && gameElement instanceof Goal);
-		}
+	public Snake getOcuppyingSnake() {
+		return ocuppyingSnake;
+	}
 
-		@Override
-		public String toString(){
-			return "(" + position.x + "," + position.y + ")";
-		}
+	public boolean isOcupiedByGoal() {
+		return (gameElement!=null && gameElement instanceof Goal);
+	}
+
+	@Override
+	public String toString(){
+		return "(" + position.x + "," + position.y + ")";
+	}
 }

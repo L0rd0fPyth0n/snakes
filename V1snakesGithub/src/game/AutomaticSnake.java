@@ -4,85 +4,109 @@ import environment.LocalBoard;
 import environment.Cell;
 import environment.Board;
 import environment.BoardPosition;
+import gui.SnakeGui;
 
+import java.util.*;
+import java.util.stream.Collectors;
 public class AutomaticSnake extends Snake {
 	public AutomaticSnake(int id, LocalBoard board) {
 		super(id,board);
 	}
-	public BoardPosition movementVector(Cell from, Cell to) {
-		BoardPosition d = new BoardPosition(to.getPosition().x - from.getPosition().x,
-				to.getPosition().y - from.getPosition().y);
-		if (Math.abs(d.x) > Math.abs(d.y)) {
-			d = new BoardPosition((int) Math.signum(d.x), 0);
-		} else if (Math.abs(d.x) <= Math.abs(d.y)) {
-			d = new BoardPosition(0, (int) Math.signum(d.y));
+//	private BoardPosition movementVector(Cell from, Cell to) {
+//		BoardPosition d = new BoardPosition(to.getPosition().x - from.getPosition().x,
+//				to.getPosition().y - from.getPosition().y);
+//		if (Math.abs(d.x) > Math.abs(d.y)) {
+//			d = new BoardPosition((int) Math.signum(d.x), 0);
+//		} else if (Math.abs(d.x) <= Math.abs(d.y)) {
+//			d = new BoardPosition(0, (int) Math.signum(d.y));
+//		}
+//		return d;
+//	}
+//	//NewPosition = currentPosition + VectorToTheGoal
+//	protected Cell getNextCellv2(){
+//		Cell currCell = getCells().getFirst();
+//
+//		BoardPosition goalBp = getBoard().getGoalPosition();
+//		Cell goalCell = getBoard().getCell( goalBp);
+//
+//		while(true) {
+//			BoardPosition vector = movementVector(currCell, goalCell);
+//			BoardPosition currPos = currCell.getPosition();
+//
+//			BoardPosition newPos = new BoardPosition(currPos.x + vector.x, currPos.y + vector.y);
+//			if (!getBoard().isOutOfBound(newPos)) {
+//				Cell newCell = getBoard().getCell(newPos);
+//				return newCell;
+//			}
+//		}
+//	}
+
+
+	//TODO FAZER NO FILTRO PARA NAO ANDAR NA DIAGONAL Q É ISSO Q ACONTECE DPS DO RESET
+	protected Cell getNextCell(){
+		Cell head = getCells().getFirst();
+
+		List<BoardPosition> neighbourPos = getBoard().getNeighboringPositions(head);
+		List<Cell> freePositions = null;
+		if(this.flag){
+			 freePositions = neighbourPos.stream()
+							.map((bp) -> this.getBoard().getCell(bp))
+							.filter((c) -> (!this.getCells().contains(c)) && (!c.isOcupied()) )
+							.sorted(this::compare)
+							.toList();
+		}else {
+			freePositions = neighbourPos.stream()
+					.map((bp) -> getBoard().getCell(bp))
+					.filter((c) -> !getCells().contains(c))
+					.sorted(this::compare)
+					.toList();
 		}
-		return d;
+		this.flag=false;
+
+		//ISTO PQ MM ASSIM SE A SNAKE FICAR SEM SITIO PRA IR TAVA A DAR INDEX OUT OF BOUNDS
+		return freePositions.isEmpty() ? null : freePositions.get(0);
 	}
-
-
-	//NewPosition = currentPosition + VectorToTheGoal
-	public Cell generatePosToGoal(){
-		BoardPosition currPos = getCells().getFirst().getPosition();
-		Cell currCell = getBoard().getCell(currPos);
-
-		BoardPosition goalBp = getBoard().getGoalPosition();
-		Cell goalCell = getBoard().getCell( goalBp);
-
-		BoardPosition newBP = null;
-		while(true) {
-
-			BoardPosition vector = movementVector(currCell, goalCell);
-			newBP = new BoardPosition(currPos.x + vector.x, currPos.y + vector.y);
-
-			if (!getBoard().isOutOfBound(newBP)) {
-				break;
-			}
-		}
-		Cell newPos = getBoard().getCell(newBP);
-
-		currCell.release();
-
-		//this.getCells().remove(aux);
-//		this.getCells().remove(getCells().getLast());
-//		this.getCells().add(0,newPos);
-		return newPos;
-	}
-
-
-	public void move(Cell bp)  {
-		bp.request(this);
-		cells.add(0,bp);
-
-		if(!hasToGrow()) {
-			cells.removeLast();
-		}
-
-		getBoard().setChanged();
-	}
-
 
 	@Override
 	public void run() {
 		doInitialPositioning();
-		System.out.println("initial size: "+cells.size());
-		while(this.getBoard().getCell(this.getBoard().getGoalPosition()).
-				getGoal().getValue() <10) {
+		while(!getBoard().isGameOverV2()) {
 			try {
-				Cell toMove = generatePosToGoal();
-
-				this.move(toMove);
-				if(this.getBoard().getCell(this.getBoard().getGoalPosition()).
-						getGoal().getValue() ==10 ){
-					//TODO
-					this.interrupt();
-					this.join();
-				}
 				Thread.sleep(Board.PLAYER_PLAY_INTERVAL);
+				Cell toMove = getNextCell();
+				if(toMove == null){
+					break;
+				}else {
+					this.move(toMove);
+				}
 			} catch (InterruptedException e) {
-				System.out.println("sai do move automatic");
-				//return;
-			}
+//				if(!getBoard().isGameOverV2()){
+//					Cell head = this.getCells().getFirst();
+//					List<BoardPosition> neighbourPos = this.getBoard().getNeighboringPositions(head);
+//					List<Cell> freePositions = neighbourPos.stream()
+//							.map((bp) -> this.getBoard().getCell(bp))
+//							.filter((c) -> (!this.getCells().contains(c)) && (!c.isOcupied()) )
+//							.sorted(this::compare)
+//							.toList();
+//					if(freePositions.isEmpty()){
+//						break;
+//					} else {
+//						try {
+//							this.move(freePositions.get(0));
+//						} catch (InterruptedException ex) {
+//							ex.printStackTrace();
+//						}
+//					}
+//
+//				} else {
+//					break;
+//			}
 		}
+	}
+		System.out.println(Thread.currentThread() + " Class: AitoSnake ended");
+}
+	public int compare(Cell c1, Cell c2){
+		BoardPosition goalPos = this.getBoard().getGoalPosition();
+		return  (int) Math.signum(c1.getPosition().distanceTo(goalPos)  - c2.getPosition().distanceTo(goalPos));
 	}
 }

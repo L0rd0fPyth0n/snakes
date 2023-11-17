@@ -1,12 +1,13 @@
 package environment;
 
+import java.io.Serializable;
+
 /** Classe representing a position on the board, with some utilities
  * 
  * @author luismota
  *
  */
-
-public class BoardPosition {
+public class BoardPosition implements Serializable {
 	public final int x;
 	public final int y;
 
@@ -15,7 +16,6 @@ public class BoardPosition {
 		this.x = x;
 		this.y = y;
 	}
-
 	@Override
 	public String toString() {
 		return "(" + x + ", " + y + ")";
@@ -26,11 +26,16 @@ public class BoardPosition {
 		BoardPosition other = (BoardPosition) obj;
 		return other.x==x && other.y == y;
 	}
-	
+
+	//euclidean distance
 	public double distanceTo(BoardPosition other) {
 		double delta_x = y - other.y;
 		double delta_y = x - other.x;
 		return Math.sqrt(delta_x * delta_x + delta_y * delta_y);
+	}
+	public int distanceToManhattan(BoardPosition other) {
+		//Manhattan distance
+		return Math.abs( y - other.y) + Math.abs(x - other.x)  ;
 	}
 
 	public BoardPosition getCellAbove() {

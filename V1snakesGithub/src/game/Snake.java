@@ -15,48 +15,53 @@ import environment.Cell;
  * Will be extended by HumanSnake and AutomaticSnake.
  * Common methods will be defined here.
  * @author luismota
- *
  */
-public abstract class Snake extends Thread implements Serializable{
+public abstract class  Snake extends Thread implements Serializable{
 	private static final int DELTA_SIZE = 10;
 	protected LinkedList<Cell> cells = new LinkedList<Cell>();
 	protected int size = 5;
 	private int id;
-	private Board board;
+	private transient Board board;
+	private int amountToGrow = 0;
+	protected transient static Random rand =  new Random();
+	protected transient boolean flag = false;
+	private Lock lock = new ReentrantLock();
 
-	private int amountToGrow;
-
-	//TODO
-	private Lock lockSnake = new ReentrantLock();
-	////
-
-	protected void grow(Cell c){
-
+	public void setFlagTrue(){
+		this.flag = true;
 	}
-	protected boolean hasToGrow(){
-		return --amountToGrow > 0;
-	}
-	public void startGrowing(int amountToGrow){
-		this.amountToGrow = amountToGrow;
-	}
-	private Random rand =  new Random();
 	public Snake(int id,Board board) {
 		this.id = id;
 		this.board=board;
 	}
 
+	public boolean hasToGrow(){
+		//TODO bad
+		return --amountToGrow > 0;
+	}
+
+	/*	protected void decreaseHasToGrow(){
+        hasToGrow--;
+    }*/
+	public void capture(Goal goal) throws InterruptedException {
+		//TODO isto devia ser += mas só com = é q funciona
+		this.amountToGrow = goal.captureGoal();
+	}
+
+
 	public int getSize() {
 		return size;
+	}
+
+	//TODO diferença entre o de cima e o de baixo
+	public int getLength() {
+		return cells.size();
 	}
 
 	public int getIdentification() {
 		return id;
 	}
 
-	public int getLength() {
-		return cells.size();
-	}
-	
 	public LinkedList<Cell> getCells() {
 		return cells;
 	}
@@ -64,40 +69,61 @@ public abstract class Snake extends Thread implements Serializable{
 //	protected void move(Cell cell) throws InterruptedException {
 //		cell.request(this);
 //	}
-protected abstract void move(Cell cell) throws InterruptedException;
 
-
-	public LinkedList<BoardPosition> getPath() {
-		LinkedList<BoardPosition> coordinates = new LinkedList<BoardPosition>();
-		for (Cell cell : cells) {
-			coordinates.add(cell.getPosition());
+	//TODO PASSAR O MOVING PARA AQUI
+    /*
+	public void moving(Cell cell) {
+		this.getCells().add(0,cell);
+		if(!this.hasToGrow()) {
+			Cell temp = this.getCells().removeLast();
+			temp.release();
 		}
-		return coordinates;
 	}
+	 */
 
-	protected void doInitialPositioning() {
-		// Random position on the first column. 
-		// At startup, snake occupies a single cell
-		int posX = 0;
-		while(true){
-			int posY = rand.nextInt(Board.NUM_ROWS);
-			BoardPosition at = new BoardPosition(posX, posY);
-				if(!board.getCell(at).isOcupiedBySnake()) {
+	public void move(Cell bp) throws InterruptedException  {
+			bp.request(this);
+			//TODO otimizar isto
+			if((this.isInterrupted() && !getBoard().isGameOverV2()) || getBoard().isGameOverV2() )
+				return;
+			cells.add(0, bp);//TODO passar para class Cell
+			if (!hasToGrow()) {
+				Cell temp = cells.removeLast(); //TODO passar para class Cell
+				temp.release();
+			}
+			getBoard().setChanged();
+		}
+
+		protected abstract Cell getNextCell();
+
+		public LinkedList<BoardPosition> getPath() {
+			LinkedList<BoardPosition> coordinates = new LinkedList<>();
+			for (Cell cell : cells) {
+				coordinates.add(cell.getPosition());
+			}
+			return coordinates;
+		}
+
+		protected void doInitialPositioning() {
+			// Random position on the first column.
+			// At startup, snake occupies a single cell
+			int posX = 0;
+			while(true){
+				int posY = rand.nextInt(Board.NUM_ROWS);
+				Cell firstPos = board.getCell(new BoardPosition(posX, posY));
+				if(!firstPos.isOcupiedBySnake()) {
+					cells.add(firstPos);
 					try {
-						this.move(board.getCell(at));
-					} catch (InterruptedException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
+						firstPos.request(this);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
 					}
-					cells.add(board.getCell(at));
 					break;
 				}
+			}
+			//System.err.println("Snake "+getIdentification()+" starting at:"+getCells().getLast());
 		}
-		System.err.println("Snake "+getIdentification()+" starting at:"+getCells().getLast());
+		public Board getBoard() {
+			return board;
+		}
 	}
-	public Board getBoard() {
-		return board;
-	}
-	
-	
-}

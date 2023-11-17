@@ -1,0 +1,13 @@
+
+r	java:S117 "QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Òª£üÿÿÿÿ8ĞÓ÷ù½1
+m	java:S117!"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÎÿÕâ8ÑÓ÷ù½1
+g
+java:S2184 "ECast one of the operands of this subtraction operation to a "double".(Òª£üÿÿÿÿ8ÒÓ÷ù½1
+b
+java:S2184!"ECast one of the operands of this subtraction operation to a "double".(ÎÿÕâ8ÒÓ÷ù½1
+e
+java:S2259"CA "NullPointerException" could be thrown; "other" is nullable here.(º°¡ÿÿÿÿÿ8ÛÓ÷ù½1
+m
+java:S1206"PThis class overrides "equals()" and should therefore also override "hashCode()".(ÜÑã8ÜÓ÷ù½1
+<
+java:S2097"Add a type test to this method.(ÜÑã8âÓ÷ù½1

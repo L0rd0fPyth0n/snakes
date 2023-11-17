@@ -1,27 +1,31 @@
 package environment;
 
-import java.io.Serializable;
+import java.io.IOException;
 import java.util.*;
 
 import game.*;
 
-import java.util.Random;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadPoolExecutor;
+
+import static environment.LocalBoard.NUM_SIMULTANEOUS_MOVING_OBSTACLES;
 
 public abstract class Board extends Observable {
 	protected Cell[][] cells;
 	private BoardPosition goalPosition;
-	public static final long PLAYER_PLAY_INTERVAL = 1000;
+	public static final long PLAYER_PLAY_INTERVAL = 100;
 	public static final long REMOTE_REFRESH_INTERVAL = 200;
 	public static final int NUM_COLUMNS = 30;
 	public static final int NUM_ROWS = 30;
 	protected LinkedList<Snake> snakes = new LinkedList<Snake>();
 	private LinkedList<Obstacle> obstacles= new LinkedList<Obstacle>();
-	protected boolean isFinished;
 
-	private ThreadPoolExecutor executor =
-			(ThreadPoolExecutor) Executors.newFixedThreadPool(2);
+	private LinkedList<ObstacleMover> obstacleMovers = new LinkedList<>();
+	protected boolean isFinished=false;
+
+	public ExecutorService pool = Executors.newFixedThreadPool(NUM_SIMULTANEOUS_MOVING_OBSTACLES);
+	private Goal goal;
+
 	public Board() {
 		cells = new Cell[NUM_COLUMNS][NUM_ROWS];
 		for (int x = 0; x < NUM_COLUMNS; x++) {
@@ -30,6 +34,30 @@ public abstract class Board extends Observable {
 			}
 		}
 	}
+
+	public Cell[][] getCells() {
+		return cells;
+	}
+
+	public LinkedList<ObstacleMover> getObstacleMovers() {
+		return obstacleMovers;
+	}
+
+	public void setObstacleMovers(LinkedList<ObstacleMover> obstacleMovers) {
+		this.obstacleMovers = obstacleMovers;
+	}
+
+	public void interruptAllSnakes() {
+		for(Snake s : this.getSnakes()){
+			s.interrupt();
+		}
+	}
+
+	public void interruptAllObs(){
+		for(ObstacleMover obs: this.getObstacleMovers())
+			obs.interrupt();
+	}
+
 	public boolean isOutOfBound(BoardPosition cell){
 		return cell.x < 0 ||
 				cell.x>=Board.NUM_COLUMNS ||
@@ -37,8 +65,9 @@ public abstract class Board extends Observable {
 				cell.y >= Board.NUM_ROWS;
 	}
 	public Cell getCell(BoardPosition cellCoord)   {
-//		if(isOutOfBound(cellCoord))
-//			throws ;
+		if(isOutOfBound(cellCoord)) {
+			throw  new IllegalArgumentException();
+		}
 		return cells[cellCoord.x][cellCoord.y];
 	}
 
@@ -51,6 +80,9 @@ public abstract class Board extends Observable {
 	}
 
 	public void setGoalPosition(BoardPosition goalPosition) {
+		if(isOutOfBound(goalPosition)) {
+			throw  new IllegalArgumentException();
+		}
 		this.goalPosition = goalPosition;
 	}
 	
@@ -60,12 +92,10 @@ public abstract class Board extends Observable {
 			BoardPosition pos=getRandomPosition();
 			if(!getCell(pos).isOcupied() && !getCell(pos).isOcupiedByGoal()) {
 				getCell(pos).setGameElement(gameElement);
-				if(gameElement instanceof Goal) {
-					setGoalPosition(pos);
-//					System.out.println("Goal placed at:"+pos);
-				}
-				if(gameElement instanceof Obstacle obs) {
-					obs.setPos(pos);
+				switch (gameElement) {
+					case Goal g -> setGoalPosition(pos);
+					case Obstacle obs -> obs.setPos(pos);
+					default -> {}
 				}
 				placed=true;
 			}
@@ -84,35 +114,37 @@ public abstract class Board extends Observable {
 		if(pos.y<NUM_ROWS-1)
 			possibleCells.add(pos.getCellBelow());
 		return possibleCells;
-
 	}
 
 
+	//TODO
 	protected Goal addGoal() {
-		Goal goal=new Goal(this);
-		//new Thread(goal).start();
-		addGameElement( goal);
+		Goal goal2 = new Goal(this);
+		addGameElement( goal2);
 		//setGoalPosition(new BoardPosition(4,4));
-		return goal;
+		return goal2;
 	}
+
+
 
 	protected void addObstacles(int numberObstacles) {
 		// clear obstacle list , necessary when resetting obstacles.
 		getObstacles().clear();
-		while(numberObstacles>0) {
+		for (int i = 0; i < numberObstacles; i++) {
 			Obstacle obs=new Obstacle(this);
 			ObstacleMover lb = new ObstacleMover(obs,this);
-			lb.start();
-			//TODO adicionar a thread pool
+			obstacleMovers.add(lb);
+
+			pool.submit(lb);
 
 			addGameElement(obs);
 			getObstacles().add(obs);
-			numberObstacles--;
 		}
 	}
 	public LinkedList<Snake> getSnakes() {
 		return snakes;
 	}
+
 	@Override
 	public void setChanged() {
 		super.setChanged();
@@ -123,15 +155,27 @@ public abstract class Board extends Observable {
 		return obstacles;
 	}
 
+	public Goal getGoal(){
+		return this.goal;
+	}
+
+	public boolean isGameOverV2(){
+		return isFinished;
+	}
+
+	public void setGameOver(){
+		isFinished = true;
+	}
+
+	public boolean getGameOver(){
+		return isFinished;
+	}
 	
 	public abstract void init(); 
 	
 	public abstract void handleKeyPress(int keyCode);
 
 	public abstract void handleKeyRelease();
-	
-	
-	
 
 	public void addSnake(Snake snake) {
 		snakes.add(snake);

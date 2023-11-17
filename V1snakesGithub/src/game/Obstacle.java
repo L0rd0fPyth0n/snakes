@@ -8,7 +8,7 @@ import environment.LocalBoard;
 public class Obstacle extends GameElement {
 	
 	private static final int NUM_MOVES=10;
-	public static final int OBSTACLE_MOVE_INTERVAL = 2000;
+	public static final int OBSTACLE_MOVE_INTERVAL = 1000;
 	private int remainingMoves=NUM_MOVES;
 	private final Board board;
 
@@ -29,15 +29,15 @@ public class Obstacle extends GameElement {
 
 	public void move(Cell nextCell){
 		board.getCell(this.getPos()).removeObstacle();
-
 		nextCell.setGameElement(this);
-
 		this.setPos(nextCell.getPosition());
 		board.setChanged();
-		remainingMoves--;
+
 	}
 	public int getRemainingMoves() {
 		return remainingMoves;
 	}
-
+	public void decrementRemainingMoves(){
+		 remainingMoves--;
+	}
 }

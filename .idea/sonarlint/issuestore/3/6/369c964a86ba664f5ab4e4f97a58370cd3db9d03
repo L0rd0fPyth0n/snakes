@@ -1,0 +1,12 @@
+
+{
+java:S2142""^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(¶èî¡8‘ð¡û½1
+E	java:S108"")Either remove or fill this block of code.(¶èî¡8”ð¡û½1
+R
+java:S1128"6Remove this unused import 'environment.BoardPosition'.(©ÛÜP8§ž¾ü½1
+U
+java:S1128"3Remove this unused import 'environment.LocalBoard'.(ïÂ”©ùÿÿÿÿ8§ž¾ü½1
+v
+java:S1128"TRemove this unnecessary import: same package classes are always implicitly imported.(þøµŸüÿÿÿÿ8¨ž¾ü½1
+a
+java:S1128	"DRemove this unused import 'java.util.concurrent.ThreadPoolExecutor'.(¦ÿöÊ8¨ž¾ü½1
