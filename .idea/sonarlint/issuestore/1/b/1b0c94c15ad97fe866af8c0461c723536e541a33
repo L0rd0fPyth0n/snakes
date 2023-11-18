@@ -1,44 +1,37 @@
 
 {
-java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(¯¢ïªıÿÿÿÿ8ÕÕù½1
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(¯¢ïªıÿÿÿÿ8Í¿¾1
 “
-java:S1319A"qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".(…»È‹ûÿÿÿÿ8ÕÕù½1
+java:S1319?"qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".(…»È‹ûÿÿÿÿ8‘Í¿¾1
 “
-java:S1319c"qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".(†œÍÔûÿÿÿÿ8ÕÕù½1
+java:S1319R"qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".(†œÍÔûÿÿÿÿ8‘Í¿¾1
 [
-java:S5993!"9Change the visibility of this constructor to "protected".(¿İ¤Éÿÿÿÿÿ8§ÕÕù½1
+java:S5993 "9Change the visibility of this constructor to "protected".(¿İ¤Éÿÿÿÿÿ8ŸÍ¿¾1
 C
-java:S1948"&Make "lock" transient or serializable.(‰ »¯8§ÕÕù½1
+java:S1948"&Make "lock" transient or serializable.(‰ »¯8ŸÍ¿¾1
 ]
-java:S2134"@Don't extend "Thread", since the "run" method is not overridden.(‡ş¬8©ÕÕù½1
+java:S2134"@Don't extend "Thread", since the "run" method is not overridden.(‡ş¬8 Í¿¾1
 b
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(òäì 8®ÕÕù½1
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(òäì 8¢Í¿¾1
 T
-java:S1135'"2Complete the task associated to this TODO comment.(½±¨èıÿÿÿÿ8²ÕÕù½1
-X	java:S125+"<This block of commented-out lines of code should be removed.(šæœ8³ÕÕù½1
+java:S1135&"2Complete the task associated to this TODO comment.(½±¨èıÿÿÿÿ8£Í¿¾1
+™
+java:S1130-"wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(Ë¥ğÀÿÿÿÿÿ8çˆ°‚¾1
+X	java:S125*"<This block of commented-out lines of code should be removed.(šæœ8¤Í¿¾1
 T
-java:S1135/"2Complete the task associated to this TODO comment.(‘ƒå‚ùÿÿÿÿ8´ÕÕù½1
-O
-java:S11358"2Complete the task associated to this TODO comment.(º«ãÑ8µÕÕù½1
-X	java:S125E"<This block of commented-out lines of code should be removed.(éì ¥8¸ÕÕù½1
-]	java:S125K"<This block of commented-out lines of code should be removed.(çäãîıÿÿÿÿ8¸ÕÕù½1
-O
-java:S1135I"2Complete the task associated to this TODO comment.(«‚âæ8¸ÕÕù½1
+java:S1135."2Complete the task associated to this TODO comment.(‘ƒå‚ùÿÿÿÿ8¤Í¿¾1
 T
-java:S1135V"2Complete the task associated to this TODO comment.(ıª“Òüÿÿÿÿ8¹ÕÕù½1
+java:S1135E"2Complete the task associated to this TODO comment.(ıª“Òüÿÿÿÿ8¦Í¿¾1
 T
-java:S1135Y"2Complete the task associated to this TODO comment.(ü­Éåøÿÿÿÿ8ºÕÕù½1
+java:S1135F"2Complete the task associated to this TODO comment.(Î™‹Òüÿÿÿÿ8ÂÉÙ¾1
 T
-java:S1135["2Complete the task associated to this TODO comment.(ûäôªúÿÿÿÿ8»ÕÕù½1
+java:S1135H"2Complete the task associated to this TODO comment.(ü­Éåøÿÿÿÿ8¦Í¿¾1
+T
+java:S1135J"2Complete the task associated to this TODO comment.(ûäôªúÿÿÿÿ8§Í¿¾1
 {
-java:S2142v"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8ÁÕÕù½1
-X	java:S125|"<This block of commented-out lines of code should be removed.(§´ã¸8ì…ú½1
-U
-java:S1128	"3Remove this unused import 'environment.LocalBoard'.(ïÂ”©ùÿÿÿÿ8ÄÕÕù½1
-K
-java:S1128
-")Remove this unused import 'gui.SnakeGui'.(Ûÿ¾’şÿÿÿÿ8ÄÕÕù½1
+java:S2142e"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8©Í¿¾1
+X	java:S125k"<This block of commented-out lines of code should be removed.(§´ã¸8ªÍ¿¾1
 P
-java:S1068".Remove this unused "DELTA_SIZE" private field.(©Ö±Ôÿÿÿÿÿ8ÅÕÕù½1
+java:S1068".Remove this unused "DELTA_SIZE" private field.(©Ö±Ôÿÿÿÿÿ8ªÍ¿¾1
 E
-java:S1068"(Remove this unused "lock" private field.(‰ »¯8ÅÕÕù½1
+java:S1068"(Remove this unused "lock" private field.(‰ »¯8ªÍ¿¾1

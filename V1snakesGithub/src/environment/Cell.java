@@ -30,7 +30,6 @@ public class Cell implements Serializable{
 		return gameElement;
 	}
 
-
 	public Cell(BoardPosition position) {
 		super();
 		this.position = position;
@@ -50,15 +49,9 @@ public class Cell implements Serializable{
 			if(this.isOcupiedByGoal() )
 				snake.capture(getGoal());
 
-			/*if(snake.getBoard().isGameOverV2()){
-				snake.getBoard().interruptAllSnakes();
-				snake.getCells().addFirst(this);
-				snake.getBoard().pool.close();
-				//TODO ver se pool.close() Interrompe os Obstacle Movers:
-				snake.getBoard().interruptAllObs();
-			}*/
+			if(snake.getBoard().isGameOverV2()) snake.getCells().addFirst(this);
+
 		} catch (InterruptedException e) {
-			System.out.println(snake.getName()+ " entrei no 1º interrupt!");
 			snake.interrupt();
 			snake.getBoard().interruptAllObs();
 

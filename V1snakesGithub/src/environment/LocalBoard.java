@@ -41,7 +41,7 @@ public class LocalBoard extends Board{
 	public void init() {
 		for(Snake s:snakes)
 			s.start();
-		// TODO: launch other threads
+		// TODO: launch other threads  !!
 		setChanged();
 	}
 

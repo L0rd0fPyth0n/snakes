@@ -19,11 +19,10 @@ public abstract class Board extends Observable {
 	public static final int NUM_ROWS = 30;
 	protected LinkedList<Snake> snakes = new LinkedList<Snake>();
 	private LinkedList<Obstacle> obstacles= new LinkedList<Obstacle>();
-
 	private LinkedList<ObstacleMover> obstacleMovers = new LinkedList<>();
 	protected boolean isFinished=false;
-
 	public ExecutorService pool = Executors.newFixedThreadPool(NUM_SIMULTANEOUS_MOVING_OBSTACLES);
+	//TODO Pool pode ser final?
 	private Goal goal;
 
 	public Board() {
@@ -64,6 +63,7 @@ public abstract class Board extends Observable {
 				cell.y <0 ||
 				cell.y >= Board.NUM_ROWS;
 	}
+
 	public Cell getCell(BoardPosition cellCoord)   {
 		if(isOutOfBound(cellCoord)) {
 			throw  new IllegalArgumentException();
@@ -116,16 +116,12 @@ public abstract class Board extends Observable {
 		return possibleCells;
 	}
 
-
-	//TODO
 	protected Goal addGoal() {
 		Goal goal2 = new Goal(this);
 		addGameElement( goal2);
 		//setGoalPosition(new BoardPosition(4,4));
 		return goal2;
 	}
-
-
 
 	protected void addObstacles(int numberObstacles) {
 		// clear obstacle list , necessary when resetting obstacles.
@@ -141,6 +137,7 @@ public abstract class Board extends Observable {
 			getObstacles().add(obs);
 		}
 	}
+
 	public LinkedList<Snake> getSnakes() {
 		return snakes;
 	}

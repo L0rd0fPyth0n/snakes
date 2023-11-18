@@ -24,7 +24,7 @@ public class Client {
 	public static void main(String[] args) {
 		Socket s = null;
 		try {
-			s = new Socket(InetAddress.getLocalHost(),8888);
+			s = new Socket(InetAddress.getLocalHost(),8888); //TODO FECHAR SOCKETS E CANAIS
 			ObjectOutputStream oos = new ObjectOutputStream(s.getOutputStream());
 
 			RemoteBoard rb = new RemoteBoard(oos);
@@ -32,7 +32,7 @@ public class Client {
 			game.init();
 
 
-			ObjectInputStream ois = new ObjectInputStream(s.getInputStream());
+			ObjectInputStream ois = new ObjectInputStream(s.getInputStream()); //canal receber estado atual do jogo
 
 			while(true){
 				try {

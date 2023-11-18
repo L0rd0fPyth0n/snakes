@@ -32,8 +32,8 @@ public class Obstacle extends GameElement {
 		nextCell.setGameElement(this);
 		this.setPos(nextCell.getPosition());
 		board.setChanged();
-
 	}
+
 	public int getRemainingMoves() {
 		return remainingMoves;
 	}

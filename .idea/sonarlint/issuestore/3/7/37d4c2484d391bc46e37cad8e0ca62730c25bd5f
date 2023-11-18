@@ -1,37 +1,37 @@
 
 {
-java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(¥´›¸øÿÿÿÿ8åôéû½1
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(¥´›¸øÿÿÿÿ8·Û’ş½1
 v
-java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ò½—Î8æôéû½1
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ò½—Î8¸Û’ş½1
 v
-java:S2293j"YReplace the type specification in this constructor call with the diamond operator ("<>").(÷¼¼§8çôéû½1
+java:S2293j"YReplace the type specification in this constructor call with the diamond operator ("<>").(÷¼¼§8¸Û’ş½1
 “
-java:S1319*"qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".(şÑÒ‘úÿÿÿÿ8çôéû½1
+java:S1319)"qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".(şÑÒ‘úÿÿÿÿ8¹Û’ş½1
 ‘
-java:S1319."oThe type of "obstacleMovers" should be an interface such as "List" rather than the implementation "LinkedList".(¯êı×üÿÿÿÿ8çôéû½1
+java:S1319-"oThe type of "obstacleMovers" should be an interface such as "List" rather than the implementation "LinkedList".(¯êı×üÿÿÿÿ8¹Û’ş½1
 
-java:S1319"qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".(Úòíä8èôéû½1
+java:S1319"qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".(Úòíä8¹Û’ş½1
 ”
-java:S1319š"qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".(ÎÊìâıÿÿÿÿ8èôéû½1
+java:S1319—"qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".(ÎÊìâıÿÿÿÿ8¹Û’ş½1
 m
-java:S1104"PMake pool a static final constant or non-public and provide accessors if needed.(Š©ä²8èôéû½1
+java:S1104"PMake pool a static final constant or non-public and provide accessors if needed.(Š©ä²8ºÛ’ş½1
 V
-java:S5993"9Change the visibility of this constructor to "protected".(ßôü¬8Œõéû½1
+java:S5993"9Change the visibility of this constructor to "protected".(ßôü¬8×Û’ş½1
 T
-java:S1874"2Remove this use of "Observable"; it is deprecated.(¼•ìùüÿÿÿÿ8õéû½1
-F
-java:S2140K")Use "java.util.Random.nextInt()" instead.(¡›°8Ÿõéû½1
-F
-java:S2140K")Use "java.util.Random.nextInt()" instead.(¡›°8Ÿõéû½1
-H
-java:S1481`"&Remove this unused "g" local variable.(ãûÛúüÿÿÿÿ8¥õéû½1
-E	java:S108b")Either remove or fill this block of code.(”ì­è8§õéû½1
+java:S1874"2Remove this use of "Observable"; it is deprecated.(¼•ìùüÿÿÿÿ8ÙÛ’ş½1
 O
-java:S1135x"2Complete the task associated to this TODO comment.(…ïœ†8¬õéû½1
-]	java:S125|"<This block of commented-out lines of code should be removed.(™ÕÔŞşÿÿÿÿ8­õéû½1
+java:S1135"2Complete the task associated to this TODO comment.(¦£¼Õ8«ì”¾1
+F
+java:S2140K")Use "java.util.Random.nextInt()" instead.(¡›°8áÛ’ş½1
+F
+java:S2140K")Use "java.util.Random.nextInt()" instead.(¡›°8áÛ’ş½1
+H
+java:S1481`"&Remove this unused "g" local variable.(ãûÛúüÿÿÿÿ8èÛ’ş½1
+E	java:S108b")Either remove or fill this block of code.(”ì­è8èÛ’ş½1
+]	java:S125z"<This block of commented-out lines of code should be removed.(™ÕÔŞşÿÿÿÿ8íÛ’ş½1
 W
-java:S2438Š"9Replace "lb" of type Thread with an instance of Runnable.(À‘ò8°õéû½1
+java:S2438†"9Replace "lb" of type Thread with an instance of Runnable.(À‘ò8îÛ’ş½1
 l
-java:S3551•"IMake this method "synchronized" to match the parent class implementation.(Ñ×ôöúÿÿÿÿ8²õéû½1
+java:S3551’"IMake this method "synchronized" to match the parent class implementation.(Ñ×ôöúÿÿÿÿ8ïÛ’ş½1
 R
-java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ8¶õéû½1
+java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ8òÛ’ş½1

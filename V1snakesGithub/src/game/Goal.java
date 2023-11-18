@@ -35,12 +35,14 @@ public class Goal extends GameElement  {
 	}
 
 
-	public  int captureGoal() throws InterruptedException {
-		lockGoal.lock();
+	public int captureGoal() {
+		lockGoal.lock();  //TODO ver lock se é preciso
 		incrementValue();
 		if(value >= MAX_VALUE){
 			board.setGameOver();
-			//TODO board.interruptAllSnakes();
+			board.interruptAllSnakes();
+			board.pool.close();
+			board.interruptAllObs();
 		}
 		//posiçao atual do GOAL antes de comer
 		BoardPosition goalPosition = board.getGoalPosition();
@@ -49,7 +51,6 @@ public class Goal extends GameElement  {
 		GameElement ge = GoalCell.getGameElement();
 
 		GoalCell.removeGoal();
-
 
 		BoardPosition newGoalPos = board.getRandomPosition();
 		Cell nova = board.getCell(newGoalPos);

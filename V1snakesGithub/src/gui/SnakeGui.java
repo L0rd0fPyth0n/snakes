@@ -4,8 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -52,13 +50,13 @@ public class SnakeGui implements Observer {
 		resetObstaclesButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				for(Snake s : board.getSnakes().stream().filter((x)-> x instanceof AutomaticSnake).toList()){
+				for(Snake s : board.getSnakes().stream().filter((x)-> x instanceof AutomaticSnake).toList()){ //TODO duvida
 					if(s.getState() == Thread.State.WAITING)
-						s.setFlagTrue();
+						s.setInterruptedTrue();
 					s.interrupt();
+					//TODO duvida: so dar interrupt nas que tao em wait para dar reset certo?
 				}
 			}
-
 		});
 		frame.add(resetObstaclesButton,BorderLayout.SOUTH);
 

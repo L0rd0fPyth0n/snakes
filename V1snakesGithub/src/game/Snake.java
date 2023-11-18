@@ -6,8 +6,6 @@ import java.util.Random;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-import environment.LocalBoard;
-import gui.SnakeGui;
 import environment.Board;
 import environment.BoardPosition;
 import environment.Cell;
@@ -24,12 +22,13 @@ public abstract class  Snake extends Thread implements Serializable{
 	private transient Board board;
 	private int amountToGrow = 0;
 	protected transient static Random rand =  new Random();
-	protected transient boolean flag = false;
+	protected transient boolean wasInterrupted = false;
 	private Lock lock = new ReentrantLock();
 
-	public void setFlagTrue(){
-		this.flag = true;
+	public void setInterruptedTrue(){
+		this.wasInterrupted = true;
 	}
+
 	public Snake(int id,Board board) {
 		this.id = id;
 		this.board=board;
@@ -53,7 +52,6 @@ public abstract class  Snake extends Thread implements Serializable{
 		return size;
 	}
 
-	//TODO diferença entre o de cima e o de baixo
 	public int getLength() {
 		return cells.size();
 	}
@@ -66,25 +64,10 @@ public abstract class  Snake extends Thread implements Serializable{
 		return cells;
 	}
 
-//	protected void move(Cell cell) throws InterruptedException {
-//		cell.request(this);
-//	}
-
-	//TODO PASSAR O MOVING PARA AQUI
-    /*
-	public void moving(Cell cell) {
-		this.getCells().add(0,cell);
-		if(!this.hasToGrow()) {
-			Cell temp = this.getCells().removeLast();
-			temp.release();
-		}
-	}
-	 */
-
 	public void move(Cell bp) throws InterruptedException  {
 			bp.request(this);
 			//TODO otimizar isto
-			if((this.isInterrupted() && !getBoard().isGameOverV2()) || getBoard().isGameOverV2() )
+			if((this.isInterrupted() && !getBoard().isGameOverV2()) || getBoard().isGameOverV2() ) //TODO simplificar?
 				return;
 			cells.add(0, bp);//TODO passar para class Cell
 			if (!hasToGrow()) {

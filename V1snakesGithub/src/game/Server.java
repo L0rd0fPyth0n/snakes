@@ -22,9 +22,7 @@ public class Server extends Thread{
             try (ServerSocket serverSocket =  new ServerSocket(8888)) {
                 while (true){
                     Socket clientSocket = serverSocket.accept();
-                    System.out.println("Socket created");
                     ObjectInputStream inputStream = new ObjectInputStream(clientSocket.getInputStream());
-                    System.out.println("inputStream created");
                     HumanSnake newPlayer = new HumanSnake(i++, this.board, inputStream);
 
 
