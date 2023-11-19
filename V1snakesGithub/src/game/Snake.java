@@ -94,7 +94,7 @@ public abstract class  Snake extends Thread implements Serializable{
 			while(true){
 				int posY = rand.nextInt(Board.NUM_ROWS);
 				Cell firstPos = board.getCell(new BoardPosition(posX, posY));
-				if(!firstPos.isOcupiedBySnake()) {
+				if(!firstPos.isOcupied()) {
 					cells.add(firstPos);
 					try {
 						firstPos.request(this);

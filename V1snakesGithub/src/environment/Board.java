@@ -13,8 +13,8 @@ import static environment.LocalBoard.NUM_SIMULTANEOUS_MOVING_OBSTACLES;
 public abstract class Board extends Observable {
 	protected Cell[][] cells;
 	private BoardPosition goalPosition;
-	public static final long PLAYER_PLAY_INTERVAL = 100;
-	public static final long REMOTE_REFRESH_INTERVAL = 200;
+	public static final long PLAYER_PLAY_INTERVAL = 100; //default: 100
+	public static final long REMOTE_REFRESH_INTERVAL = 200; //default: 200
 	public static final int NUM_COLUMNS = 30;
 	public static final int NUM_ROWS = 30;
 	protected LinkedList<Snake> snakes = new LinkedList<Snake>();

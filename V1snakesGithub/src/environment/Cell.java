@@ -23,8 +23,7 @@ public class Cell implements Serializable{
 	private Snake ocuppyingSnake = null;
 	private transient GameElement gameElement=null;
 	private transient Lock lock = new ReentrantLock();
-	public transient Condition isEmpty = lock.newCondition();
-	public transient Condition hasStuff = lock.newCondition();
+	private transient Condition isEmpty = lock.newCondition();
 
 	public GameElement getGameElement() {
 		return gameElement;
@@ -76,7 +75,7 @@ public class Cell implements Serializable{
 	}
 
 
-	public  void setGameElement(GameElement element)  {
+	public void setGameElement(GameElement element)  {
 		lock.lock();
 		gameElement = element;
 		lock.unlock();

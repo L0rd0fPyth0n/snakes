@@ -7,8 +7,8 @@ import environment.LocalBoard;
 
 public class Obstacle extends GameElement {
 	
-	private static final int NUM_MOVES=10;
-	public static final int OBSTACLE_MOVE_INTERVAL = 1000;
+	private static final int NUM_MOVES=3; //default: 3
+	public static final int OBSTACLE_MOVE_INTERVAL = 400; //default: 400
 	private int remainingMoves=NUM_MOVES;
 	private final Board board;
 

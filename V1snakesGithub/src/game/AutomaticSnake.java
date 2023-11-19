@@ -70,7 +70,7 @@ public class AutomaticSnake extends Snake {
 //			}
 		}
 	}
-		System.out.println(Thread.currentThread() + " Class: AitoSnake ended");
+		System.out.println(Thread.currentThread() + " Class: Automatic Snake ended");
 }
 
 	public int compare(Cell c1, Cell c2){
