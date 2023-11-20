@@ -1,18 +1,15 @@
 package environment;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
-
-import javax.sound.midi.SysexMessage;
 
 import game.GameElement;
 import game.Goal;
 import game.Obstacle;
 import game.Snake;
-import game.AutomaticSnake;
+
 /** Main class for game representation.
  *
  * @author luismota
@@ -45,9 +42,7 @@ public class Cell implements Serializable{
 			while (this.isOcupied())
 				isEmpty.await();
 			ocuppyingSnake=snake;
-			if(this.isOcupiedByGoal() )
-				snake.capture(getGoal());
-
+			if(this.isOcupiedByGoal() )	snake.capture(getGoal());
 			if(snake.getBoard().isGameOverV2()) snake.getCells().addFirst(this);
 
 		} catch (InterruptedException e) {
@@ -75,12 +70,21 @@ public class Cell implements Serializable{
 	}
 
 
-	public void setGameElement(GameElement element)  {
+	public void setGameElement(GameElement element){
 		lock.lock();
+
 		gameElement = element;
 		lock.unlock();
 	}
 
+	public void setGameElementObstacle(GameElement element) throws InterruptedException {
+		lock.lock();
+		if(!isCompletelyUnoccupied()){
+			throw new InterruptedException();
+		}
+		gameElement = element;
+		lock.unlock();
+	}
 	public void removeObstacle() {
 		lock.lock();
 		gameElement = null;

@@ -75,6 +75,11 @@ public abstract class Board extends Observable {
 		return new BoardPosition((int) (Math.random() *NUM_ROWS),(int) (Math.random() * NUM_ROWS));
 	}
 
+	public BoardPosition getAlwaysSame() {
+		//This method exists only for debuging and problem finding
+		return new BoardPosition(3,3);
+	}
+
 	public BoardPosition getGoalPosition() {
 		return goalPosition;
 	}
