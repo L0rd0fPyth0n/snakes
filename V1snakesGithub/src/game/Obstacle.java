@@ -27,12 +27,12 @@ public class Obstacle extends GameElement {
 		this.pos = pos;
 	}
 
-	public void move(Cell nextCell){
-		board.getCell(this.getPos()).removeObstacle();
-		nextCell.setGameElement(this);
-		this.setPos(nextCell.getPosition());
-		board.setChanged();
-	}
+//	public void move(Cell nextCell){
+//		board.getCell(this.getPos()).removeObstacle();
+//		nextCell.setGameElement(this);
+//		this.setPos(nextCell.getPosition());
+//		board.setChanged();
+//	}
 
 	public int getRemainingMoves() {
 		return remainingMoves;

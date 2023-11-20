@@ -1,11 +1,5 @@
 
 k
-java:S4201h"IRemove this unnecessary null check; "instanceof" returns false for nulls.(¹–±™ÿÿÿÿÿ8—ÍŽ¦¾1
+java:S4201l"IRemove this unnecessary null check; "instanceof" returns false for nulls.(¹–±™ÿÿÿÿÿ8Ô£ÿð¾1
 f
-java:S4201q"IRemove this unnecessary null check; "instanceof" returns false for nulls.(œ†Æ°8—ÍŽ¦¾1
-M
-java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8˜ÍŽ¦¾1
-\
-java:S1128	":Remove this unused import 'javax.sound.midi.SysexMessage'.(áÔíÄúÿÿÿÿ8˜ÍŽ¦¾1
-M
-java:S1128"0Remove this unused import 'game.AutomaticSnake'.(Ç¼ð×8˜ÍŽ¦¾1
+java:S4201u"IRemove this unnecessary null check; "instanceof" returns false for nulls.(œ†Æ°8×£ÿð¾1

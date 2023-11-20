@@ -1,12 +1,7 @@
 package game;
 
 import environment.Board;
-import environment.BoardPosition;
 import environment.Cell;
-import environment.LocalBoard;
-import game.Obstacle;
-
-import java.util.concurrent.ThreadPoolExecutor;
 
 public class ObstacleMover extends Thread {
 	private Obstacle obstacle;
@@ -24,11 +19,18 @@ public class ObstacleMover extends Thread {
 				Thread.sleep(Obstacle.OBSTACLE_MOVE_INTERVAL);
 				while(true){
 					Cell nextCell = board.getCell(board.getRandomPosition());
-					if (nextCell.isCompletelyUnoccupied()){
-						obstacle.move(nextCell);
+					//if (nextCell.isCompletelyUnoccupied()){
+						//obstacle.move(nextCell);
+					try {
+						nextCell.setGameElementObstacle(this.obstacle);
+					} catch (InterruptedException e) {
+						continue;
+					}
+					board.getCell(this.obstacle.getPos()).removeObstacle();
+					this.obstacle.setPos(nextCell.getPosition());
+						board.setChanged();
 						obstacle.decrementRemainingMoves();
 						break;
-					}
 				}
 			}
 		} catch (InterruptedException ignore) {}
