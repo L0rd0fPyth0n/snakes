@@ -1,0 +1,9 @@
+
+[
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(ÌÏþ¿
+t
+java:S21421"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(´í­Œ
+>	java:S1081")Either remove or fill this block of code.(´í­Œ
+B
+java:S1128
+",Remove this unused import 'java.net.Socket'.(­‡àú

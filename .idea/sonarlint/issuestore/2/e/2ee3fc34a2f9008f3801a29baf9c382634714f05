@@ -1,0 +1,29 @@
+
+B
+java:S1948"'Make "board" transient or serializable.(åÌ–®þÿÿÿÿ
+E
+java:S1948"/Make "obstacleImage" transient or serializable.(‹Ž¥î
+h
+java:S3776*"RRefactor this method to reduce its Cognitive Complexity from 30 to the 15 allowed.(ÈÊ“À
+Q	java:S125-"<This block of commented-out lines of code should be removed.(Ü•Ù
+X
+java:S3252."=Use static access with "environment.Board" for "NUM_COLUMNS".(ÌÅØÔûÿÿÿÿ
+P
+java:S3252/":Use static access with "environment.Board" for "NUM_ROWS".(—Ïý
+G
+java:S5261@"1Add explicit curly braces to avoid dangling else.(Õ×²Ú
+`
+java:S62013"JReplace this instanceof check and cast with 'instanceof Obstacle obstacle'(ˆÖäö
+X
+java:S6201@"BReplace this instanceof check and cast with 'instanceof Goal goal'(Õ×²Ú
+V	java:S125S"<This block of commented-out lines of code should be removed.(éØ»Úûÿÿÿÿ
+U
+java:S3252W":Use static access with "environment.Board" for "NUM_ROWS".(Ž­å¢ûÿÿÿÿ
+U
+java:S3252Y":Use static access with "environment.Board" for "NUM_ROWS".(éêïøúÿÿÿÿ
+X
+java:S3252Z"=Use static access with "environment.Board" for "NUM_COLUMNS".(¥éòùÿÿÿÿÿ
+E	java:S106v"+Replace this use of System.out by a logger.(Úý¤Ñûÿÿÿÿ
+@	java:S106…"+Replace this use of System.out by a logger.(»£"
+F
+java:S1128"0Remove this unused import 'game.AutomaticSnake'.(Ç¼ð×
