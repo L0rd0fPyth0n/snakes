@@ -41,7 +41,7 @@ public class Goal extends GameElement  {
 		if(value >= MAX_VALUE){
 			board.setGameOver();
 			board.interruptAllSnakes();
-			board.pool.close();
+			board.pool.close();//.shutdownNow
 			board.interruptAllObs();
 		}
 		//posiçao atual do GOAL antes de comer
@@ -57,6 +57,8 @@ public class Goal extends GameElement  {
 
 		board.setGoalPosition(newGoalPos);
 		nova.setGameElement(ge);
+
+		//TODO verificar se a cell esta ocupada
 
 		board.setChanged();
 		lockGoal.unlock();

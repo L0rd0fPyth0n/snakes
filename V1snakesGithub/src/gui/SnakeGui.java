@@ -54,7 +54,6 @@ public class SnakeGui implements Observer {
 					if(s.getState() == Thread.State.WAITING)
 						s.setInterruptedTrue();
 					s.interrupt();
-					//TODO duvida: so dar interrupt nas que tao em wait para dar reset certo?
 				}
 			}
 		});
