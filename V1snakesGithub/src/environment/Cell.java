@@ -42,7 +42,7 @@ public class Cell implements Serializable{
 			while (this.isOcupied())
 				isEmpty.await();
 			ocuppyingSnake=snake;
-			if(this.isOcupiedByGoal() )	snake.capture(getGoal());
+			if(this.isOcupiedByGoal())	snake.capture(getGoal());
 			if(snake.getBoard().isGameOverV2()) snake.getCells().addFirst(this);
 
 		} catch (InterruptedException e) {
@@ -78,13 +78,14 @@ public class Cell implements Serializable{
 	}
 
 	public void setGameElementObstacle(GameElement element) throws InterruptedException {
-		lock.lock();
+		lock.lock(); //TODO mudar para verdadeiro sucesso false se nao tiver
 		if(!isCompletelyUnoccupied()){
 			throw new InterruptedException();
 		}
 		gameElement = element;
 		lock.unlock();
 	}
+
 	public void removeObstacle() {
 		lock.lock();
 		gameElement = null;

@@ -11,9 +11,7 @@ j
 java:S16125"MReplace this lambda with method reference 'AutomaticSnake.class::isInstance'.(àƒ á8úÅñ¾1
 O
 java:S11355"2Complete the task associated to this TODO comment.(àƒ á8üÅñ¾1
-O
-java:S11359"2Complete the task associated to this TODO comment.(Ç£½³8ş¤ò¾1
 f
-java:S3252@"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(¢¡´8ıÅñ¾1
+java:S3252?"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(¢¡´8ıÅñ¾1
 T
-java:S1874J"2Remove this use of "Observable"; it is deprecated.(‹›Àüÿÿÿÿ8şÅñ¾1
+java:S1874I"2Remove this use of "Observable"; it is deprecated.(‹›Àüÿÿÿÿ8şÅñ¾1

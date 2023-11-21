@@ -47,27 +47,7 @@ public class AutomaticSnake extends Snake {
 					this.move(toMove);
 				}
 			} catch (InterruptedException e) {
-//				if(!getBoard().isGameOverV2()){
-//					Cell head = this.getCells().getFirst();
-//					List<BoardPosition> neighbourPos = this.getBoard().getNeighboringPositions(head);
-//					List<Cell> freePositions = neighbourPos.stream()
-//							.map((bp) -> this.getBoard().getCell(bp))
-//							.filter((c) -> (!this.getCells().contains(c)) && (!c.isOcupied()) )
-//							.sorted(this::compare)
-//							.toList();
-//					if(freePositions.isEmpty()){
-//						break;
-//					} else {
-//						try {
-//							this.move(freePositions.get(0));
-//						} catch (InterruptedException ex) {
-//							ex.printStackTrace();
-//						}
-//					}
 //
-//				} else {
-//					break;
-//			}
 		}
 	}
 		System.out.println(Thread.currentThread() + " Class: Automatic Snake ended");
