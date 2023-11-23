@@ -80,6 +80,8 @@ public class Cell implements Serializable{
 	public boolean setGameElementObstacle(GameElement element) throws InterruptedException {
 		lock.lock();
 		if(!isCompletelyUnoccupied()){
+			lock.unlock();
+
 			return false;
 		}
 		gameElement = element;
@@ -89,6 +91,7 @@ public class Cell implements Serializable{
 	public boolean setGameElementGoal(GameElement element){
 		lock.lock();
 		if(!isCompletelyUnoccupied()){
+			lock.unlock();
 			return false;
 		}
 		gameElement = element;
