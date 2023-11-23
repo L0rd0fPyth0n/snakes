@@ -52,14 +52,17 @@ public class Goal extends GameElement  {
 
 		GoalCell.removeGoal();
 
-		BoardPosition newGoalPos = board.getRandomPosition();
-		Cell nova = board.getCell(newGoalPos);
+		while(true) {
+			BoardPosition newGoalPos = board.getRandomPosition();
+			Cell nova = board.getCell(newGoalPos);
 
-		board.setGoalPosition(newGoalPos);
-		nova.setGameElement(ge);
+			if(nova.setGameElementGoal(ge)) {
+				board.setGoalPosition(newGoalPos);
+				break;
+				//nova.setGameElement(ge);
+			}
 
-		//TODO verificar se a cell esta ocupada
-
+		}
 		board.setChanged();
 		lockGoal.unlock();
 		return value;

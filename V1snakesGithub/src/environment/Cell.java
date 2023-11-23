@@ -77,13 +77,23 @@ public class Cell implements Serializable{
 		lock.unlock();
 	}
 
-	public void setGameElementObstacle(GameElement element) throws InterruptedException {
-		lock.lock(); //TODO mudar para verdadeiro sucesso false se nao tiver
+	public boolean setGameElementObstacle(GameElement element) throws InterruptedException {
+		lock.lock();
 		if(!isCompletelyUnoccupied()){
-			throw new InterruptedException();
+			return false;
 		}
 		gameElement = element;
 		lock.unlock();
+		return true;
+	}
+	public boolean setGameElementGoal(GameElement element){
+		lock.lock();
+		if(!isCompletelyUnoccupied()){
+			return false;
+		}
+		gameElement = element;
+		lock.unlock();
+		return true;
 	}
 
 	public void removeObstacle() {

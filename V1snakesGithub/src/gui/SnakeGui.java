@@ -50,7 +50,8 @@ public class SnakeGui implements Observer {
 		resetObstaclesButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				for(Snake s : board.getSnakes().stream().filter((x)-> x instanceof AutomaticSnake).toList()){ //TODO duvida
+				for(Snake s : board.getSnakes().stream().filter((x)-> x instanceof AutomaticSnake).toList()){
+					//TODO duvida
 					if(s.getState() == Thread.State.WAITING)
 						s.setInterruptedTrue();
 					s.interrupt();

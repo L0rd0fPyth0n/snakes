@@ -2,11 +2,11 @@
 W
 java:S1141&"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8ßĞ©‚¾1
 a
-java:S2095"DUse try-with-resources or close this "Socket" in a "finally" clause.(œ¤øº8şĞ©‚¾1
+java:S2095"DUse try-with-resources or close this "Socket" in a "finally" clause.(œ¤øº8§Ù¯é¿1
 O
 java:S1135"2Complete the task associated to this TODO comment.(œ¤øº8¸à«‚¾1
 {
-java:S21426"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(¯»Àª8‡Ñ©‚¾1
+java:S21426"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(¯»Àª8±Ù¯é¿1
 F	java:S106)"+Replace this use of System.out by a logger.(¡³%8ˆÑ©‚¾1
 L	java:S106,"+Replace this use of System.out by a logger.(Äœ“ßúÿÿÿÿ8ˆÑ©‚¾1
 G	java:S106/"+Replace this use of System.out by a logger.(…ğˆ‡8ˆÑ©‚¾1

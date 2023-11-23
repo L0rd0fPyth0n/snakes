@@ -19,21 +19,15 @@ public class ObstacleMover extends Thread {
 				Thread.sleep(Obstacle.OBSTACLE_MOVE_INTERVAL);
 				while(true){
 					Cell nextCell = board.getCell(board.getRandomPosition());
-					//if (nextCell.isCompletelyUnoccupied()){
-						//obstacle.move(nextCell);
-					try {   //TODO comentei isto porque tinhamos o erro das 50 SNAKES.
-								//TODO dar fix nos obstaculos pq podem ir pra cima de outros i think
-						nextCell.setGameElementObstacle(this.obstacle);
-						//nextCell.setGameElement(this.obstacle);
-					}
-					catch (InterruptedException e) { 	//TODO comentei isto
-						continue;	//TODO comentei isto
-					}
+					//TODO comentei isto porque tinhamos o erro das 50 SNAKES.
+					//TODO dar fix nos obstaculos pq podem ir pra cima de outros i think
+					if(!nextCell.setGameElementObstacle(this.obstacle))
+						continue;
 					board.getCell(this.obstacle.getPos()).removeObstacle();
 					this.obstacle.setPos(nextCell.getPosition());
-						board.setChanged();
-						obstacle.decrementRemainingMoves();
-						break;
+					board.setChanged();
+					obstacle.decrementRemainingMoves();
+					break;
 				}
 			}
 		} catch (InterruptedException ignore) {}

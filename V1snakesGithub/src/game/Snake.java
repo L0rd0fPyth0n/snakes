@@ -66,12 +66,11 @@ public abstract class  Snake extends Thread implements Serializable{
 
 	public void move(Cell bp) throws InterruptedException  {
 			bp.request(this);
-			//TODO otimizar isto
 			if( this.isInterrupted() || getBoard().isGameOverV2() )
 				return;
-			cells.add(0, bp);//TODO passar para class Cell
+			cells.add(0, bp);
 			if (!hasToGrow()) {
-				Cell temp = cells.removeLast(); //TODO passar para class Cell
+				Cell temp = cells.removeLast();
 				temp.release();
 			}
 			getBoard().setChanged();

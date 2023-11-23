@@ -21,8 +21,7 @@ public abstract class Board extends Observable {
 	private LinkedList<Obstacle> obstacles= new LinkedList<Obstacle>();
 	private LinkedList<ObstacleMover> obstacleMovers = new LinkedList<>();
 	protected boolean isFinished=false;
-	public ExecutorService pool = Executors.newFixedThreadPool(NUM_SIMULTANEOUS_MOVING_OBSTACLES);
-	//TODO Pool pode ser final?
+	public final ExecutorService pool = Executors.newFixedThreadPool(NUM_SIMULTANEOUS_MOVING_OBSTACLES);
 	private Goal goal;
 
 	public Board() {

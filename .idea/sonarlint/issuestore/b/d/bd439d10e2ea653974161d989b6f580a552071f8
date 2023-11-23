@@ -9,4 +9,4 @@ L
 java:S1611"/Remove the parentheses around the "c" parameter(Ó¬ÉÖ8¨»›Å½1
 {
 java:S21421"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8©»›Å½1
-L	java:S1065"+Replace this use of System.out by a logger.(š­ˆ²þÿÿÿÿ8ª»›Å½1
+L	java:S1065"+Replace this use of System.out by a logger.(š­ˆ²þÿÿÿÿ8éîÛè¿1
