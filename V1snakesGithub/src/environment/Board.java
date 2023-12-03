@@ -161,6 +161,7 @@ public abstract class Board extends Observable {
 	}
 
 	public boolean isGameOverV2(){
+		//TODO Refactor
 		return isFinished;
 	}
 

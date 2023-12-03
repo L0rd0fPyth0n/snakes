@@ -20,7 +20,6 @@ import game.Snake;
  *  Only the listener to the button should be edited, see TODO below.
  * 
  * @author luismota
- *
  */
 public class SnakeGui implements Observer {
 	public static final int BOARD_WIDTH = 800;

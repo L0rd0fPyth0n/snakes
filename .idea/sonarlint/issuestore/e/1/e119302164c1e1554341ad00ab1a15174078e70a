@@ -1,9 +1,11 @@
 
 ƒ
-java:S4144Y"fUpdate this method so that its implementation is not identical to "setGameElementObstacle" on line 80.(½¿Ô¯8ÀüÑé¿1
+java:S4144\"fUpdate this method so that its implementation is not identical to "setGameElementObstacle" on line 80.(½¿Ô¯8ÀüÑé¿1
 ”
 java:S1130P"wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(ù³Ãï8Š³é¿1
+O
+java:S1135["2Complete the task associated to this TODO comment.(´Éúš8Ì’ØÃ1
 k
-java:S4201w"IRemove this unnecessary null check; "instanceof" returns false for nulls.(¹–±™ÿÿÿÿÿ8ÂÔÊå¿1
+java:S4201{"IRemove this unnecessary null check; "instanceof" returns false for nulls.(¹–±™ÿÿÿÿÿ8ÂÔÊå¿1
 g
-java:S4201€"IRemove this unnecessary null check; "instanceof" returns false for nulls.(œ†Æ°8ÃÔÊå¿1
+java:S4201„"IRemove this unnecessary null check; "instanceof" returns false for nulls.(œ†Æ°8ÃÔÊå¿1

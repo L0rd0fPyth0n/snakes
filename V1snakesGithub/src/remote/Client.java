@@ -24,7 +24,8 @@ public class Client {
 	public static void main(String[] args) {
 		Socket s = null;
 		try {
-			s = new Socket(InetAddress.getLocalHost(),8888); //TODO FECHAR SOCKETS E CANAIS
+			s = new Socket(InetAddress.getLocalHost(),8888);
+			//TODO FECHAR SOCKETS E CANAIS
 			ObjectOutputStream oos = new ObjectOutputStream(s.getOutputStream());
 
 			RemoteBoard rb = new RemoteBoard(oos);
@@ -47,16 +48,21 @@ public class Client {
 						System.out.println(snake.getCells());
 						for(Cell c :snake.getCells()){
 							BoardPosition pos = c.getPosition();
-							rb.getCell(pos).request(snake);
+							//rb.getCell(pos).request(snake);
 						}
 						rb.setChanged();
 					}
-				}catch (ClassNotFoundException | InterruptedException e) {
+				}catch (ClassNotFoundException /*| InterruptedException */e) {
 					e.printStackTrace();
 				}
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				s.close();
+			} catch (IOException e) {
+			}
 		}
 	}
 }

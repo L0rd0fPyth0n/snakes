@@ -22,6 +22,7 @@ public  class HumanSnake extends Snake {
 	}
 
 
+
 	@Override
 	protected Cell getNextCell(){
 		try {
@@ -44,7 +45,9 @@ public  class HumanSnake extends Snake {
 				try {
 					Cell toMove = getNextCell();
 					if (toMove == null)
-						break;
+						break;//TODO this can't be right?, same in AutomaticSnake
+					if(toMove.isOcupied())
+						continue;
 					this.move(toMove);
 				} catch (InterruptedException ignored) {}
 		}

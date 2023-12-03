@@ -15,14 +15,8 @@ public enum Direction implements Serializable {
         return y;
     }
 
-    private Direction(int x, int y) {
+    Direction(int x, int y) {
         this.x = x;
         this.y = y;
     }
-
-
-//    public static Direction getRandomDirection(){
-//        return Direction.values()[r.nextInt(4)];
-//        return Direction.values()[new Random().nextInt(4)];
-//    }
 }

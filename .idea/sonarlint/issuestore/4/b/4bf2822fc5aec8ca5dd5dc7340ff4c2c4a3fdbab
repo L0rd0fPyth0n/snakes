@@ -1,16 +1,16 @@
 
 E
-java:S16042"(Make this anonymous inner class a lambda(ƒí­÷8åÅñ¾1
+java:S16041"(Make this anonymous inner class a lambda(ƒí­÷8åÅñ¾1
 T
 java:S1135"2Complete the task associated to this TODO comment.(Û²Š¦üÿÿÿÿ8õÅñ¾1
 M
-java:S1874"0Remove this use of "Observer"; it is deprecated.(É˜›8õÅñ¾1
+java:S1874"0Remove this use of "Observer"; it is deprecated.(É˜›8õÅñ¾1
 L
-java:S16115"/Remove the parentheses around the "x" parameter(àƒ á8úÅñ¾1
+java:S16114"/Remove the parentheses around the "x" parameter(¿¦å°8úÅñ¾1
 j
-java:S16125"MReplace this lambda with method reference 'AutomaticSnake.class::isInstance'.(àƒ á8úÅñ¾1
+java:S16124"MReplace this lambda with method reference 'AutomaticSnake.class::isInstance'.(¿¦å°8úÅñ¾1
 O
-java:S11355"2Complete the task associated to this TODO comment.(àƒ á8üÅñ¾1
+java:S11355"2Complete the task associated to this TODO comment.(î°¿ı8’§ªŒÃ1
 f
 java:S3252?"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(¢¡´8ıÅñ¾1
 T

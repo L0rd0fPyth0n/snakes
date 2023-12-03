@@ -7,6 +7,7 @@ import javax.net.ssl.StandardConstants;
 
 import environment.LocalBoard;
 import game.Server;
+import remote.Client;
 
 public class Main {
 	public static void main(String[] args) {

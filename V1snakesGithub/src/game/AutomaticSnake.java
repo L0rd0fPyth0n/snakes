@@ -36,6 +36,7 @@ public class AutomaticSnake extends Snake {
 
 	@Override
 	public void run() {
+		//TODO passar isto para a super classes, não esquecer que é ligeiramente diferente do run do HumanPlayer
 		doInitialPositioning();
 		while(!getBoard().isGameOverV2()) {
 			try {
@@ -46,12 +47,10 @@ public class AutomaticSnake extends Snake {
 				}else {
 					this.move(toMove);
 				}
-			} catch (InterruptedException e) {
-//
+			} catch (InterruptedException e) {}
 		}
+			System.out.println(Thread.currentThread() + " Class: Automatic Snake ended");
 	}
-		System.out.println(Thread.currentThread() + " Class: Automatic Snake ended");
-}
 
 	public int compare(Cell c1, Cell c2){
 		BoardPosition goalPos = this.getBoard().getGoalPosition();
