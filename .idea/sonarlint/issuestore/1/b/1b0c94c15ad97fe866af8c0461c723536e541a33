@@ -1,29 +1,32 @@
 
 {
-java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(¯¢ïªıÿÿÿÿ8ëØª¾1
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(¯¢ïªıÿÿÿÿ8ì§ˆÃ1
 “
-java:S1319?"qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".(…»È‹ûÿÿÿÿ8ìØª¾1
+java:S1319?"qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".(…»È‹ûÿÿÿÿ8í§ˆÃ1
 “
-java:S1319Q"qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".(†œÍÔûÿÿÿÿ8ŠÚ¯é¿1
+java:S1319Q"qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".(†œÍÔûÿÿÿÿ8í§ˆÃ1
 [
-java:S5993 "9Change the visibility of this constructor to "protected".(¿İ¤Éÿÿÿÿÿ8şØª¾1
+java:S5993 "9Change the visibility of this constructor to "protected".(¿İ¤Éÿÿÿÿÿ8ù§ˆÃ1
 C
-java:S1948"&Make "lock" transient or serializable.(‰ »¯8ÿØª¾1
+java:S1948"&Make "lock" transient or serializable.(‰ »¯8ú§ˆÃ1
 ]
-java:S2134"@Don't extend "Thread", since the "run" method is not overridden.(‡ş¬8Øª¾1
+java:S2134"@Don't extend "Thread", since the "run" method is not overridden.(‡ş¬8û§ˆÃ1
 b
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(òäì 8„Øª¾1
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(òäì 8ı§ˆÃ1
 T
-java:S1135&"2Complete the task associated to this TODO comment.(½±¨èıÿÿÿÿ8ˆØª¾1
+java:S1135&"2Complete the task associated to this TODO comment.(½±¨èıÿÿÿÿ8€¨ˆÃ1
 ™
-java:S1130-"wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(Ë¥ğÀÿÿÿÿÿ8‰Øª¾1
-X	java:S125*"<This block of commented-out lines of code should be removed.(šæœ8‰Øª¾1
+java:S1130-"wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(Ë¥ğÀÿÿÿÿÿ8€¨ˆÃ1
+X	java:S125*"<This block of commented-out lines of code should be removed.(šæœ8¨ˆÃ1
 T
-java:S1135."2Complete the task associated to this TODO comment.(‘ƒå‚ùÿÿÿÿ8‰Øª¾1
+java:S1135."2Complete the task associated to this TODO comment.(‘ƒå‚ùÿÿÿÿ8¨ˆÃ1
 {
-java:S2142d"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8£Ú¯é¿1
-X	java:S125j"<This block of commented-out lines of code should be removed.(§´ã¸8“Øª¾1
+java:S2142d"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8†¨ˆÃ1
+X	java:S125j"<This block of commented-out lines of code should be removed.(§´ã¸8‡¨ˆÃ1
+]	java:S125r"<This block of commented-out lines of code should be removed.(áíüÈùÿÿÿÿ8ˆ¨ˆÃ1
+T
+java:S1135x"2Complete the task associated to this TODO comment.(Øõ²—ûÿÿÿÿ8ˆ¨ˆÃ1
 P
-java:S1068".Remove this unused "DELTA_SIZE" private field.(©Ö±Ôÿÿÿÿÿ8”Øª¾1
+java:S1068".Remove this unused "DELTA_SIZE" private field.(©Ö±Ôÿÿÿÿÿ8ˆ¨ˆÃ1
 E
-java:S1068"(Remove this unused "lock" private field.(‰ »¯8•Øª¾1
+java:S1068"(Remove this unused "lock" private field.(‰ »¯8ˆ¨ˆÃ1

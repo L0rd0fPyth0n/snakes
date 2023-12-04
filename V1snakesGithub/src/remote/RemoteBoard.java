@@ -28,26 +28,24 @@ import static java.awt.event.KeyEvent.*;
 
 
 public class RemoteBoard extends Board{
-	public RemoteBoard(ObjectOutputStream oos) {
+	public RemoteBoard(PrintWriter oos) {
 		this.oos = oos;
 	}
 
-	private ObjectOutputStream oos;
-	public static final Map<Integer,Direction> keyToDirection = new HashMap<>();
+	private PrintWriter oos;
+	public static final Map<Integer,Character> keyToDirection = new HashMap<>();
 
 	static {
-		keyToDirection.put(VK_UP, Direction.UP);
-		keyToDirection.put(VK_DOWN, Direction.DOWN);
-		keyToDirection.put(VK_LEFT, Direction.LEFT);
-		keyToDirection.put(VK_RIGHT, Direction.RIGHT);
+		keyToDirection.put(VK_UP, 'U');
+		keyToDirection.put(VK_DOWN, 'D');
+		keyToDirection.put(VK_LEFT, 'L');
+		keyToDirection.put(VK_RIGHT, 'R');
 	}
 	@Override
 	public void handleKeyPress(int keyCode) {
-		try {
-			oos.writeObject(keyToDirection.get(keyCode));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		Character dir = keyToDirection.get(keyCode);
+		if(dir != null)
+			oos.println(dir + "");
 	}
 
 	@Override

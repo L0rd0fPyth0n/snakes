@@ -43,7 +43,7 @@ public class AutomaticSnake extends Snake {
 				Thread.sleep(Board.PLAYER_PLAY_INTERVAL);
 				Cell toMove = getNextCell();
 				if(toMove == null){
-					break;
+					continue;
 				}else {
 					this.move(toMove);
 				}

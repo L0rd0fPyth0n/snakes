@@ -108,4 +108,20 @@ public abstract class  Snake extends Thread implements Serializable{
 		public Board getBoard() {
 			return board;
 		}
-	}
+
+
+//	@Override
+//	public void run(){
+//		doInitialPositioning();
+//		while (!getBoard().isGameOverV2()){
+//			try {
+//				Cell toMove = getNextCell();
+//				if (toMove == null)
+//					break;//TODO this can't be right?, same in AutomaticSnake
+//				if(toMove.isOcupied())
+//					continue;
+//				this.move(toMove);
+//			} catch (InterruptedException ignored) {}
+//		}
+//	}
+}

@@ -2,9 +2,7 @@ package game;
 
 import environment.LocalBoard;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -12,6 +10,8 @@ import static environment.LocalBoard.NUM_SNAKES;
 
 public class Server extends Thread{
     private final LocalBoard board;
+
+    //TODO lista de clientes private List<>
 
     public Server(LocalBoard board){
         this.board = board;
@@ -22,8 +22,9 @@ public class Server extends Thread{
             try (ServerSocket serverSocket =  new ServerSocket(8888)) {
                 while (true){
                     Socket clientSocket = serverSocket.accept();
-                    ObjectInputStream inputStream = new ObjectInputStream(clientSocket.getInputStream());
-                    HumanSnake newPlayer = new HumanSnake(i++, this.board, inputStream);
+
+                    System.out.println("Connection established!! Welcome " );
+                    HumanSnake newPlayer = new HumanSnake(i++, this.board, new InputStreamReader( clientSocket . getInputStream ()));
 
 
                     new stateSender(clientSocket,this.board).start();
@@ -33,7 +34,6 @@ public class Server extends Thread{
                 }
             }
             catch (IOException e) {
-                e.printStackTrace();
             }
         }
         private static class stateSender extends Thread{

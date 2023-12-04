@@ -7,9 +7,8 @@ import game.GameState;
 import game.Snake;
 import gui.SnakeGui;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
+import java.net.ConnectException;
 import java.net.InetAddress;
 import java.net.Socket;
 
@@ -24,11 +23,20 @@ public class Client {
 	public static void main(String[] args) {
 		Socket s = null;
 		try {
-			s = new Socket(InetAddress.getLocalHost(),8888);
+			try {
+				s = new Socket(InetAddress.getLocalHost(), 8888);
+			} catch (ConnectException e){
+				System.out.println("No games happennig right now!!");
+				return;
+			}
 			//TODO FECHAR SOCKETS E CANAIS
 			ObjectOutputStream oos = new ObjectOutputStream(s.getOutputStream());
 
-			RemoteBoard rb = new RemoteBoard(oos);
+			PrintWriter out =
+					new PrintWriter (new BufferedWriter(
+							new OutputStreamWriter ( s . getOutputStream ())) ,
+							true );
+			RemoteBoard rb = new RemoteBoard(out);
 			SnakeGui game = new SnakeGui(rb,600,0);
 			game.init();
 

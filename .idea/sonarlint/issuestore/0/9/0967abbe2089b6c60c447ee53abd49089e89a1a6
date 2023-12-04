@@ -1,16 +1,21 @@
 
 W
-java:S1141'"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8àñ¤Ã1
+java:S1141"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8ñƒø«Ã1
+W
+java:S1141/"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8òƒø«Ã1
 \
-java:S2259?"?A "NullPointerException" could be thrown; "s" is nullable here.(Æñ‘8óò¤Ã1
+java:S2259G"?A "NullPointerException" could be thrown; "s" is nullable here.(Æñ‘8Ï„ø«Ã1
+G	java:S106"+Replace this use of System.out by a logger.(ß…¬À8Ô„ø«Ã1
 T
-java:S1135"2Complete the task associated to this TODO comment.(†¥“òûÿÿÿÿ8úò¤Ã1
-F	java:S106*"+Replace this use of System.out by a logger.(¡³%8„ó¤Ã1
-L	java:S106-"+Replace this use of System.out by a logger.(Äœ“ßúÿÿÿÿ8…ó¤Ã1
-G	java:S1060"+Replace this use of System.out by a logger.(…ğˆ‡8†ó¤Ã1
+java:S1135 "2Complete the task associated to this TODO comment.(†¥“òûÿÿÿÿ8Ô„ø«Ã1
 J
-java:S14812"(Remove this unused "pos" local variable.(ÙüÕ»üÿÿÿÿ8ˆó¤Ã1
-]	java:S1253"<This block of commented-out lines of code should be removed.(¡Óşÿÿÿÿ8‰ó¤Ã1
-E	java:S108@")Either remove or fill this block of code.(ï­£Ä8Œó¤Ã1
+java:S1481!"(Remove this unused "oos" local variable.(Œ¢»¶ıÿÿÿÿ8Ö„ø«Ã1
+F	java:S1062"+Replace this use of System.out by a logger.(¡³%8Ü„ø«Ã1
+L	java:S1065"+Replace this use of System.out by a logger.(Äœ“ßúÿÿÿÿ8Ü„ø«Ã1
+G	java:S1068"+Replace this use of System.out by a logger.(…ğˆ‡8Ü„ø«Ã1
+J
+java:S1481:"(Remove this unused "pos" local variable.(ÙüÕ»üÿÿÿÿ8İ„ø«Ã1
+]	java:S125;"<This block of commented-out lines of code should be removed.(¡Óşÿÿÿÿ8İ„ø«Ã1
+E	java:S108H")Either remove or fill this block of code.(ï­£Ä8Ş„ø«Ã1
 L
-java:S2093"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ8Œó¤Ã1
+java:S2093"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ8Ş„ø«Ã1

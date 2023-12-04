@@ -5,7 +5,9 @@ import environment.BoardPosition;
 import environment.Cell;
 import remote.Direction;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.net.Socket;
 
@@ -14,26 +16,45 @@ import java.net.Socket;
  @author luismota
  **/
 public  class HumanSnake extends Snake {
-	protected transient final ObjectInputStream inputStream;
-
-	public HumanSnake(int id, Board board, ObjectInputStream inputStream) {
+	protected transient final InputStreamReader inputStream;
+	protected transient final BufferedReader in;
+	public HumanSnake(int id, Board board, InputStreamReader inputStream ) {
 		super(id,board);
 		this.inputStream = inputStream;
+		//TODO fechar canais
+		this.in = new BufferedReader (inputStream);
 	}
-
-
-
 	@Override
 	protected Cell getNextCell(){
 		try {
-			Direction newDir =(Direction) this.inputStream.readObject();
+			char dir = in . readLine().charAt(0);
+
+			int x = 0;
+			int y = 0;
+			switch (dir){
+				case 'U':
+					y = -1;
+					x = 0;
+					break;
+				case 'D':
+					y = 1;
+					x = 0;
+					break;
+				case 'L':
+					y= 0;
+					x = -1;
+					break;
+				case 'R':
+					y = 0;
+					x = 1;
+			}
 
 			BoardPosition headPos =cells.getFirst().getPosition();
 
-			BoardPosition newPos = new BoardPosition(headPos.x + newDir.getX(), headPos.y + newDir.getY());
+			BoardPosition newPos = new BoardPosition(headPos.x + x, headPos.y + y);
 
 			return getBoard().getCell(newPos);
-		} catch (IOException | ClassNotFoundException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return null;
@@ -45,11 +66,12 @@ public  class HumanSnake extends Snake {
 				try {
 					Cell toMove = getNextCell();
 					if (toMove == null)
-						break;//TODO this can't be right?, same in AutomaticSnake
+						continue;
 					if(toMove.isOcupied())
 						continue;
 					this.move(toMove);
-				} catch (InterruptedException ignored) {}
+				} catch (InterruptedException ignored) {
+				}
 		}
 	}
 }
