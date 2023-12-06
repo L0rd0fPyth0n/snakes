@@ -57,6 +57,9 @@ public abstract class Board extends Observable {
 	}
 
 	public boolean isOutOfBound(BoardPosition cell){
+		//TODO if null
+		if(cell == null)
+			return false;
 		return cell.x < 0 ||
 				cell.x>=Board.NUM_COLUMNS ||
 				cell.y <0 ||
@@ -182,4 +185,17 @@ public abstract class Board extends Observable {
 	public void addSnake(Snake snake) {
 		snakes.add(snake);
 	}
+
+	public void setCells(Cell[][] cells){
+		this.cells = cells;
+	}
+
+	public void setSnakes(LinkedList<Snake> snakes){
+		this.snakes = snakes;
+	}
+
+	public void setObstacles(LinkedList<Obstacle> obstacles){
+		this.obstacles = obstacles;
+	}
+
 }

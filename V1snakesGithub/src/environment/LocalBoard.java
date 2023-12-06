@@ -22,7 +22,7 @@ import game.AutomaticSnake;
  */
 public class LocalBoard extends Board{
 	
-	public static final int NUM_SNAKES = 35;	//default: 2
+	public static final int NUM_SNAKES = 2;	//default: 2
 	private static final int NUM_OBSTACLES = 25;	//default: 25
 	public static final int NUM_SIMULTANEOUS_MOVING_OBSTACLES = 3; //default: 3
 
@@ -41,7 +41,6 @@ public class LocalBoard extends Board{
 	public void init() {
 		for(Snake s:snakes)
 			s.start();
-		// TODO: launch other threads  !!
 		setChanged();
 	}
 

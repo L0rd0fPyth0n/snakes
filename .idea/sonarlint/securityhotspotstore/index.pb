@@ -84,8 +84,6 @@ Q.idea/sonarlint/securityhotspotstore/c/b/cb3a560d704c09f393b7f5f4e871e306188e57
 Q.idea/sonarlint/securityhotspotstore/1/3/1320748d076c45ef81961676e68e2674a1c00a90,b\f\bf981d2652b85ebb1efba8b19e19e82c798a1cc4
 U
 %V1snakesGithub/src/remote/Client.java,0\9\0967abbe2089b6c60c447ee53abd49089e89a1a6
-X
-(V1snakesGithub/src/remote/Direction.java,d\a\da8c53b6e454e132d856071fc944dad80cfb5813
 Z
 *V1snakesGithub/src/remote/RemoteBoard.java,d\7\d7fdfa7e0c14658558037c1991f6d7e45841c658
 V
@@ -132,3 +130,5 @@ w
 G.idea/sonarlint/issuestore/1/0/10a03f31c4dce92cb371e761ce9429428bb6c176,0\3\030ed2ccb712537825891dfda283154162e458a8
 Å
 Q.idea/sonarlint/securityhotspotstore/4/b/4bf2822fc5aec8ca5dd5dc7340ff4c2c4a3fdbab,b\c\bc0a1ddddb23002dd050f6623b44f37987e59787
+X
+(V1snakesGithub/src/game/stateSender.java,d\0\d07d572ece3be062be0c44a40ed7326ddfde2009

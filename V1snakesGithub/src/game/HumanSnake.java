@@ -3,7 +3,6 @@ package game;
 import environment.Board;
 import environment.BoardPosition;
 import environment.Cell;
-import remote.Direction;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -27,24 +26,24 @@ public  class HumanSnake extends Snake {
 	@Override
 	protected Cell getNextCell(){
 		try {
-			char dir = in . readLine().charAt(0);
+			String dir = in . readLine();
 
 			int x = 0;
 			int y = 0;
 			switch (dir){
-				case 'U':
+				case "U":
 					y = -1;
 					x = 0;
 					break;
-				case 'D':
+				case "D":
 					y = 1;
 					x = 0;
 					break;
-				case 'L':
+				case "L":
 					y= 0;
 					x = -1;
 					break;
-				case 'R':
+				case "R":
 					y = 0;
 					x = 1;
 			}
@@ -71,6 +70,7 @@ public  class HumanSnake extends Snake {
 						continue;
 					this.move(toMove);
 				} catch (InterruptedException ignored) {
+
 				}
 		}
 	}

@@ -1,13 +1,16 @@
 
-r	java:S1172"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰—õ¥úÿÿÿÿ8¹èÜé¿1
+r	java:S1175"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰—õ¥úÿÿÿÿ8ÅÅ”ÔÃ1
+G
+java:S1948"*Make "lockGoal" transient or serializable.(ô­äÏ8þâ‘ØÃ1
 N
-java:S1135'"2Complete the task associated to this TODO comment.(ýª™p8ÃèÜé¿1
-X	java:S125>"<This block of commented-out lines of code should be removed.(‘ÊÐø8ÄèÜé¿1
+java:S1135*"2Complete the task associated to this TODO comment.(ýª™p8×Å”ÔÃ1
+X	java:S125A"<This block of commented-out lines of code should be removed.(‘ÊÐø8ÜÅ”ÔÃ1
 U
-java:S1128"3Remove this unused import 'environment.LocalBoard'.(ïÂ”©ùÿÿÿÿ8¹¥ßé¿1
+java:S1128"3Remove this unused import 'environment.LocalBoard'.(ïÂ”©ùÿÿÿÿ8ÝÅ”ÔÃ1
 O
-java:S1128"-Remove this unused import 'java.util.Random'.(èøÉ›ùÿÿÿÿ8¹¥ßé¿1
+java:S1128	"-Remove this unused import 'java.util.Random'.(èøÉ›ùÿÿÿÿ8ÝÅ”ÔÃ1
 c
-java:S1128	"ARemove this unused import 'java.util.concurrent.locks.Condition'.(ðÍÄ°øÿÿÿÿ8º¥ßé¿1
+java:S1128
+"ARemove this unused import 'java.util.concurrent.locks.Condition'.(ðÍÄ°øÿÿÿÿ8ÝÅ”ÔÃ1
 T
-java:S1128"2Remove this unused import 'gui.SnakeGui.NUM_ROWS'.(½æ³Õþÿÿÿÿ8º¥ßé¿1
+java:S1128"2Remove this unused import 'gui.SnakeGui.NUM_ROWS'.(½æ³Õþÿÿÿÿ8ÞÅ”ÔÃ1

@@ -1,8 +1,8 @@
 
-X	java:S125"<This block of commented-out lines of code should be removed.(ùÀõ8¸ç‰ñ¾1
+X	java:S125 "<This block of commented-out lines of code should be removed.(ùÀõ8¸ç‰ñ¾1
 I
 java:S1128"-Remove this unused import 'environment.Cell'.(®‰àq8ºç‰ñ¾1
 U
 java:S1128"3Remove this unused import 'environment.LocalBoard'.(ïÂ”©ùÿÿÿÿ8½Óâú½1
-F
-java:S1068")Remove this unused "board" private field.(Óÿ²ã8¼ç‰ñ¾1
+K
+java:S1068")Remove this unused "board" private field.(Ş·¦Ëúÿÿÿÿ8¼ç‰ñ¾1

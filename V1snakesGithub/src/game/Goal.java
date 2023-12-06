@@ -5,6 +5,7 @@ import environment.BoardPosition;
 import environment.Cell;
 import environment.LocalBoard;
 
+import java.io.Serializable;
 import java.util.Random;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
@@ -12,11 +13,13 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import static gui.SnakeGui.NUM_ROWS;
 
-public class Goal extends GameElement  {
+public class Goal extends GameElement implements Serializable {
 	private int value=1;
-	private Board board;
-	public static final int MAX_VALUE=100;
+	private transient Board board;
+
+	public  static final int MAX_VALUE=100;
 	private Lock lockGoal = new ReentrantLock();
+
 
 	public boolean isGameOver(){
 		return value >= MAX_VALUE;

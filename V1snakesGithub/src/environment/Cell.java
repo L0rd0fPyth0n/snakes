@@ -19,8 +19,8 @@ public class Cell implements Serializable{
 	private BoardPosition position;
 	private Snake ocuppyingSnake = null;
 	private transient GameElement gameElement=null;
-	private transient Lock lock = new ReentrantLock();
-	private transient Condition isEmpty = lock.newCondition();
+	private  Lock lock = new ReentrantLock();
+	private  Condition isEmpty = lock.newCondition();
 
 	public GameElement getGameElement() {
 		return gameElement;
@@ -87,7 +87,6 @@ public class Cell implements Serializable{
 		lock.unlock();
 		return true;
 	}
-
 	//TODO methods are equal
 	public boolean setGameElementGoal(GameElement element){
 		lock.lock();

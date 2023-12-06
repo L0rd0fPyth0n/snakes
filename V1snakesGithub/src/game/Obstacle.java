@@ -5,12 +5,14 @@ import environment.BoardPosition;
 import environment.Cell;
 import environment.LocalBoard;
 
-public class Obstacle extends GameElement {
+import java.io.Serializable;
+
+public class Obstacle extends GameElement implements Serializable {
 	
 	private static final int NUM_MOVES=3; //default: 3
 	public static final int OBSTACLE_MOVE_INTERVAL = 400; //default: 400
 	private int remainingMoves=NUM_MOVES;
-	private final Board board;
+	private final transient Board board;
 
 	private BoardPosition pos;
 

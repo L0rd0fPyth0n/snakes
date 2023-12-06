@@ -36,34 +36,5 @@ public class Server extends Thread{
             catch (IOException e) {
             }
         }
-        private static class stateSender extends Thread{
-            private  ObjectOutputStream oos;
-
-            private final LocalBoard board;
-
-            public stateSender(Socket s, LocalBoard board) {
-                oos = null;
-                try {
-                    oos = new ObjectOutputStream(s.getOutputStream());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                this.board = board;
-            }
-
-            @Override
-            public void run() {
-                while (true){
-                    try {
-                        oos.writeObject(new GameState(board.getSnakes()));
-                        System.out.println("Escrito");
-                        Thread.sleep(50);
-                    } catch (IOException | InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-            }
-        }
 
 }
