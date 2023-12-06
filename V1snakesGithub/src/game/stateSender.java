@@ -1,5 +1,8 @@
 package game;
 
+import environment.Board;
+import environment.BoardPosition;
+import environment.Cell;
 import environment.LocalBoard;
 
 import java.io.IOException;
@@ -25,11 +28,17 @@ public class stateSender extends Thread{
     public void run() {
         while (true){
             try {
-                oos.writeObject(new GameState(board.getCells(), board.getSnakes(), board.getObstacles(), board.getGoal(), board.getGoalPosition() ));
+                BoardPosition goalPosition = board.getGoalPosition();
+                //CELULA ATUAL DO GOAL
+                Cell GoalCell = board.getCell(goalPosition);
+                oos.writeObject(new GameState(board.getCells(), board.getSnakes(), board.getObstacles(), (Goal) GoalCell.getGameElement(), board.getGoalPosition() ));
                 oos.flush();
                 oos.reset();
+                Thread.sleep(Board.REMOTE_REFRESH_INTERVAL);
             } catch (IOException e) {
                 e.printStackTrace();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
         }
 

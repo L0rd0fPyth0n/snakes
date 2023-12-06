@@ -45,6 +45,7 @@ public class RemoteBoard extends Board{
 	public void handleKeyPress(int keyCode) {
 		Character dir = keyToDirection.get(keyCode);
 		if(dir != null)
+			//TODO separa isto em duas threads?
 			oos.println(dir + "");
 	}
 

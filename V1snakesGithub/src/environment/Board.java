@@ -57,9 +57,8 @@ public abstract class Board extends Observable {
 	}
 
 	public boolean isOutOfBound(BoardPosition cell){
-		//TODO if null
 		if(cell == null)
-			return false;
+			throw new NullPointerException();
 		return cell.x < 0 ||
 				cell.x>=Board.NUM_COLUMNS ||
 				cell.y <0 ||
@@ -162,6 +161,7 @@ public abstract class Board extends Observable {
 	public Goal getGoal(){
 		return this.goal;
 	}
+
 
 	public boolean isGameOverV2(){
 		//TODO Refactor

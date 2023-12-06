@@ -66,11 +66,11 @@ public  class HumanSnake extends Snake {
 					Cell toMove = getNextCell();
 					if (toMove == null)
 						continue;
+					//TODO human sai do tabulaeiro
 					if(toMove.isOcupied())
 						continue;
 					this.move(toMove);
 				} catch (InterruptedException ignored) {
-
 				}
 		}
 	}

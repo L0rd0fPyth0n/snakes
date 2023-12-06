@@ -58,9 +58,9 @@ public class Client extends Thread{
 					rb.setSnakes(gameState.snakes());
 
 					rb.setGoalPosition(gameState.goalPosition());
-					System.out.println(gameState.goalPosition());
-					rb.getCell(gameState.goalPosition()).setGameElementGoal(gameState.goal());
 
+					rb.getCell(gameState.goalPosition()).setGameElementGoal(gameState.goal());
+					System.out.println(gameState.goal());
 					rb.setObstacles(gameState.obstacles());
 					for (Obstacle obs : gameState.obstacles() ){
 						try {
