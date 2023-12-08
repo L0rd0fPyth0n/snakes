@@ -24,7 +24,6 @@ public class stateSender extends Thread{
         }
         this.board = board;
     }
-
     @Override
     public void run() {
         while (!board.isGameOverV2()){
@@ -46,7 +45,6 @@ public class stateSender extends Thread{
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
-
     }
 }
 
