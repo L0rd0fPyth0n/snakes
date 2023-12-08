@@ -55,7 +55,6 @@ public class RemoteBoard extends Board{
 
 	@Override
 	public void init() {
-
 	}
 
 	public void clearAllCells(){

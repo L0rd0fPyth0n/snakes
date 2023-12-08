@@ -44,7 +44,7 @@ public class Client extends Thread{
 			this.ois = new ObjectInputStream(s.getInputStream()); //canal receber estado atual do jogo
 			game.init();
 		} catch (IOException e) {
-			throw new RuntimeException(e);
+
 		}
 	}
 	@Override
@@ -78,13 +78,13 @@ public class Client extends Thread{
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-//			try {
-//				ois.close();
-//				oos.close();
-//				s.close();
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
+			try {
+				ois.close();
+				oos.close();
+				s.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

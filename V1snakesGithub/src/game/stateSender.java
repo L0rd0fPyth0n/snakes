@@ -34,17 +34,18 @@ public class stateSender extends Thread{
                 oos.writeObject(new GameState(board.getCells(), board.getSnakes(), board.getObstacles(), (Goal) GoalCell.getGameElement(), board.getGoalPosition() ));
                 oos.flush();
                 oos.reset();
-                Thread.sleep(Board.REMOTE_REFRESH_INTERVAL);
-            } catch (IOException | InterruptedException e) {
+
+                //Thread.sleep(Board.REMOTE_REFRESH_INTERVAL);
+            } catch (IOException/* | InterruptedException*/ e) {
                 e.printStackTrace();
             }
         }
-//        try {
-//            oos.close();
-//            s.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            oos.close();
+            s.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
 

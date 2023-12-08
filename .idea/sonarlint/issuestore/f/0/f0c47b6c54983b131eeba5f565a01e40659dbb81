@@ -1,8 +1,7 @@
 
 g
-java:S2095"JUse try-with-resources or close this "ServerSocket" in a "finally" clause.(‹ºÙı8şŞ¸Ä1
+java:S2259("JA "NullPointerException" could be thrown; "serverSocket" is nullable here.(§ˆïó8¤ú¹Ä1
 L	java:S106"+Replace this use of System.out by a logger.(ú³áûûÿÿÿÿ8×ÈÀ·Ä1
 J	java:S108$")Either remove or fill this block of code.(©œ¡ÿÿÿÿÿ8ÛÈÀ·Ä1
-]	java:S125'"<This block of commented-out lines of code should be removed.(ñ¥ùšøÿÿÿÿ8îßŞ¸Ä1
 L
 java:S2093"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ8ÛÈÀ·Ä1

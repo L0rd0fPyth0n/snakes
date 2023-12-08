@@ -36,11 +36,11 @@ public class Server extends Thread{
             catch (IOException e) {
             }
             finally {
-//                try {
-//                  serverSocket.close();
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
+                try {
+                  serverSocket.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
     }
 }

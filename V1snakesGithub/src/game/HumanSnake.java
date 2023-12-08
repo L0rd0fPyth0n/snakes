@@ -55,8 +55,10 @@ public  class HumanSnake extends Snake {
 				BoardPosition headPos = cells.getFirst().getPosition();
 
 				BoardPosition newPos = new BoardPosition(headPos.x + x, headPos.y + y);
-
-				return getBoard().getCell(newPos);
+				try {
+					return getBoard().getCell(newPos);
+				} catch (IllegalArgumentException e){
+				}
 			} catch (IOException io){
 
 			}
@@ -76,6 +78,11 @@ public  class HumanSnake extends Snake {
 					this.move(toMove);
 				} catch (InterruptedException ignored) {
 				}
+		}
+		try {
+			in.close();
+			inputStream.close();
+		} catch (IOException e) {
 		}
 	}
 }
