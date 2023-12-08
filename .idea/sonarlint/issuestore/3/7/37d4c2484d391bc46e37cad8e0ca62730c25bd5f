@@ -14,9 +14,9 @@ java:S1319“"qThe return type of this method should be an interface such as "Li
 ”
 java:S1319"qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".(ÎÊìâıÿÿÿÿ8ŞßİåÃ1
 Š
-java:S1319Á"gThe type of "snakes" should be an interface such as "List" rather than the implementation "LinkedList".(ğõÍüıÿÿÿÿ8ßßİåÃ1
+java:S1319À"gThe type of "snakes" should be an interface such as "List" rather than the implementation "LinkedList".(ğõÍüıÿÿÿÿ8ßßİåÃ1
 ˆ
-java:S1319Å"jThe type of "obstacles" should be an interface such as "List" rather than the implementation "LinkedList".(Ìç…8ßßİåÃ1
+java:S1319Ä"jThe type of "obstacles" should be an interface such as "List" rather than the implementation "LinkedList".(Ìç…8ßßİåÃ1
 V
 java:S5993"9Change the visibility of this constructor to "protected".(ßôü¬8’àİåÃ1
 T
@@ -33,7 +33,5 @@ W
 java:S2438Œ"9Replace "lb" of type Thread with an instance of Runnable.(À‘ò8·àİåÃ1
 l
 java:S3551˜"IMake this method "synchronized" to match the parent class implementation.(Ñ×ôöúÿÿÿÿ8¹àİåÃ1
-P
-java:S1135§"2Complete the task associated to this TODO comment.(¾ŒÙ¨8¼àİåÃ1
 R
 java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ8ÈàİåÃ1

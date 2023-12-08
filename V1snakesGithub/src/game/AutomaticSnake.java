@@ -36,7 +36,6 @@ public class AutomaticSnake extends Snake {
 
 	@Override
 	public void run() {
-		//TODO passar isto para a super classes, não esquecer que é ligeiramente diferente do run do HumanPlayer
 		doInitialPositioning();
 		while(!getBoard().isGameOverV2()) {
 			try {

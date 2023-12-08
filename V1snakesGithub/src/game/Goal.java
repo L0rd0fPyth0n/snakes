@@ -17,7 +17,7 @@ public class Goal extends GameElement implements Serializable {
 	private int value=1;
 	private transient Board board;
 
-	public  static final int MAX_VALUE=100;
+	public  static final int MAX_VALUE=10;
 	private Lock lockGoal = new ReentrantLock();
 
 
@@ -39,7 +39,7 @@ public class Goal extends GameElement implements Serializable {
 
 
 	public int captureGoal() {
-		lockGoal.lock();  //TODO ver lock se é preciso
+		lockGoal.lock();
 		incrementValue();
 		if(value >= MAX_VALUE){
 			board.setGameOver();

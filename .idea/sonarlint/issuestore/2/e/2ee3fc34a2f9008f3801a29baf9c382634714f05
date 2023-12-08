@@ -24,6 +24,6 @@ java:S3252Y":Use static access with "environment.Board" for "NUM_ROWS".(éêïøúÿÿ
 X
 java:S3252Z"=Use static access with "environment.Board" for "NUM_COLUMNS".(¥éòùÿÿÿÿÿ
 E	java:S106v"+Replace this use of System.out by a logger.(Úı¤Ñûÿÿÿÿ
-@	java:S106…"+Replace this use of System.out by a logger.(»£"
+@	java:S106ƒ"+Replace this use of System.out by a logger.(»£"
 F
 java:S1128"0Remove this unused import 'game.AutomaticSnake'.(Ç¼ğ×

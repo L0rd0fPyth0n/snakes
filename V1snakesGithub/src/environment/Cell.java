@@ -87,7 +87,6 @@ public class Cell implements Serializable{
 		lock.unlock();
 		return true;
 	}
-	//TODO methods are equal
 	public boolean setGameElementGoal(GameElement element){
 		lock.lock();
 		if(!isCompletelyUnoccupied()){

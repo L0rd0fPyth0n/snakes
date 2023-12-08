@@ -11,7 +11,6 @@ import static environment.LocalBoard.NUM_SNAKES;
 public class Server extends Thread{
     private final LocalBoard board;
 
-    //TODO lista de clientes private List<>
 
     public Server(LocalBoard board){
         this.board = board;
@@ -19,13 +18,14 @@ public class Server extends Thread{
     private int i = NUM_SNAKES + 1;
     @Override
     public void run() {
-            try (ServerSocket serverSocket =  new ServerSocket(8888)) {
+        ServerSocket serverSocket =  null;
+            try {
+                serverSocket = new ServerSocket(8888);
                 while (true){
                     Socket clientSocket = serverSocket.accept();
 
-                    System.out.println("Connection established!! Welcome " );
+                    System.out.println("Connection established!! Welcome ");
                     HumanSnake newPlayer = new HumanSnake(i++, this.board, new InputStreamReader( clientSocket . getInputStream ()));
-
 
                     new stateSender(clientSocket,this.board).start();
                     newPlayer.start();
@@ -35,6 +35,12 @@ public class Server extends Thread{
             }
             catch (IOException e) {
             }
-        }
-
+            finally {
+//                try {
+//                  serverSocket.close();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+            }
+    }
 }

@@ -11,10 +11,11 @@ import java.net.Socket;
 
 public class stateSender extends Thread{
     private ObjectOutputStream oos;
-
+    private Socket s;
     private final LocalBoard board;
 
     public stateSender(Socket s, LocalBoard board) {
+        this.s = s;
         oos = null;
         try {
             oos = new ObjectOutputStream(s.getOutputStream());
@@ -26,7 +27,7 @@ public class stateSender extends Thread{
 
     @Override
     public void run() {
-        while (true){
+        while (!board.isGameOverV2()){
             try {
                 BoardPosition goalPosition = board.getGoalPosition();
                 //CELULA ATUAL DO GOAL
@@ -35,12 +36,16 @@ public class stateSender extends Thread{
                 oos.flush();
                 oos.reset();
                 Thread.sleep(Board.REMOTE_REFRESH_INTERVAL);
-            } catch (IOException e) {
+            } catch (IOException | InterruptedException e) {
                 e.printStackTrace();
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
             }
         }
+//        try {
+//            oos.close();
+//            s.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
     }
 }

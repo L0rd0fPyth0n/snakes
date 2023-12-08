@@ -23,40 +23,45 @@ public  class HumanSnake extends Snake {
 		//TODO fechar canais
 		this.in = new BufferedReader (inputStream);
 	}
-	@Override
-	protected Cell getNextCell(){
-		try {
-			String dir = in . readLine();
 
-			int x = 0;
-			int y = 0;
-			switch (dir){
-				case "U":
-					y = -1;
-					x = 0;
-					break;
-				case "D":
-					y = 1;
-					x = 0;
-					break;
-				case "L":
-					y= 0;
-					x = -1;
-					break;
-				case "R":
-					y = 0;
-					x = 1;
+	@Override
+	protected Cell getNextCell() {
+		while(true) {
+			try {
+				String dir = null;
+				dir = in.readLine();
+
+
+				int x = 0;
+				int y = 0;
+				switch (dir) {
+					case "U":
+						y = -1;
+						x = 0;
+						break;
+					case "D":
+						y = 1;
+						x = 0;
+						break;
+					case "L":
+						y = 0;
+						x = -1;
+						break;
+					case "R":
+						y = 0;
+						x = 1;
+				}
+
+				BoardPosition headPos = cells.getFirst().getPosition();
+
+				BoardPosition newPos = new BoardPosition(headPos.x + x, headPos.y + y);
+
+				return getBoard().getCell(newPos);
+			} catch (IOException io){
+
 			}
 
-			BoardPosition headPos =cells.getFirst().getPosition();
-
-			BoardPosition newPos = new BoardPosition(headPos.x + x, headPos.y + y);
-
-			return getBoard().getCell(newPos);
-		} catch (IOException e) {
-			e.printStackTrace();
 		}
-		return null;
 	}
 	@Override
 	public void run(){
@@ -66,7 +71,6 @@ public  class HumanSnake extends Snake {
 					Cell toMove = getNextCell();
 					if (toMove == null)
 						continue;
-					//TODO human sai do tabulaeiro
 					if(toMove.isOcupied())
 						continue;
 					this.move(toMove);

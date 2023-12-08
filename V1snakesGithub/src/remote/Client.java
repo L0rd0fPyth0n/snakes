@@ -78,11 +78,13 @@ public class Client extends Thread{
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			try {
-				s.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+//			try {
+//				ois.close();
+//				oos.close();
+//				s.close();
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
 		}
 	}
 

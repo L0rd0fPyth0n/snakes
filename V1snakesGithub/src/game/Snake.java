@@ -35,7 +35,6 @@ public abstract class  Snake extends Thread implements Serializable{
 	}
 
 	public boolean hasToGrow(){
-		//TODO bad
 		return --amountToGrow > 0;
 	}
 
@@ -43,7 +42,6 @@ public abstract class  Snake extends Thread implements Serializable{
         hasToGrow--;
     }*/
 	public void capture(Goal goal) throws InterruptedException {
-		//TODO isto devia ser += mas só com = é q funciona
 		this.amountToGrow = goal.captureGoal();
 	}
 
@@ -108,20 +106,4 @@ public abstract class  Snake extends Thread implements Serializable{
 		public Board getBoard() {
 			return board;
 		}
-
-
-//	@Override
-//	public void run(){
-//		doInitialPositioning();
-//		while (!getBoard().isGameOverV2()){
-//			try {
-//				Cell toMove = getNextCell();
-//				if (toMove == null)
-//					break;//TODO this can't be right?, same in AutomaticSnake
-//				if(toMove.isOcupied())
-//					continue;
-//				this.move(toMove);
-//			} catch (InterruptedException ignored) {}
-//		}
-//	}
 }

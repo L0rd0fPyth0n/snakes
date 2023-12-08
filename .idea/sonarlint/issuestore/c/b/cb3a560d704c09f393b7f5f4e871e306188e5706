@@ -2,8 +2,6 @@
 r	java:S1175"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰—õ¥úÿÿÿÿ8ÅÅ”ÔÃ1
 G
 java:S1948"*Make "lockGoal" transient or serializable.(ô­äÏ8şâ‘ØÃ1
-N
-java:S1135*"2Complete the task associated to this TODO comment.(ıª™p8×Å”ÔÃ1
 X	java:S125A"<This block of commented-out lines of code should be removed.(‘ÊĞø8ÜÅ”ÔÃ1
 U
 java:S1128"3Remove this unused import 'environment.LocalBoard'.(ïÂ”©ùÿÿÿÿ8İÅ”ÔÃ1

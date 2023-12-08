@@ -65,7 +65,7 @@ public abstract class Board extends Observable {
 				cell.y >= Board.NUM_ROWS;
 	}
 
-	public Cell getCell(BoardPosition cellCoord)   {
+	public Cell getCell(BoardPosition cellCoord) throws IllegalArgumentException  {
 		if(isOutOfBound(cellCoord)) {
 			throw  new IllegalArgumentException();
 		}
@@ -164,7 +164,6 @@ public abstract class Board extends Observable {
 
 
 	public boolean isGameOverV2(){
-		//TODO Refactor
 		return isFinished;
 	}
 
