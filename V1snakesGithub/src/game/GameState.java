@@ -9,6 +9,7 @@ import java.util.List;
 
 
 public record GameState(Cell[][] cells, LinkedList<Snake> snakes, LinkedList<Obstacle> obstacles, Goal goal,BoardPosition goalPosition) implements Serializable {
+
     @Override
     public BoardPosition goalPosition() {
         return goalPosition;

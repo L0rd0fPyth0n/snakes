@@ -82,6 +82,7 @@ public class Client extends Thread{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
 			try {
 				ois.close();
 				s.close();
@@ -89,6 +90,8 @@ public class Client extends Thread{
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+
+
 		}
 
 

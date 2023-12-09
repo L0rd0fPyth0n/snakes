@@ -1,6 +1,7 @@
 package environment;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.*;
 
 import game.*;
@@ -10,7 +11,7 @@ import java.util.concurrent.Executors;
 
 import static environment.LocalBoard.NUM_SIMULTANEOUS_MOVING_OBSTACLES;
 
-public abstract class Board extends Observable {
+public abstract class Board extends Observable  {
 	protected Cell[][] cells;
 	private BoardPosition goalPosition;
 	public static final long PLAYER_PLAY_INTERVAL = 100; //default: 100

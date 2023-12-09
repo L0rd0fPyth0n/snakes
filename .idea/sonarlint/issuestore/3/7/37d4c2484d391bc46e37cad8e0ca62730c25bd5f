@@ -1,37 +1,39 @@
 
 {
-java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(¥´›¸øÿÿÿÿ8ÙßİåÃ1
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(¥´›¸øÿÿÿÿ8ÙßİåÃ1
 v
-java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ò½—Î8ÛßİåÃ1
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ò½—Î8ÛßİåÃ1
 v
-java:S2293p"YReplace the type specification in this constructor call with the diamond operator ("<>").(÷¼¼§8ÜßİåÃ1
+java:S2293q"YReplace the type specification in this constructor call with the diamond operator ("<>").(÷¼¼§8ÜßİåÃ1
 “
-java:S1319("qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".(şÑÒ‘úÿÿÿÿ8ŞßİåÃ1
+java:S1319)"qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".(şÑÒ‘úÿÿÿÿ8ŞßİåÃ1
 ‘
-java:S1319,"oThe type of "obstacleMovers" should be an interface such as "List" rather than the implementation "LinkedList".(¯êı×üÿÿÿÿ8ŞßİåÃ1
+java:S1319-"oThe type of "obstacleMovers" should be an interface such as "List" rather than the implementation "LinkedList".(¯êı×üÿÿÿÿ8ŞßİåÃ1
 
-java:S1319“"qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".(Úòíä8ŞßİåÃ1
+java:S1319”"qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".(Úòíä8ŞßİåÃ1
 ”
-java:S1319"qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".(ÎÊìâıÿÿÿÿ8ŞßİåÃ1
+java:S1319"qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".(ÎÊìâıÿÿÿÿ8ŞßİåÃ1
 Š
-java:S1319À"gThe type of "snakes" should be an interface such as "List" rather than the implementation "LinkedList".(ğõÍüıÿÿÿÿ8ßßİåÃ1
+java:S1319Á"gThe type of "snakes" should be an interface such as "List" rather than the implementation "LinkedList".(ğõÍüıÿÿÿÿ8ßßİåÃ1
 ˆ
-java:S1319Ä"jThe type of "obstacles" should be an interface such as "List" rather than the implementation "LinkedList".(Ìç…8ßßİåÃ1
+java:S1319Å"jThe type of "obstacles" should be an interface such as "List" rather than the implementation "LinkedList".(Ìç…8ßßİåÃ1
 V
-java:S5993"9Change the visibility of this constructor to "protected".(ßôü¬8’àİåÃ1
+java:S5993"9Change the visibility of this constructor to "protected".(ßôü¬8’àİåÃ1
 T
-java:S1874"2Remove this use of "Observable"; it is deprecated.(¼•ìùüÿÿÿÿ8•àİåÃ1
+java:S1874"2Remove this use of "Observable"; it is deprecated.(¼•ìùüÿÿÿÿ8•àİåÃ1
 F
-java:S2140L")Use "java.util.Random.nextInt()" instead.(¡›°8¤àİåÃ1
+java:S2140M")Use "java.util.Random.nextInt()" instead.(¡›°8¤àİåÃ1
 F
-java:S2140L")Use "java.util.Random.nextInt()" instead.(¡›°8¥àİåÃ1
+java:S2140M")Use "java.util.Random.nextInt()" instead.(¡›°8¥àİåÃ1
 H
-java:S1481f"&Remove this unused "g" local variable.(ãûÛúüÿÿÿÿ8­àİåÃ1
-E	java:S108h")Either remove or fill this block of code.(”ì­è8­àİåÃ1
-^	java:S125€"<This block of commented-out lines of code should be removed.(™ÕÔŞşÿÿÿÿ8³àİåÃ1
+java:S1481g"&Remove this unused "g" local variable.(ãûÛúüÿÿÿÿ8­àİåÃ1
+E	java:S108i")Either remove or fill this block of code.(”ì­è8­àİåÃ1
+^	java:S125"<This block of commented-out lines of code should be removed.(™ÕÔŞşÿÿÿÿ8³àİåÃ1
 W
-java:S2438Œ"9Replace "lb" of type Thread with an instance of Runnable.(À‘ò8·àİåÃ1
+java:S2438"9Replace "lb" of type Thread with an instance of Runnable.(À‘ò8ğµÒƒÅ1
 l
-java:S3551˜"IMake this method "synchronized" to match the parent class implementation.(Ñ×ôöúÿÿÿÿ8¹àİåÃ1
+java:S3551™"IMake this method "synchronized" to match the parent class implementation.(Ñ×ôöúÿÿÿÿ8¹àİåÃ1
 R
-java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ8ÈàİåÃ1
+java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ8óµÒƒÅ1
+S
+java:S1128"1Remove this unused import 'java.io.Serializable'.(èãîÂÿÿÿÿÿ8‡ç÷ƒÅ1

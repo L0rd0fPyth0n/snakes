@@ -46,6 +46,8 @@ public class Server extends Thread{
             }
             catch (IOException e) {
             }
+
+
             finally {
                 try {
                   serverSocket.close();
@@ -54,5 +56,7 @@ public class Server extends Thread{
                     e.printStackTrace();
                 }
             }
+
+
     }
 }

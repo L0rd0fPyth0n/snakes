@@ -80,10 +80,14 @@ public  class HumanSnake extends Snake {
 				} catch (InterruptedException ignored) {
 				}
 		}
+
+		/*
 		try {
 			in.close();
 			inputStream.close();
 		} catch (IOException e) {
 		}
+
+		 */
 	}
 }

@@ -31,6 +31,7 @@ public class stateSender extends Thread{
                 BoardPosition goalPosition = board.getGoalPosition();
                 //CELULA ATUAL DO GOAL
                 Cell GoalCell = board.getCell(goalPosition);
+
                 oos.writeObject(
                         new GameState(
                                 board.getCells(),
@@ -40,6 +41,7 @@ public class stateSender extends Thread{
                                 board.getGoalPosition()
                         )
                 );
+
                 oos.flush();
                 oos.reset();
 
@@ -48,6 +50,8 @@ public class stateSender extends Thread{
                 e.printStackTrace();
             }
         }
+
+
         try {
             oos.close();
             s.close();
@@ -57,6 +61,8 @@ public class stateSender extends Thread{
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
     }
 }
 

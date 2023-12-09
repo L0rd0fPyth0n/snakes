@@ -132,3 +132,5 @@ G.idea/sonarlint/issuestore/1/0/10a03f31c4dce92cb371e761ce9429428bb6c176,0\3\03
 Q.idea/sonarlint/securityhotspotstore/4/b/4bf2822fc5aec8ca5dd5dc7340ff4c2c4a3fdbab,b\c\bc0a1ddddb23002dd050f6623b44f37987e59787
 X
 (V1snakesGithub/src/game/stateSender.java,d\0\d07d572ece3be062be0c44a40ed7326ddfde2009
+P
+ V1snakesGithub/src/game/GS2.java,0\c\0ca5884a074ddf0c8098b3cc3ec11df42200a8e1

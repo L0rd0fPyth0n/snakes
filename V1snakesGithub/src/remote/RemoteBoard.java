@@ -41,11 +41,13 @@ public class RemoteBoard extends Board{
 		keyToDirection.put(VK_LEFT, 'L');
 		keyToDirection.put(VK_RIGHT, 'R');
 	}
+
 	@Override
 	public void handleKeyPress(int keyCode) {
 		Character dir = keyToDirection.get(keyCode);
-		if(dir != null)
+		if(dir != null) {
 			oos.println(dir + "");
+		}
 	}
 
 	@Override
