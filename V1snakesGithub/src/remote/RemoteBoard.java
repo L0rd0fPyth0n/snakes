@@ -33,20 +33,20 @@ public class RemoteBoard extends Board{
 	}
 
 	private PrintWriter oos;
-	public static final Map<Integer,Character> keyToDirection = new HashMap<>();
+	public static final Map<Integer,String> keyToDirection = new HashMap<>();
 
 	static {
-		keyToDirection.put(VK_UP, 'U');
-		keyToDirection.put(VK_DOWN, 'D');
-		keyToDirection.put(VK_LEFT, 'L');
-		keyToDirection.put(VK_RIGHT, 'R');
+		keyToDirection.put(VK_UP, "U");
+		keyToDirection.put(VK_DOWN, "D");
+		keyToDirection.put(VK_LEFT, "L");
+		keyToDirection.put(VK_RIGHT, "R");
 	}
 
 	@Override
 	public void handleKeyPress(int keyCode) {
-		Character dir = keyToDirection.get(keyCode);
+		String dir = keyToDirection.get(keyCode);
 		if(dir != null) {
-			oos.println(dir + "");
+			oos.println(dir);
 		}
 	}
 
