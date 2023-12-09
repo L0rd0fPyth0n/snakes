@@ -46,7 +46,6 @@ public class stateSender extends Thread{
                // Thread.sleep(Board.REMOTE_REFRESH_INTERVAL);
             } catch (IOException /*| InterruptedException */e) {
                 e.printStackTrace();
-                throw new RuntimeException(e);
             }
         }
         try {

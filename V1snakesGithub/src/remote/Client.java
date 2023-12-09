@@ -41,7 +41,6 @@ public class Client extends Thread{
 			this.ois = new ObjectInputStream(s.getInputStream()); //canal receber estado atual do jogo
 			game.init();
 		} catch (IOException e) {
-
 		}
 	}
 	@Override
@@ -50,6 +49,8 @@ public class Client extends Thread{
 			while(true){
 				try {
 					GameState gameState = (GameState) ois.readObject();
+					//TODO EOFExcetion
+					//TODO OptionalDataException
 
 					rb.clearAllCells();
 					rb.setCells(gameState.cells());
@@ -58,7 +59,6 @@ public class Client extends Thread{
 					rb.setGoalPosition(gameState.goalPosition());
 
 					rb.getCell(gameState.goalPosition()).setGameElementGoal(gameState.goal());
-					System.out.println(gameState.goal());
 					rb.setObstacles(gameState.obstacles());
 					for (Obstacle obs : gameState.obstacles()){
 						try {
@@ -72,10 +72,16 @@ public class Client extends Thread{
 				}catch (ClassNotFoundException e) {
 					e.printStackTrace();
 				}
+				catch ( OptionalDataException e) {
+					e.printStackTrace();
+					System.out.println("eof: "+ e.eof);
+					System.out.println("length: "+ e.length);
+					throw new RuntimeException(e);
+				}
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
-		} finally {
+		}
 			try {
 				ois.close();
 				s.close();
@@ -84,7 +90,7 @@ public class Client extends Thread{
 				e.printStackTrace();
 			}
 		}
-	}
+
 
 	public static void main(String[] args){
 		Main.main(args);
