@@ -1,15 +1,17 @@
 
-m
-java:S6218"POverride equals, hashCode and toString to consider array's content in the method(ßÄ½é8âõåâÃ1
+r
+java:S6218"POverride equals, hashCode and toString to consider array's content in the method(ï‡óƒúÿÿÿÿ8âõåâÃ1
 b
-java:S6207"@Remove this redundant method which is the same as a default one.(öòÛıÿÿÿÿ8–£éâÃ1
-b
-java:S6207"@Remove this redundant method which is the same as a default one.(´‡ÓÄúÿÿÿÿ8Ë æâÃ1
-b
-java:S6207"@Remove this redundant method which is the same as a default one.(Á’ƒÙúÿÿÿÿ8Ë æâÃ1
+java:S6207"@Remove this redundant method which is the same as a default one.(öòÛıÿÿÿÿ8–£éâÃ1
 ]
-java:S6207"@Remove this redundant method which is the same as a default one.(ã×šÿ8Ë æâÃ1
+java:S6207"@Remove this redundant method which is the same as a default one.(îæÙ8ğ›»ƒÅ1
+b
+java:S6207"@Remove this redundant method which is the same as a default one.(´‡ÓÄúÿÿÿÿ8Ë æâÃ1
+b
+java:S6207"@Remove this redundant method which is the same as a default one.(Á’ƒÙúÿÿÿÿ8Ë æâÃ1
 ]
-java:S6207!"@Remove this redundant method which is the same as a default one.(úÖè‡8Ë æâÃ1
+java:S6207""@Remove this redundant method which is the same as a default one.(ã×šÿ8Ë æâÃ1
+]
+java:S6207'"@Remove this redundant method which is the same as a default one.(úÖè‡8Ë æâÃ1
 M
 java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8Í æâÃ1
