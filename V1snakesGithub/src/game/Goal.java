@@ -17,7 +17,7 @@ public class Goal extends GameElement implements Serializable {
 	private int value=1;
 	private transient Board board;
 
-	public  static final int MAX_VALUE=10;
+	public  static final int MAX_VALUE=5; //default: 10
 	private Lock lockGoal = new ReentrantLock();
 
 

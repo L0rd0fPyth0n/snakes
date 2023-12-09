@@ -1,25 +1,13 @@
 
-b	java:S112$"FDefine and throw a dedicated exception instead of using a generic one.(µ§“ï8­ƒÎ·Ä1
+b	java:S112#"FDefine and throw a dedicated exception instead of using a generic one.(µ§“ï8ÈÑ›úÄ1
 W
-java:S11416"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8¯ƒÎ·Ä1
+java:S11413"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8ÌÑ›úÄ1
 W
-java:S1141B"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8¯ƒÎ·Ä1
-T
-java:S1135&"2Complete the task associated to this TODO comment.(†¥“òûÿÿÿÿ8òƒÎ·Ä1
-E	java:S108.")Either remove or fill this block of code.(ï­£Ä8›¹Ä1
-G	java:S106?"+Replace this use of System.out by a logger.(ÛŸà½8ıƒÎ·Ä1
+java:S1141@"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8ÌÑ›úÄ1
+E	java:S108+")Either remove or fill this block of code.(ï­£Ä8÷Ò›úÄ1
+G	java:S106="+Replace this use of System.out by a logger.(ÛŸà½8úÒ›úÄ1
 {
-java:S2142D"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8şƒÎ·Ä1
-]	java:S125`"<This block of commented-out lines of code should be removed.(ÊØÚùÿÿÿÿ8‚„Î·Ä1
-R
-java:S1128"6Remove this unused import 'environment.BoardPosition'.(©ÛÜP8ƒ„Î·Ä1
-I
-java:S1128"-Remove this unused import 'environment.Cell'.(®‰àq8ƒ„Î·Ä1
-I
-java:S1128"'Remove this unused import 'game.Snake'.( ëûÿÿÿÿ8„„Î·Ä1
-X
-java:S1128"6Remove this unused import 'java.net.ConnectException'.(éâ¿Šüÿÿÿÿ8„„Î·Ä1
-\
-java:S1128":Remove this unused import 'java.net.UnknownHostException'.(Ú·¬˜úÿÿÿÿ8„„Î·Ä1
-M
-java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8„Î·Ä1
+java:S2142B"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8ûÒ›úÄ1
+L	java:S106R"+Replace this use of System.out by a logger.(ùÔèÃşÿÿÿÿ8¢ÜÃúÄ1
+E
+java:S1128"(Remove this unused import 'game.Server'.(áÍ§ƒ8¹ØÚûÄ1

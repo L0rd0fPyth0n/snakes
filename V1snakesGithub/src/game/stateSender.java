@@ -11,7 +11,7 @@ import java.net.Socket;
 
 public class stateSender extends Thread{
     private ObjectOutputStream oos;
-    private Socket s;
+    private  Socket s;
     private final LocalBoard board;
 
     public stateSender(Socket s, LocalBoard board) {
@@ -31,18 +31,30 @@ public class stateSender extends Thread{
                 BoardPosition goalPosition = board.getGoalPosition();
                 //CELULA ATUAL DO GOAL
                 Cell GoalCell = board.getCell(goalPosition);
-                oos.writeObject(new GameState(board.getCells(), board.getSnakes(), board.getObstacles(), (Goal) GoalCell.getGameElement(), board.getGoalPosition() ));
+                oos.writeObject(
+                        new GameState(
+                                board.getCells(),
+                                board.getSnakes(),
+                                board.getObstacles(),
+                                (Goal) GoalCell.getGameElement(),
+                                board.getGoalPosition()
+                        )
+                );
                 oos.flush();
                 oos.reset();
 
-                //Thread.sleep(Board.REMOTE_REFRESH_INTERVAL);
-            } catch (IOException/* | InterruptedException*/ e) {
+               // Thread.sleep(Board.REMOTE_REFRESH_INTERVAL);
+            } catch (IOException /*| InterruptedException */e) {
                 e.printStackTrace();
+                throw new RuntimeException(e);
             }
         }
         try {
             oos.close();
             s.close();
+            System.out.println("Server fechou os Sockets e canais");
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }

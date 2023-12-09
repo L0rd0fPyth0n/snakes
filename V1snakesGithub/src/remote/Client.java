@@ -1,21 +1,19 @@
 package remote;
 
 
-import environment.BoardPosition;
-import environment.Cell;
 import game.GameState;
 import game.Obstacle;
-import game.Snake;
+import game.Server;
 import gui.Main;
 import gui.SnakeGui;
 
 import java.io.*;
-import java.net.ConnectException;
 import java.net.InetAddress;
 import java.net.Socket;
 
-import java.net.UnknownHostException;
-import java.util.List;
+import static game.Server.ADDR;
+import static game.Server.PORT;
+
 /** Remore client, only for part II
  * 
  * @author luismota
@@ -24,20 +22,19 @@ import java.util.List;
 public class Client extends Thread{
 
 	private Socket s;
-	private ObjectOutputStream oos;
+
 	private ObjectInputStream ois;
 
 	private RemoteBoard rb;
 	private SnakeGui game;
-	public Client(){
+	public Client(String addr, int port){
 		try {
-			this.s = new Socket(InetAddress.getLocalHost(), 8888);
+			this.s = new Socket(InetAddress.getByName(addr), port);
 		} catch (IOException e){
+			e.printStackTrace();
 			 throw new RuntimeException("No games happennig right now!!");
 		}
-		//TODO FECHAR SOCKETS E CANAIS
 		try {
-			this.oos = new ObjectOutputStream(s.getOutputStream());
 			PrintWriter out = new PrintWriter (new BufferedWriter(new OutputStreamWriter ( s . getOutputStream ())) ,true );
 			this.rb = new RemoteBoard(out);
 			this.game = new SnakeGui(rb,600,0);
@@ -53,6 +50,7 @@ public class Client extends Thread{
 			while(true){
 				try {
 					GameState gameState = (GameState) ois.readObject();
+
 					rb.clearAllCells();
 					rb.setCells(gameState.cells());
 					rb.setSnakes(gameState.snakes());
@@ -62,7 +60,7 @@ public class Client extends Thread{
 					rb.getCell(gameState.goalPosition()).setGameElementGoal(gameState.goal());
 					System.out.println(gameState.goal());
 					rb.setObstacles(gameState.obstacles());
-					for (Obstacle obs : gameState.obstacles() ){
+					for (Obstacle obs : gameState.obstacles()){
 						try {
 							rb.getCell(obs.getPos()).setGameElementObstacle(obs);
 						} catch (InterruptedException e) {
@@ -80,8 +78,8 @@ public class Client extends Thread{
 		} finally {
 			try {
 				ois.close();
-				oos.close();
 				s.close();
+				System.out.println("Cliente fechou os Sockets e canais");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -92,7 +90,9 @@ public class Client extends Thread{
 		Main.main(args);
 
 
-		new Client().start();
-		//new Client().start();
+		new Client(ADDR, PORT).start();
+		new Client(ADDR,PORT).start();
+
+
 	}
 }

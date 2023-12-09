@@ -28,13 +28,14 @@ public  class HumanSnake extends Snake {
 	protected Cell getNextCell() {
 		while(true) {
 			try {
-				String dir = null;
-				dir = in.readLine();
-
+				String dir = in.readLine();
+				if(dir == null)
+					continue;
 
 				int x = 0;
 				int y = 0;
 				switch (dir) {
+
 					case "U":
 						y = -1;
 						x = 0;
