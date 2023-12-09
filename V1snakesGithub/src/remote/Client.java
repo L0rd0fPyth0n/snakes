@@ -22,9 +22,7 @@ import static game.Server.PORT;
 public class Client extends Thread{
 
 	private Socket s;
-
 	private ObjectInputStream ois;
-
 	private RemoteBoard rb;
 	private SnakeGui game;
 	public Client(String addr, int port){
@@ -45,38 +43,32 @@ public class Client extends Thread{
 	}
 	@Override
 	public void run() {
+		boolean run = true;
 		try {
-			while(true){
+			while(run){
 				try {
-					GameState gameState = (GameState) ois.readObject();
-					//TODO EOFExcetion
-					//TODO OptionalDataException
+						GameState gameState = (GameState) ois.readObject();
+						//TODO OptionalDataException
 
-					rb.clearAllCells();
-					rb.setCells(gameState.cells());
-					rb.setSnakes(gameState.snakes());
+						rb.clearAllCells();
+						rb.setCells(gameState.cells());
+						rb.setSnakes(gameState.snakes());
 
-					rb.setGoalPosition(gameState.goalPosition());
+						rb.setGoalPosition(gameState.goalPosition());
 
-					rb.getCell(gameState.goalPosition()).setGameElementGoal(gameState.goal());
-					rb.setObstacles(gameState.obstacles());
-					for (Obstacle obs : gameState.obstacles()){
-						try {
-							rb.getCell(obs.getPos()).setGameElementObstacle(obs);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
+						rb.getCell(gameState.goalPosition()).setGameElementGoal(gameState.goal());
+						rb.setObstacles(gameState.obstacles());
+						for (Obstacle obs : gameState.obstacles()){
+							try {
+								rb.getCell(obs.getPos()).setGameElementObstacle(obs);
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}
 						}
-					}
-					rb.setChanged();
-
-				}catch (ClassNotFoundException e) {
+						rb.setChanged();
+					run = !gameState.run();
+				}catch (ClassNotFoundException | OptionalDataException e) {
 					e.printStackTrace();
-				}
-				catch ( OptionalDataException e) {
-					e.printStackTrace();
-					System.out.println("eof: "+ e.eof);
-					System.out.println("length: "+ e.length);
-					throw new RuntimeException(e);
 				}
 			}
 		} catch (IOException e) {
@@ -93,7 +85,6 @@ public class Client extends Thread{
 
 
 		}
-
 
 	public static void main(String[] args){
 		Main.main(args);

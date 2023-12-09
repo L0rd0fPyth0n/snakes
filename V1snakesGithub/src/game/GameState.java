@@ -8,11 +8,16 @@ import java.util.LinkedList;
 import java.util.List;
 
 
-public record GameState(Cell[][] cells, LinkedList<Snake> snakes, LinkedList<Obstacle> obstacles, Goal goal,BoardPosition goalPosition) implements Serializable {
-
+public record GameState(Cell[][] cells, LinkedList<Snake> snakes, LinkedList<Obstacle> obstacles, Goal goal,BoardPosition goalPosition,
+                        boolean run) implements Serializable {
     @Override
     public BoardPosition goalPosition() {
         return goalPosition;
+    }
+
+    @Override
+    public boolean run() {
+        return run;
     }
 
     @Override
